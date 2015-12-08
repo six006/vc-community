@@ -17,8 +17,8 @@ namespace VirtoCommerce.Storefront.Controllers
     public class AssetsController : Controller
     {
         private readonly SassCompilerProxy _compiler = new SassCompilerProxy();
-        private readonly ShopifyLiquidThemeStructure _themeAdaptor;
-        public AssetsController(ShopifyLiquidThemeStructure themeAdaptor)
+        private readonly ShopifyLiquidThemeEngine _themeAdaptor;
+        public AssetsController(ShopifyLiquidThemeEngine themeAdaptor)
         {
             _themeAdaptor = themeAdaptor;
         }
@@ -53,9 +53,9 @@ namespace VirtoCommerce.Storefront.Controllers
             {
                 var fileExtensions = System.IO.Path.GetExtension(assetId);
                 var contentType = "application/octet-stream";
-                if (!string.IsNullOrEmpty(fileExtensions) && ExtensionMapper.Contains(fileExtensions))
+                if (!string.IsNullOrEmpty(fileExtensions) && FileExtensionMapper.Contains(fileExtensions))
                 {
-                    contentType = ExtensionMapper.GetContentType(fileExtensions);
+                    contentType = FileExtensionMapper.GetContentType(fileExtensions);
                 }
 
                 assetId = assetId.Replace(".scss.css", ".scss");

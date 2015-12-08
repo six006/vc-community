@@ -47,8 +47,9 @@
         blade.openItemsBlade = function () {
             var newBlade = {
                 id: 'quoteItems',
-                title: blade.title + ' line items',
-                subtitle: 'Edit line items',
+                title: 'quotes.blades.quote-items.title',
+                titleValues: { title: blade.title },
+                subtitle: 'quotes.blades.quote-items.subtitle',
                 recalculateFn: blade.recalculate,
                 shippingMethods: blade.shippingMethods,
                 currentEntity: blade.currentEntity,
@@ -71,8 +72,8 @@
         function deleteEntry() {
             var dialog = {
                 id: "confirmDelete",
-                title: "Delete confirmation",
-                message: "Are you sure you want to delete this Quote?",
+                title: "quotes.dialogs.quote-delete.title",
+                message: "quotes.dialogs.quote-delete.message",
                 callback: function (remove) {
                     if (remove) {
                         blade.isLoading = true;
@@ -100,8 +101,8 @@
                 if (isDirty() && !blade.isLocked()) {
                     var dialog = {
                         id: "confirmCurrentBladeClose",
-                        title: "Save changes",
-                        message: "The Quote has been modified. Do you want to save changes?"
+                        title: "quotes.dialogs.quote-save.title",
+                        message: "quotes.dialogs.quote-save.message",
                     };
                     dialog.callback = function (needSave) {
                         if (needSave) {
@@ -116,7 +117,7 @@
                 }
             });
         };
-        
+
         blade.isLocked = function () {
             return blade.currentEntity && blade.currentEntity.isLocked;
         };
@@ -125,15 +126,15 @@
 
         var onHoldCommand = {
             updateName: function () {
-                return this.name = (blade.currentEntity && blade.currentEntity.isLocked) ? 'Release Hold' : 'Place On Hold';
+                return this.name = (blade.currentEntity && blade.currentEntity.isLocked) ? 'quotes.commands.release-hold' : 'quotes.commands.place-on-hold';
             },
             // name: this.updateName(),
             icon: 'fa fa-lock', // icon: 'fa fa-hand-paper-o',
             executeMethod: function () {
                 var dialog = {
                     id: "confirmDialog",
-                    title: "On Hold confirmation",
-                    message: "Are you sure you want to " + (blade.currentEntity.isLocked ? 'release Hold from' : 'place On Hold') + " this quote? ",
+                    title: "quotes.dialogs.hold-confirmation.title",
+                    message: (blade.currentEntity.isLocked ? 'quotes.dialogs.hold-confirmation.message-release' : 'quotes.dialogs.hold-confirmation.message-place'),
                     callback: function (ok) {
                         if (ok) {
                             blade.currentEntity.isLocked = !blade.currentEntity.isLocked;
@@ -151,7 +152,7 @@
 
         blade.toolbarCommands = [
             {
-                name: "Save",
+                name: "platform.commands.save",
                 icon: 'fa fa-save',
                 executeMethod: function () {
                     saveChanges();
@@ -162,7 +163,7 @@
                 permission: 'quote:update'
             },
             {
-                name: "Reset",
+                name: "platform.commands.reset",
                 icon: 'fa fa-undo',
                 executeMethod: function () {
                     angular.copy(blade.origEntity, blade.currentEntity);
@@ -174,12 +175,12 @@
                 permission: 'quote:update'
             },
             {
-                name: "Submit proposal", icon: 'fa fa-check-square-o',
+                name: "quotes.commands.submit-proposal", icon: 'fa fa-check-square-o',
                 executeMethod: function () {
                     var dialog = {
                         id: "confirmDelete",
-                        title: "Proposal confirmation",
-                        message: "Only limited modifications are available after proposal is sent. Are you sure you want to send this proposal to customer? ",
+                        title: "quotes.dialogs.proposal-delete.title",
+                        message: "quotes.dialogs.proposal-delete.message",
                         callback: function (ok) {
                             if (ok) {
                                 blade.currentEntity.status = 'Proposal sent';
@@ -196,7 +197,7 @@
             },
             onHoldCommand,
             {
-                name: "Cancel document", icon: 'fa fa-remove',
+                name: "quotes.commands.cancel-document", icon: 'fa fa-remove',
                 executeMethod: function () {
                     var dialog = {
                         id: "confirmCancelOperation",
@@ -217,7 +218,7 @@
                 permission: 'quote:update'
             },
             {
-                name: "Delete", icon: 'fa fa-trash-o',
+                name: "platform.commands.delete", icon: 'fa fa-trash-o',
                 executeMethod: function () {
                     deleteEntry();
                 },
@@ -233,10 +234,7 @@
                 id: 'settingDetailChild',
                 isApiSave: true,
                 currentEntityId: 'Quotes.Status',
-                title: 'Quote statuses',
-                parentRefresh: function (data) {
-                    $scope.quoteStatuses = data;
-                },
+                parentRefresh: function (data) { $scope.quoteStatuses = data; },
                 controller: 'platformWebApp.settingDictionaryController',
                 template: '$(Platform)/Scripts/app/settings/blades/setting-dictionary.tpl.html'
             };

@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
-using Microsoft.AspNet.Identity.Owin;
 using VirtoCommerce.Client.Api;
 using VirtoCommerce.Client.Model;
 using VirtoCommerce.Storefront.Model;
+using VirtoCommerce.Storefront.Model.Catalog;
 
 namespace VirtoCommerce.Storefront.Routing
 {
     public class SeoRoute : Route
     {
+        private readonly Func<WorkContext> _workContextFactory;
         private readonly ICommerceCoreModuleApi _commerceCoreApi;
 
-        public SeoRoute(string url, IRouteHandler routeHandler, ICommerceCoreModuleApi commerceCoreApi)
+        public SeoRoute(string url, IRouteHandler routeHandler, Func<WorkContext> workContextFactory, ICommerceCoreModuleApi commerceCoreApi)
             : base(url, routeHandler)
         {
+            _workContextFactory = workContextFactory;
             _commerceCoreApi = commerceCoreApi;
         }
         public override RouteData GetRouteData(HttpContextBase httpContext)
@@ -32,12 +34,12 @@ namespace VirtoCommerce.Storefront.Routing
                 if (seoRecord == null)
                 {
                     // Slug not found
-                    data.Values["controller"] = "Common";
-                    data.Values["action"] = "PageNotFound";
+                    data.Values["controller"] = "Error";
+                    data.Values["action"] = "Http404";
                 }
                 else
                 {
-                    var workContext = httpContext.GetOwinContext().Get<WorkContext>();
+                    var workContext = _workContextFactory();
 
                     // Ensure the slug is active
                     if (seoRecord.IsActive == null || !seoRecord.IsActive.Value)
@@ -48,8 +50,8 @@ namespace VirtoCommerce.Storefront.Routing
                         if (string.IsNullOrWhiteSpace(activeSlug))
                         {
                             // No active slug found
-                            data.Values["controller"] = "Common";
-                            data.Values["action"] = "PageNotFound";
+                            data.Values["controller"] = "Error";
+                            data.Values["action"] = "Http404";
                         }
                         else
                         {
@@ -64,7 +66,7 @@ namespace VirtoCommerce.Storefront.Routing
                     else
                     {
                         // Redirect to the slug for the current language if it differs from the requested slug
-                        var slugForCurrentLanguage = GetSlug(seoRecords, workContext, seoRecord.ObjectType, seoRecord.ObjectId, workContext.CurrentLanguage);
+                        var slugForCurrentLanguage = GetSlug(seoRecords, workContext, seoRecord.ObjectType, seoRecord.ObjectId, workContext.CurrentLanguage.CultureName);
 
                         if (!string.IsNullOrEmpty(slugForCurrentLanguage) && !slugForCurrentLanguage.Equals(seoRecord.SemanticUrl, StringComparison.OrdinalIgnoreCase))
                         {
@@ -82,14 +84,14 @@ namespace VirtoCommerce.Storefront.Routing
                                 case "CatalogProduct":
                                     data.Values["controller"] = "Product";
                                     data.Values["action"] = "ProductDetails";
-                                    data.Values["productid"] = seoRecord.ObjectId;
-                                    data.Values["slug"] = seoRecord.SemanticUrl;
+                                    data.Values["productId"] = seoRecord.ObjectId;
                                     break;
                                 case "Category":
-                                    data.Values["controller"] = "Catalog";
-                                    data.Values["action"] = "Category";
-                                    data.Values["categoryid"] = seoRecord.ObjectId;
-                                    data.Values["slug"] = seoRecord.SemanticUrl;
+                                    workContext.CurrentCatalogSearchCriteria.CategoryId = seoRecord.ObjectId;
+                                    data.Values["controller"] = "CatalogSearch";
+                                    data.Values["action"] = "SearchProducts";
+                                    data.Values["searchCriteria"] = workContext.CurrentCatalogSearchCriteria;
+
                                     break;
                             }
                         }

@@ -9,29 +9,25 @@
   'ngAnimate',
   'ngStorage',
   'ngResource',
-  //'xeditable',
   'fiestah.money',
   'ngCookies',
   'angularMoment',
   'angularFileUpload',
   'ngSanitize',
   'ng-context-menu',
-  //'ui.grid',
-  //'ui.grid.selection',
+  'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.saveState', 'ui.grid.selection', 'ui.grid.pagination', 'ui.grid.pinning',
+  'ui.grid.draggable-rows',
   'ui.codemirror',
   'focusOn',
   'textAngular',
-  'ngTagsInput'
+  'ngTagsInput',
+  'pascalprecht.translate'
 ];
 
 angular.module('platformWebApp', AppDependencies).
-  controller('platformWebApp.appCtrl', ['$scope', '$window', '$state', 'platformWebApp.pushNotificationService', function ($scope, $window, $state, pushNotificationService) {
+  controller('platformWebApp.appCtrl', ['$scope', '$window', 'platformWebApp.pushNotificationService', function ($scope, $window, pushNotificationService) {
       $scope.platformVersion = $window.platformVersion;
       pushNotificationService.run();
-
-      $scope.curentStateName = function () {
-          return $state.current.name;
-      };
   }])
 // Specify SignalR server URL (application URL)
 .factory('platformWebApp.signalRServerName', ['$location', function apiTokenFactory($location) {
@@ -57,8 +53,18 @@ angular.module('platformWebApp', AppDependencies).
 
     return httpErrorInterceptor;
 }])
+.factory('translateLoaderErrorHandler', function ($q, $log) {
+    return function (part, lang) {
+        $log.error('Localization "' + part + '" for "' + lang + '" was not loaded.');
+
+        //todo add notification.
+
+        //2) You have to either resolve the promise with a translation table for the given part and language or reject it 3) The partial loader will use the given translation table like it was successfully fetched from the server 4) If you reject the promise, then the loader will reject the whole loading process
+        return $q.when({});
+    };
+})
 .config(
-  ['$stateProvider', '$httpProvider', 'uiSelectConfig', 'datepickerConfig', function ($stateProvider, $httpProvider, uiSelectConfig, datepickerConfig) {
+  ['$stateProvider', '$httpProvider', 'uiSelectConfig', 'datepickerConfig', '$provide', 'uiGridConstants', '$translateProvider', function ($stateProvider, $httpProvider, uiSelectConfig, datepickerConfig, $provide, uiGridConstants, $translateProvider) {
       $stateProvider.state('workspace', {
           url: '/workspace',
           templateUrl: '$(Platform)/Scripts/app/workspace.tpl.html'
@@ -70,6 +76,37 @@ angular.module('platformWebApp', AppDependencies).
       uiSelectConfig.theme = 'select2';
 
       datepickerConfig.showWeeks = false;
+
+      $provide.decorator('GridOptions', ['$delegate', function ($delegate) {
+          var gridOptions = angular.copy($delegate);
+          gridOptions.initialize = function (options) {
+              var initOptions = $delegate.initialize(options);
+              angular.extend(initOptions, {
+                  data: _.any(initOptions.data) ? initOptions.data : 'blade.currentEntities',
+                  rowHeight: initOptions.rowHeight === 30 ? 40 : initOptions.rowHeight,
+                  enableGridMenu: true,
+                  //enableVerticalScrollbar: uiGridConstants.scrollbars.NEVER,
+                  //enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+                  //selectionRowHeaderWidth: 35,
+                  saveFocus: false,
+                  saveFilter: false,
+                  savePinning: false,
+                  saveSelection: false
+              });
+              return initOptions;
+          };
+          return gridOptions;
+      }]);
+
+      //Localization
+      // https://angular-translate.github.io/docs/#/guide
+      // var defaultLanguage = settings.getValues({ id: 'VirtoCommerce.Platform.General.ManagerDefaultLanguage' });
+      $translateProvider.useUrlLoader('api/platform/localization')
+        .useLoaderCache(true)
+        .useSanitizeValueStrategy('escapeParameters')
+        .preferredLanguage('en')
+        .fallbackLanguage('en')
+        .useLocalStorage();
   }])
 
 .run(
@@ -80,9 +117,10 @@ angular.module('platformWebApp', AppDependencies).
 
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+
         var homeMenuItem = {
             path: 'home',
-            title: 'Home',
+            title: 'platform.menu.home',
             icon: 'fa fa-home',
             action: function () { $state.go('workspace'); },
             priority: 0
@@ -92,7 +130,7 @@ angular.module('platformWebApp', AppDependencies).
         var browseMenuItem = {
             path: 'browse',
             icon: 'fa fa-search',
-            title: 'Browse',
+            title: 'platform.menu.browse',
             priority: 90,
         };
         mainMenuService.addMenuItem(browseMenuItem);
@@ -100,11 +138,10 @@ angular.module('platformWebApp', AppDependencies).
         var cfgMenuItem = {
             path: 'configuration',
             icon: 'fa fa-wrench',
-            title: 'Configuration',
+            title: 'platform.menu.configuration',
             priority: 91,
         };
         mainMenuService.addMenuItem(cfgMenuItem);
-
 
         $rootScope.$on('unauthorized', function (event, rejection) {
             if (!authService.isAuthenticated) {
@@ -162,4 +199,107 @@ angular.module('platformWebApp', AppDependencies).
         ['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent', 'html', 'insertImage', 'insertLink', 'insertVideo']];
 
     }
-  ]);
+  ])
+.factory('platformWebApp.uiGridHelper', ['$localStorage', '$timeout', 'uiGridConstants', '$translate', function ($localStorage, $timeout, uiGridConstants, $translate) {
+    var retVal = {};
+    retVal.initialize = function ($scope, gridOptions, externalRegisterApiCallback) {
+        var savedState = $localStorage['gridState:' + $scope.blade.template];
+        if (savedState) {
+            // extend saved columns with custom columnDef information (e.g. cellTemplate, displayName)
+            var foundDef;
+            _.each(savedState.columns, function (x) {
+                if (foundDef = _.findWhere(gridOptions.columnDefs, { name: x.name })) {
+                    var customSort = x.sort;
+                    _.extend(x, foundDef);
+                    x.sort = customSort;
+                    x.wasPredefined = true;
+                    gridOptions.columnDefs.splice(gridOptions.columnDefs.indexOf(foundDef), 1);
+                } else {
+                    x.wasPredefined = false;
+                }
+            });
+            savedState.columns = _.reject(savedState.columns, function (x) { return x.cellTemplate && !x.wasPredefined; });
+            gridOptions.columnDefs = _.union(gridOptions.columnDefs, savedState.columns);
+        } else {
+            // mark predefined columns
+            _.each(gridOptions.columnDefs, function (x) { x.wasPredefined = true; })
+        }
+
+        // translate filter
+        _.each(gridOptions.columnDefs, function (x) { x.headerCellFilter = 'translate'; })
+
+        $scope.gridOptions = angular.extend({
+            gridMenuTitleFilter: $translate,
+            onRegisterApi: function (gridApi) {
+                //set gridApi on scope
+                $scope.gridApi = gridApi;
+
+                if (savedState) {
+                    $timeout(function () {
+                        gridApi.saveState.restore($scope, savedState);
+                    }, 10);
+                }
+
+                gridApi.colResizable.on.columnSizeChanged($scope, saveState);
+                gridApi.colMovable.on.columnPositionChanged($scope, saveState);
+                gridApi.core.on.columnVisibilityChanged($scope, saveState);
+                gridApi.core.on.sortChanged($scope, saveState);
+                function saveState() {
+                    $localStorage['gridState:' + $scope.blade.template] = gridApi.saveState.save();
+                }
+
+                gridApi.grid.registerDataChangeCallback(processMissingColumns, [uiGridConstants.dataChange.ROW]);
+
+                // update grid menu behavior
+                gridApi.grid.registerDataChangeCallback(updateGridStyles, [uiGridConstants.dataChange.ROW]);
+                if ($scope.gridOptions.paginationPageSize > 0) {
+                    gridApi.pagination.on.paginationChanged($scope, updateGridStyles);
+                }
+                function updateGridStyles() {
+                    $timeout(function () {
+                        var headerHeight = $('.ui-grid-header').height();
+                        var gridDataHeight = (headerHeight ? headerHeight : 40) + gridApi.core.getVisibleRows(gridApi.grid).length * $scope.gridOptions.rowHeight;
+                        $scope.blade.gridScrollNeeded = $('.blade-inner').height() < 1 + gridDataHeight;
+
+                        if ($scope.blade.gridScrollNeeded) {
+                            $('.ui-grid').addClass('__scrolled');
+                        }
+                        else {
+                            $('.ui-grid').removeClass('__scrolled');
+                        }
+                    }, 10);
+                }
+
+
+                if (externalRegisterApiCallback) {
+                    externalRegisterApiCallback(gridApi);
+                }
+            }
+        }, gridOptions);
+
+        function processMissingColumns(grid) {
+            var gridOptions = grid.options;
+            //gridOptions.minRowsToShow = currentEntities.length;
+
+            if (!gridOptions.columnDefsGenerated && _.any(grid.rows)) {
+                var allKeysFromEntity = _.without(_.keys(grid.rows[0].entity), '$$hashKey');
+                // remove non-existing columns
+                _.each(gridOptions.columnDefs.slice(), function (x) {
+                    if (!_.contains(allKeysFromEntity, x.name) && !x.wasPredefined) {
+                        gridOptions.columnDefs = _.reject(gridOptions.columnDefs, function (d) { return d.name == x.name; });
+                    }
+                });
+
+                // generate columnDefs for each undefined property
+                _.each(allKeysFromEntity, function (x) {
+                    if (!_.findWhere(gridOptions.columnDefs, { name: x })) {
+                        gridOptions.columnDefs.push({ name: x, visible: false });
+                    }
+                });
+                gridOptions.columnDefsGenerated = true;
+            }
+        }
+    };
+
+    return retVal;
+}]);

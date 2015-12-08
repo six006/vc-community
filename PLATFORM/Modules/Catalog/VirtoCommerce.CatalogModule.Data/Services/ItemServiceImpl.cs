@@ -18,13 +18,13 @@ namespace VirtoCommerce.CatalogModule.Data.Services
 	public class ItemServiceImpl : ServiceBase, IItemService
 	{
 		private readonly Func<ICatalogRepository> _catalogRepositoryFactory;
-		private readonly ICommerceService _commerceService;
+        private readonly ICommerceService _commerceService;
 
 		public ItemServiceImpl(Func<ICatalogRepository> catalogRepositoryFactory, ICommerceService commerceService)
 		{
 			_catalogRepositoryFactory = catalogRepositoryFactory;
 			_commerceService = commerceService;
-		}
+        }
 
 		#region IItemService Members
 
@@ -36,51 +36,34 @@ namespace VirtoCommerce.CatalogModule.Data.Services
 
 		public coreModel.CatalogProduct[] GetByIds(string[] itemIds, coreModel.ItemResponseGroup respGroup)
 		{
-			// TODO: Optimize performance (Sasha)
-			// Associations shouldn't be loaded always and must be optimized as well
 			var retVal = new List<coreModel.CatalogProduct>();
 			using (var repository = _catalogRepositoryFactory())
 			{
-				var dbItems = repository.GetItemByIds(itemIds, respGroup);
+               
+                var dbItems = repository.GetItemByIds(itemIds, respGroup);
+                //Load product seo informations for each items and item category
+                SeoInfo[] seoInfos = null;
+                if ((respGroup & coreModel.ItemResponseGroup.Seo) == coreModel.ItemResponseGroup.Seo)
+                {
+                    var categoryIds = dbItems.Select(x => x.CategoryId).Distinct().ToArray();
+                    seoInfos = _commerceService.GetObjectsSeo(itemIds.Concat(categoryIds).ToArray()).ToArray();
+                }
 
-				SeoInfo[] seoInfos = null;
-				if ((respGroup & coreModel.ItemResponseGroup.Seo) == coreModel.ItemResponseGroup.Seo)
-				{
-					seoInfos = _commerceService.GetObjectsSeo(dbItems.Select(x => x.Id).ToArray()).ToArray();
-				}
-
-				var categoriesIds = dbItems.SelectMany(x => x.CategoryLinks).Select(x => x.CategoryId).Distinct().ToArray();
-				var dbCategories = repository.GetCategoriesByIds(categoriesIds);
-
-				foreach (var dbItem in dbItems)
-				{
-					var associatedProducts = new List<coreModel.CatalogProduct>();
-					if ((respGroup & coreModel.ItemResponseGroup.ItemAssociations) == coreModel.ItemResponseGroup.ItemAssociations)
-					{
-						if (dbItem.AssociationGroups.Any())
-						{
-							foreach (var association in dbItem.AssociationGroups.SelectMany(x => x.Associations))
-							{
-								var associatedProduct = GetById(association.ItemId, coreModel.ItemResponseGroup.ItemAssets);
-								associatedProducts.Add(associatedProduct);
-							}
-						}
-					}
-					var dbCatalog = repository.GetCatalogById(dbItem.CatalogId);
-
-					var catalog = dbCatalog.ToCoreModel();
-					coreModel.Category category = null;
-					if (dbItem.Category != null)
-					{
-						var allParents = repository.GetAllCategoryParents(dbItem.Category).ToArray();
-						category = dbItem.Category.ToCoreModel(catalog, null, allParents);
-					}
-				
-					var item = dbItem.ToCoreModel(catalog: catalog, category: category, associatedProducts: associatedProducts.ToArray());
-					item.SeoInfos = seoInfos != null ? seoInfos.Where(x => x.ObjectId == dbItem.Id).ToList() : null;
-					retVal.Add(item);
-				}
-			}
+                foreach (var dbItem in dbItems)
+                {
+                    var product = dbItem.ToCoreModel();
+                    retVal.Add(product);
+                    //Populate product seo
+                    if (seoInfos != null)
+                    {
+                        product.SeoInfos = seoInfos.Where(x => x.ObjectId == product.Id).ToList();
+                        if(product.Category != null)
+                        {
+                            product.Category.SeoInfos = seoInfos.Where(x => x.ObjectId == product.Category.Id).ToList();
+                        }
+                    }
+                }
+            }
 
 			return retVal.ToArray();
 		}
@@ -152,13 +135,6 @@ namespace VirtoCommerce.CatalogModule.Data.Services
 					var item = items.FirstOrDefault(x => x.Id == dbItem.Id);
 					if (item != null)
 					{
-						//Need skip inherited properties without overridden value
-						if (dbItem.ParentId != null && item.PropertyValues != null)
-						{
-							var dbParentItem = repository.GetItemByIds(new[] { dbItem.ParentId }, coreModel.ItemResponseGroup.ItemProperties).First();
-							item.MainProduct = dbParentItem.ToCoreModel(new coreModel.Catalog { Id = dbItem.CatalogId }, new coreModel.Category { Id = dbItem.CategoryId }, null);
-						}
-
 						changeTracker.Attach(dbItem);
 
 						item.Patch(dbItem);
@@ -186,7 +162,10 @@ namespace VirtoCommerce.CatalogModule.Data.Services
 		{
 			using (var repository = _catalogRepositoryFactory())
 			{
-				repository.RemoveItems(itemIds);
+                var seoInfos = _commerceService.GetObjectsSeo(itemIds);
+                _commerceService.DeleteSeo(seoInfos.Select(x => x.Id).ToArray());
+
+                repository.RemoveItems(itemIds);
 				CommitChanges(repository);
 			}
 		}

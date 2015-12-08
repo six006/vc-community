@@ -12,7 +12,6 @@ using VirtoCommerce.Platform.Data.Common;
 using VirtoCommerce.Platform.Data.Common.ConventionInjections;
 using VirtoCommerce.Domain.Commerce.Model;
 
-
 namespace VirtoCommerce.CatalogModule.Data.Converters
 {
     public static class CatalogConverter
@@ -22,43 +21,58 @@ namespace VirtoCommerce.CatalogModule.Data.Converters
         /// </summary>
         /// <param name="catalogBase"></param>
         /// <returns></returns>
-        public static coreModel.Catalog ToCoreModel(this dataModel.CatalogBase catalogBase, coreModel.Property[] properties = null)
+        public static coreModel.Catalog ToCoreModel(this dataModel.Catalog dbCatalog, bool convertProps = true)
         {
-            if (catalogBase == null)
-                throw new ArgumentNullException("catalogBase");
-
-            var catalog = catalogBase as dataModel.Catalog;
-            var virtualCatalog = catalogBase as dataModel.VirtualCatalog;
+            if (dbCatalog == null)
+                throw new ArgumentNullException("catalog");
 
             var retVal = new coreModel.Catalog();
-            retVal.InjectFrom(catalogBase);
-            retVal.Virtual = virtualCatalog != null;
+            retVal.InjectFrom(dbCatalog);
             retVal.Languages = new List<coreModel.CatalogLanguage>();
 
-            if (catalog != null)
+            var defaultLanguage = (new dataModel.CatalogLanguage { Language = string.IsNullOrEmpty(dbCatalog.DefaultLanguage) ? "en-us" : dbCatalog.DefaultLanguage }).ToCoreModel(retVal);
+            defaultLanguage.IsDefault = true;
+            retVal.Languages = new List<coreModel.CatalogLanguage>();
+            retVal.Languages.Add(defaultLanguage);
+
+            //populate additional languages
+            foreach (var catalogLanguage in dbCatalog.CatalogLanguages.Where(x => x.Language != defaultLanguage.LanguageCode).Select(x => x.ToCoreModel(retVal)))
             {
-                foreach (var catalogLanguage in catalog.CatalogLanguages.Select(x => x.ToCoreModel(retVal)))
-                {
-                    catalogLanguage.Catalog = retVal;
-                    catalogLanguage.IsDefault = catalogBase.DefaultLanguage == catalogLanguage.LanguageCode;
-                    retVal.Languages.Add(catalogLanguage);
-                }
-
-                if (properties != null)
-                {
-                    retVal.PropertyValues = catalog.CatalogPropertyValues.Select(x => x.ToCoreModel(properties)).ToList();
-                }
-
-            }
-
-            if (virtualCatalog != null)
-            {
-                var catalogLanguage = (new dataModel.CatalogLanguage { Language = catalogBase.DefaultLanguage }).ToCoreModel(retVal);
-                catalogLanguage.IsDefault = true;
+                catalogLanguage.Catalog = retVal;
                 retVal.Languages.Add(catalogLanguage);
             }
 
-	
+
+            if (convertProps)
+            {
+                retVal.PropertyValues = dbCatalog.CatalogPropertyValues.Select(x => x.ToCoreModel()).ToList();
+                retVal.Properties = new List<coreModel.Property>();
+                //Self properties
+                retVal.Properties.AddRange(dbCatalog.Properties.Where(x => x.CategoryId == null).Select(x => x.ToCoreModel()));
+
+                //Next need set Property in PropertyValues objects
+                foreach (var propValue in retVal.PropertyValues)
+                {
+                    propValue.Property = retVal.Properties.FirstOrDefault(x => x.IsSuitableForValue(propValue));
+                    //Because multilingual dictionary values for all languages may not stored in db need add it in result manually from property dictionary values
+                    var localizedDictValues = propValue.TryGetAllLocalizedDictValues();
+                    if (localizedDictValues.Any())
+                    {
+                        foreach (var localizedDictValue in localizedDictValues)
+                        {
+                            if (!retVal.PropertyValues.Any(x => x.ValueId == localizedDictValue.ValueId && x.LanguageCode == localizedDictValue.LanguageCode))
+                            {
+                                retVal.PropertyValues.Add(localizedDictValue);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        retVal.PropertyValues.Add(propValue);
+                    }
+                }
+            }
+
             return retVal;
         }
 
@@ -67,7 +81,7 @@ namespace VirtoCommerce.CatalogModule.Data.Converters
         /// </summary>
         /// <param name="catalog"></param>
         /// <returns></returns>
-        public static dataModel.CatalogBase ToDataModel(this coreModel.Catalog catalog)
+        public static dataModel.Catalog ToDataModel(this coreModel.Catalog catalog)
         {
             if (catalog == null)
                 throw new ArgumentNullException("catalog");
@@ -75,48 +89,23 @@ namespace VirtoCommerce.CatalogModule.Data.Converters
 			if(catalog.DefaultLanguage == null)
 				throw new NullReferenceException("DefaultLanguage");
 
-            dataModel.CatalogBase retVal;
-            dataModel.Catalog dbCatalog = null;
-            dataModel.VirtualCatalog dbVirtCatalog = null;
+            var retVal = new dataModel.Catalog();
 
-            if (catalog.Virtual)
+            if (catalog.PropertyValues != null)
             {
-                dbVirtCatalog = new dataModel.VirtualCatalog();
-                retVal = dbVirtCatalog;
-            }
-            else
-            {
-                dbCatalog = new dataModel.Catalog();
-
-                if (catalog.PropertyValues != null)
-                {
-                    dbCatalog.CatalogPropertyValues = new ObservableCollection<dataModel.CatalogPropertyValue>();
-                    dbCatalog.CatalogPropertyValues.AddRange(catalog.PropertyValues.Select(x => x.ToDataModel<dataModel.CatalogPropertyValue>()).OfType<dataModel.CatalogPropertyValue>());
-                }
-                retVal = dbCatalog;
+                retVal.CatalogPropertyValues = new ObservableCollection<dataModel.PropertyValue>();
+                retVal.CatalogPropertyValues.AddRange(catalog.PropertyValues.Select(x => x.ToDataModel()));
             }
 
-            //Because EF mapping schema not automatically linked foreign keys, we should generate manually id and  set links manually
-            var id = retVal.Id;
             retVal.InjectFrom(catalog);
-            if (catalog.Id == null)
+
+            retVal.DefaultLanguage = catalog.DefaultLanguage.LanguageCode;
+
+            if (catalog.Languages != null)
             {
-                retVal.Id = id;
+                retVal.CatalogLanguages = new ObservableCollection<dataModel.CatalogLanguage>();
+                retVal.CatalogLanguages.AddRange(catalog.Languages.Select(x => x.ToDataModel()));
             }
-
-			retVal.DefaultLanguage = catalog.DefaultLanguage.LanguageCode;
-
-            if (dbCatalog != null && catalog.Languages != null)
-            {
-                dbCatalog.CatalogLanguages = new ObservableCollection<dataModel.CatalogLanguage>();
-                foreach (var dbCatalogLanguage in catalog.Languages.Select(x => x.ToDataModel()))
-                {
-                    dbCatalogLanguage.CatalogId = retVal.Id;
-                    dbCatalog.CatalogLanguages.Add(dbCatalogLanguage);
-                }
-            }
-
-            retVal.Name = catalog.Name;
 
             return retVal;
         }
@@ -127,12 +116,12 @@ namespace VirtoCommerce.CatalogModule.Data.Converters
         /// </summary>
         /// <param name="source"></param>
         /// <param name="target"></param>
-        public static void Patch(this dataModel.CatalogBase source, dataModel.CatalogBase target)
+        public static void Patch(this dataModel.Catalog source, dataModel.Catalog target)
         {
             if (target == null)
                 throw new ArgumentNullException("target");
 
-            var patchInjectionPolicy = new PatchInjection<dataModel.CatalogBase>(x => x.Name, x => x.DefaultLanguage);
+            var patchInjectionPolicy = new PatchInjection<dataModel.Catalog>(x => x.Name, x => x.DefaultLanguage);
             target.InjectFrom(patchInjectionPolicy, source);
 
             //Languages patch

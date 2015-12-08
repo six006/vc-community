@@ -25,7 +25,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="code">Category code</param>
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategory</returns>
-        VirtoCommerceMerchandisingModuleWebModelCategory MerchandisingModuleCategoryGetCategoryByCode (string store, string code, string language);
+        VirtoCommerceMerchandisingModuleWebModelCategory MerchandisingModuleCategoryGetCategoryByCode (string store, string code, string language = null);
   
         /// <summary>
         /// Get store category by code
@@ -37,7 +37,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="code">Category code</param>
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategory</returns>
-        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategory> MerchandisingModuleCategoryGetCategoryByCodeAsync (string store, string code, string language);
+        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategory> MerchandisingModuleCategoryGetCategoryByCodeAsync (string store, string code, string language = null);
         
         /// <summary>
         /// Search for store categories
@@ -49,7 +49,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <param name="parentId">Parent category id</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection</returns>
-        VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection MerchandisingModuleCategorySearchCategory (string store, string language, string parentId);
+        VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection MerchandisingModuleCategorySearchCategory (string store, string language = null, string parentId = null);
   
         /// <summary>
         /// Search for store categories
@@ -61,7 +61,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <param name="parentId">Parent category id</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection</returns>
-        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection> MerchandisingModuleCategorySearchCategoryAsync (string store, string language, string parentId);
+        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection> MerchandisingModuleCategorySearchCategoryAsync (string store, string language = null, string parentId = null);
         
         /// <summary>
         /// Get store category by id
@@ -73,7 +73,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="store">Store id</param>
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategory</returns>
-        VirtoCommerceMerchandisingModuleWebModelCategory MerchandisingModuleCategoryGetCategoryById (string category, string store, string language);
+        VirtoCommerceMerchandisingModuleWebModelCategory MerchandisingModuleCategoryGetCategoryById (string category, string store, string language = null);
   
         /// <summary>
         /// Get store category by id
@@ -85,7 +85,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="store">Store id</param>
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategory</returns>
-        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategory> MerchandisingModuleCategoryGetCategoryByIdAsync (string category, string store, string language);
+        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategory> MerchandisingModuleCategoryGetCategoryByIdAsync (string category, string store, string language = null);
         
         /// <summary>
         /// Get dynamic content for given placeholders
@@ -98,7 +98,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="tags">Array of tags</param>
         /// <param name="language">Culture name (devault value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection</returns>
-        VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection MerchandisingModuleMarketingGetDynamicContent (string store, List<string> placeHolders, List<string> tags, string language);
+        VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection MerchandisingModuleMarketingGetDynamicContent (string store, List<string> placeHolders, List<string> tags, string language = null);
   
         /// <summary>
         /// Get dynamic content for given placeholders
@@ -111,7 +111,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="tags">Array of tags</param>
         /// <param name="language">Culture name (devault value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection</returns>
-        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection> MerchandisingModuleMarketingGetDynamicContentAsync (string store, List<string> placeHolders, List<string> tags, string language);
+        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection> MerchandisingModuleMarketingGetDynamicContentAsync (string store, List<string> placeHolders, List<string> tags, string language = null);
         
         /// <summary>
         /// Evaluate promotions
@@ -183,7 +183,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="currency">Currency code</param>
         /// <param name="tags">Array of tags</param>
         /// <returns></returns>
-        List<string> MerchandisingModulePriceGetPriceListStack (string catalog, string currency, List<string> tags);
+        List<string> MerchandisingModulePriceGetPriceListStack (string catalog, string currency = null, List<string> tags = null);
   
         /// <summary>
         /// Get collection of pricelists for given catalog
@@ -195,7 +195,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="currency">Currency code</param>
         /// <param name="tags">Array of tags</param>
         /// <returns></returns>
-        System.Threading.Tasks.Task<List<string>> MerchandisingModulePriceGetPriceListStackAsync (string catalog, string currency, List<string> tags);
+        System.Threading.Tasks.Task<List<string>> MerchandisingModulePriceGetPriceListStackAsync (string catalog, string currency = null, List<string> tags = null);
         
         /// <summary>
         /// Get prices collection by product ids and pricelist ids
@@ -229,7 +229,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="ids">Product ids</param>
         /// <param name="responseGroup">Response detalization scale (default value is ItemInfo)</param>
         /// <returns></returns>
-        List<VirtoCommerceMerchandisingModuleWebModelCatalogItem> MerchandisingModuleProductGetProductsByIds (string store, List<string> ids, string responseGroup);
+        List<VirtoCommerceMerchandisingModuleWebModelCatalogItem> MerchandisingModuleProductGetProductsByIds (string store, List<string> ids, string responseGroup = null);
   
         /// <summary>
         /// Get store products collection by their ids
@@ -241,7 +241,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="ids">Product ids</param>
         /// <param name="responseGroup">Response detalization scale (default value is ItemInfo)</param>
         /// <returns></returns>
-        System.Threading.Tasks.Task<List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>> MerchandisingModuleProductGetProductsByIdsAsync (string store, List<string> ids, string responseGroup);
+        System.Threading.Tasks.Task<List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>> MerchandisingModuleProductGetProductsByIdsAsync (string store, List<string> ids, string responseGroup = null);
         
         /// <summary>
         /// Search for store products
@@ -264,7 +264,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestTerms">Gets or sets search terms collection\r\n            Item format: name:value1,value2,value3</param>
         /// <param name="requestFacets">Gets or sets the facets collection\r\n            Item format: name:value1,value2,value3</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelProductSearchResult</returns>
-        VirtoCommerceMerchandisingModuleWebModelProductSearchResult MerchandisingModuleProductSearch (string requestStore, List<string> requestPricelists, string requestResponseGroup, string requestOutline, string requestLanguage, string requestCurrency, string requestSearchPhrase, string requestSort, string requestSortOrder, DateTime? requestStartDateFrom, int? requestSkip, int? requestTake, List<string> requestTerms, List<string> requestFacets);
+        VirtoCommerceMerchandisingModuleWebModelProductSearchResult MerchandisingModuleProductSearch (string requestStore = null, List<string> requestPricelists = null, string requestResponseGroup = null, string requestOutline = null, string requestLanguage = null, string requestCurrency = null, string requestSearchPhrase = null, string requestSort = null, string requestSortOrder = null, DateTime? requestStartDateFrom = null, int? requestSkip = null, int? requestTake = null, List<string> requestTerms = null, List<string> requestFacets = null);
   
         /// <summary>
         /// Search for store products
@@ -287,7 +287,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestTerms">Gets or sets search terms collection\r\n            Item format: name:value1,value2,value3</param>
         /// <param name="requestFacets">Gets or sets the facets collection\r\n            Item format: name:value1,value2,value3</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelProductSearchResult</returns>
-        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelProductSearchResult> MerchandisingModuleProductSearchAsync (string requestStore, List<string> requestPricelists, string requestResponseGroup, string requestOutline, string requestLanguage, string requestCurrency, string requestSearchPhrase, string requestSort, string requestSortOrder, DateTime? requestStartDateFrom, int? requestSkip, int? requestTake, List<string> requestTerms, List<string> requestFacets);
+        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelProductSearchResult> MerchandisingModuleProductSearchAsync (string requestStore = null, List<string> requestPricelists = null, string requestResponseGroup = null, string requestOutline = null, string requestLanguage = null, string requestCurrency = null, string requestSearchPhrase = null, string requestSort = null, string requestSortOrder = null, DateTime? requestStartDateFrom = null, int? requestSkip = null, int? requestTake = null, List<string> requestTerms = null, List<string> requestFacets = null);
         
         /// <summary>
         /// Get store product by id
@@ -300,7 +300,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="responseGroup">Response detalization scale (default value is ItemLarge)</param>
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCatalogItem</returns>
-        VirtoCommerceMerchandisingModuleWebModelCatalogItem MerchandisingModuleProductGetProduct (string store, string product, string responseGroup, string language);
+        VirtoCommerceMerchandisingModuleWebModelCatalogItem MerchandisingModuleProductGetProduct (string store, string product, string responseGroup = null, string language = null);
   
         /// <summary>
         /// Get store product by id
@@ -313,7 +313,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="responseGroup">Response detalization scale (default value is ItemLarge)</param>
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCatalogItem</returns>
-        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCatalogItem> MerchandisingModuleProductGetProductAsync (string store, string product, string responseGroup, string language);
+        System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCatalogItem> MerchandisingModuleProductGetProductAsync (string store, string product, string responseGroup = null, string language = null);
         
         /// <summary>
         /// Get stores
@@ -408,7 +408,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="code">Category code</param> 
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param> 
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategory</returns>            
-        public VirtoCommerceMerchandisingModuleWebModelCategory MerchandisingModuleCategoryGetCategoryByCode (string store, string code, string language)
+        public VirtoCommerceMerchandisingModuleWebModelCategory MerchandisingModuleCategoryGetCategoryByCode (string store, string code, string language = null)
         {
             
             // verify the required parameter 'store' is set
@@ -418,7 +418,7 @@ namespace VirtoCommerce.Client.Api
             if (code == null) throw new ApiException(400, "Missing required parameter 'code' when calling MerchandisingModuleCategoryGetCategoryByCode");
             
     
-            var path = "/api/mp/categories";
+            var path_ = "/api/mp/categories";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -451,14 +451,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleCategoryGetCategoryByCode: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleCategoryGetCategoryByCode: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceMerchandisingModuleWebModelCategory) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelCategory), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelCategory) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelCategory));
         }
     
         /// <summary>
@@ -468,7 +468,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="code">Category code</param>
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategory</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategory> MerchandisingModuleCategoryGetCategoryByCodeAsync (string store, string code, string language)
+        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategory> MerchandisingModuleCategoryGetCategoryByCodeAsync (string store, string code, string language = null)
         {
             // verify the required parameter 'store' is set
             if (store == null) throw new ApiException(400, "Missing required parameter 'store' when calling MerchandisingModuleCategoryGetCategoryByCode");
@@ -476,7 +476,7 @@ namespace VirtoCommerce.Client.Api
             if (code == null) throw new ApiException(400, "Missing required parameter 'code' when calling MerchandisingModuleCategoryGetCategoryByCode");
             
     
-            var path = "/api/mp/categories";
+            var path_ = "/api/mp/categories";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -509,11 +509,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleCategoryGetCategoryByCode: " + response.Content, response.Content);
 
-            return (VirtoCommerceMerchandisingModuleWebModelCategory) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelCategory), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelCategory) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelCategory));
         }
         
         /// <summary>
@@ -523,14 +523,14 @@ namespace VirtoCommerce.Client.Api
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param> 
         /// <param name="parentId">Parent category id</param> 
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection</returns>            
-        public VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection MerchandisingModuleCategorySearchCategory (string store, string language, string parentId)
+        public VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection MerchandisingModuleCategorySearchCategory (string store, string language = null, string parentId = null)
         {
             
             // verify the required parameter 'store' is set
             if (store == null) throw new ApiException(400, "Missing required parameter 'store' when calling MerchandisingModuleCategorySearchCategory");
             
     
-            var path = "/api/mp/categories/search";
+            var path_ = "/api/mp/categories/search";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -563,14 +563,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleCategorySearchCategory: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleCategorySearchCategory: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection));
         }
     
         /// <summary>
@@ -580,13 +580,13 @@ namespace VirtoCommerce.Client.Api
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <param name="parentId">Parent category id</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection> MerchandisingModuleCategorySearchCategoryAsync (string store, string language, string parentId)
+        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection> MerchandisingModuleCategorySearchCategoryAsync (string store, string language = null, string parentId = null)
         {
             // verify the required parameter 'store' is set
             if (store == null) throw new ApiException(400, "Missing required parameter 'store' when calling MerchandisingModuleCategorySearchCategory");
             
     
-            var path = "/api/mp/categories/search";
+            var path_ = "/api/mp/categories/search";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -619,11 +619,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleCategorySearchCategory: " + response.Content, response.Content);
 
-            return (VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelCategoryResponseCollection));
         }
         
         /// <summary>
@@ -633,7 +633,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="store">Store id</param> 
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param> 
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategory</returns>            
-        public VirtoCommerceMerchandisingModuleWebModelCategory MerchandisingModuleCategoryGetCategoryById (string category, string store, string language)
+        public VirtoCommerceMerchandisingModuleWebModelCategory MerchandisingModuleCategoryGetCategoryById (string category, string store, string language = null)
         {
             
             // verify the required parameter 'category' is set
@@ -643,7 +643,7 @@ namespace VirtoCommerce.Client.Api
             if (store == null) throw new ApiException(400, "Missing required parameter 'store' when calling MerchandisingModuleCategoryGetCategoryById");
             
     
-            var path = "/api/mp/categories/{category}";
+            var path_ = "/api/mp/categories/{category}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -676,14 +676,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleCategoryGetCategoryById: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleCategoryGetCategoryById: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceMerchandisingModuleWebModelCategory) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelCategory), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelCategory) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelCategory));
         }
     
         /// <summary>
@@ -693,7 +693,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="store">Store id</param>
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCategory</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategory> MerchandisingModuleCategoryGetCategoryByIdAsync (string category, string store, string language)
+        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCategory> MerchandisingModuleCategoryGetCategoryByIdAsync (string category, string store, string language = null)
         {
             // verify the required parameter 'category' is set
             if (category == null) throw new ApiException(400, "Missing required parameter 'category' when calling MerchandisingModuleCategoryGetCategoryById");
@@ -701,7 +701,7 @@ namespace VirtoCommerce.Client.Api
             if (store == null) throw new ApiException(400, "Missing required parameter 'store' when calling MerchandisingModuleCategoryGetCategoryById");
             
     
-            var path = "/api/mp/categories/{category}";
+            var path_ = "/api/mp/categories/{category}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -734,11 +734,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleCategoryGetCategoryById: " + response.Content, response.Content);
 
-            return (VirtoCommerceMerchandisingModuleWebModelCategory) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelCategory), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelCategory) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelCategory));
         }
         
         /// <summary>
@@ -749,7 +749,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="tags">Array of tags</param> 
         /// <param name="language">Culture name (devault value is \&quot;en-us\&quot;)</param> 
         /// <returns>VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection</returns>            
-        public VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection MerchandisingModuleMarketingGetDynamicContent (string store, List<string> placeHolders, List<string> tags, string language)
+        public VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection MerchandisingModuleMarketingGetDynamicContent (string store, List<string> placeHolders, List<string> tags, string language = null)
         {
             
             // verify the required parameter 'store' is set
@@ -762,7 +762,7 @@ namespace VirtoCommerce.Client.Api
             if (tags == null) throw new ApiException(400, "Missing required parameter 'tags' when calling MerchandisingModuleMarketingGetDynamicContent");
             
     
-            var path = "/api/mp/marketing/contentitems";
+            var path_ = "/api/mp/marketing/contentitems";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -796,14 +796,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleMarketingGetDynamicContent: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleMarketingGetDynamicContent: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection));
         }
     
         /// <summary>
@@ -814,7 +814,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="tags">Array of tags</param>
         /// <param name="language">Culture name (devault value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection> MerchandisingModuleMarketingGetDynamicContentAsync (string store, List<string> placeHolders, List<string> tags, string language)
+        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection> MerchandisingModuleMarketingGetDynamicContentAsync (string store, List<string> placeHolders, List<string> tags, string language = null)
         {
             // verify the required parameter 'store' is set
             if (store == null) throw new ApiException(400, "Missing required parameter 'store' when calling MerchandisingModuleMarketingGetDynamicContent");
@@ -824,7 +824,7 @@ namespace VirtoCommerce.Client.Api
             if (tags == null) throw new ApiException(400, "Missing required parameter 'tags' when calling MerchandisingModuleMarketingGetDynamicContent");
             
     
-            var path = "/api/mp/marketing/contentitems";
+            var path_ = "/api/mp/marketing/contentitems";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -858,11 +858,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleMarketingGetDynamicContent: " + response.Content, response.Content);
 
-            return (VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelDynamicContentItemGroupResponseCollection));
         }
         
         /// <summary>
@@ -877,7 +877,7 @@ namespace VirtoCommerce.Client.Api
             if (context == null) throw new ApiException(400, "Missing required parameter 'context' when calling MerchandisingModuleMarketingEvaluatePromotions");
             
     
-            var path = "/api/mp/marketing/promotions/evaluate";
+            var path_ = "/api/mp/marketing/promotions/evaluate";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -908,14 +908,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleMarketingEvaluatePromotions: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleMarketingEvaluatePromotions: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>), response.Headers);
+            return (List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>));
         }
     
         /// <summary>
@@ -929,7 +929,7 @@ namespace VirtoCommerce.Client.Api
             if (context == null) throw new ApiException(400, "Missing required parameter 'context' when calling MerchandisingModuleMarketingEvaluatePromotions");
             
     
-            var path = "/api/mp/marketing/promotions/evaluate";
+            var path_ = "/api/mp/marketing/promotions/evaluate";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -960,11 +960,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleMarketingEvaluatePromotions: " + response.Content, response.Content);
 
-            return (List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>), response.Headers);
+            return (List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>));
         }
         
         /// <summary>
@@ -979,7 +979,7 @@ namespace VirtoCommerce.Client.Api
             if (marketingEvent == null) throw new ApiException(400, "Missing required parameter 'marketingEvent' when calling MerchandisingModuleMarketingProcessMarketingEvent");
             
     
-            var path = "/api/mp/marketing/promotions/processevent";
+            var path_ = "/api/mp/marketing/promotions/processevent";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1010,14 +1010,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleMarketingProcessMarketingEvent: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleMarketingProcessMarketingEvent: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>), response.Headers);
+            return (List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>));
         }
     
         /// <summary>
@@ -1031,7 +1031,7 @@ namespace VirtoCommerce.Client.Api
             if (marketingEvent == null) throw new ApiException(400, "Missing required parameter 'marketingEvent' when calling MerchandisingModuleMarketingProcessMarketingEvent");
             
     
-            var path = "/api/mp/marketing/promotions/processevent";
+            var path_ = "/api/mp/marketing/promotions/processevent";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1062,11 +1062,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleMarketingProcessMarketingEvent: " + response.Content, response.Content);
 
-            return (List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>), response.Headers);
+            return (List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceMerchandisingModuleWebModelPromotionReward>));
         }
         
         /// <summary>
@@ -1081,7 +1081,7 @@ namespace VirtoCommerce.Client.Api
             if (request == null) throw new ApiException(400, "Missing required parameter 'request' when calling MerchandisingNotificationSendNotification");
             
     
-            var path = "/api/mp/notification";
+            var path_ = "/api/mp/notification";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1112,7 +1112,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingNotificationSendNotification: " + response.Content, response.Content);
@@ -1133,7 +1133,7 @@ namespace VirtoCommerce.Client.Api
             if (request == null) throw new ApiException(400, "Missing required parameter 'request' when calling MerchandisingNotificationSendNotification");
             
     
-            var path = "/api/mp/notification";
+            var path_ = "/api/mp/notification";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1164,7 +1164,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingNotificationSendNotification: " + response.Content, response.Content);
 
@@ -1179,14 +1179,14 @@ namespace VirtoCommerce.Client.Api
         /// <param name="currency">Currency code</param> 
         /// <param name="tags">Array of tags</param> 
         /// <returns></returns>            
-        public List<string> MerchandisingModulePriceGetPriceListStack (string catalog, string currency, List<string> tags)
+        public List<string> MerchandisingModulePriceGetPriceListStack (string catalog, string currency = null, List<string> tags = null)
         {
             
             // verify the required parameter 'catalog' is set
             if (catalog == null) throw new ApiException(400, "Missing required parameter 'catalog' when calling MerchandisingModulePriceGetPriceListStack");
             
     
-            var path = "/api/mp/pricelists";
+            var path_ = "/api/mp/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1219,14 +1219,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModulePriceGetPriceListStack: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModulePriceGetPriceListStack: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<string>) ApiClient.Deserialize(response.Content, typeof(List<string>), response.Headers);
+            return (List<string>) ApiClient.Deserialize(response, typeof(List<string>));
         }
     
         /// <summary>
@@ -1236,13 +1236,13 @@ namespace VirtoCommerce.Client.Api
         /// <param name="currency">Currency code</param>
         /// <param name="tags">Array of tags</param>
         /// <returns></returns>
-        public async System.Threading.Tasks.Task<List<string>> MerchandisingModulePriceGetPriceListStackAsync (string catalog, string currency, List<string> tags)
+        public async System.Threading.Tasks.Task<List<string>> MerchandisingModulePriceGetPriceListStackAsync (string catalog, string currency = null, List<string> tags = null)
         {
             // verify the required parameter 'catalog' is set
             if (catalog == null) throw new ApiException(400, "Missing required parameter 'catalog' when calling MerchandisingModulePriceGetPriceListStack");
             
     
-            var path = "/api/mp/pricelists";
+            var path_ = "/api/mp/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1275,11 +1275,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModulePriceGetPriceListStack: " + response.Content, response.Content);
 
-            return (List<string>) ApiClient.Deserialize(response.Content, typeof(List<string>), response.Headers);
+            return (List<string>) ApiClient.Deserialize(response, typeof(List<string>));
         }
         
         /// <summary>
@@ -1298,7 +1298,7 @@ namespace VirtoCommerce.Client.Api
             if (products == null) throw new ApiException(400, "Missing required parameter 'products' when calling MerchandisingModulePriceGetProductPrices");
             
     
-            var path = "/api/mp/prices";
+            var path_ = "/api/mp/prices";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1330,14 +1330,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModulePriceGetProductPrices: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModulePriceGetProductPrices: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommerceMerchandisingModuleWebModelPrice>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceMerchandisingModuleWebModelPrice>), response.Headers);
+            return (List<VirtoCommerceMerchandisingModuleWebModelPrice>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceMerchandisingModuleWebModelPrice>));
         }
     
         /// <summary>
@@ -1354,7 +1354,7 @@ namespace VirtoCommerce.Client.Api
             if (products == null) throw new ApiException(400, "Missing required parameter 'products' when calling MerchandisingModulePriceGetProductPrices");
             
     
-            var path = "/api/mp/prices";
+            var path_ = "/api/mp/prices";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1386,11 +1386,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModulePriceGetProductPrices: " + response.Content, response.Content);
 
-            return (List<VirtoCommerceMerchandisingModuleWebModelPrice>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceMerchandisingModuleWebModelPrice>), response.Headers);
+            return (List<VirtoCommerceMerchandisingModuleWebModelPrice>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceMerchandisingModuleWebModelPrice>));
         }
         
         /// <summary>
@@ -1400,7 +1400,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="ids">Product ids</param> 
         /// <param name="responseGroup">Response detalization scale (default value is ItemInfo)</param> 
         /// <returns></returns>            
-        public List<VirtoCommerceMerchandisingModuleWebModelCatalogItem> MerchandisingModuleProductGetProductsByIds (string store, List<string> ids, string responseGroup)
+        public List<VirtoCommerceMerchandisingModuleWebModelCatalogItem> MerchandisingModuleProductGetProductsByIds (string store, List<string> ids, string responseGroup = null)
         {
             
             // verify the required parameter 'store' is set
@@ -1410,7 +1410,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling MerchandisingModuleProductGetProductsByIds");
             
     
-            var path = "/api/mp/products";
+            var path_ = "/api/mp/products";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1443,14 +1443,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleProductGetProductsByIds: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleProductGetProductsByIds: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>), response.Headers);
+            return (List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>));
         }
     
         /// <summary>
@@ -1460,7 +1460,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="ids">Product ids</param>
         /// <param name="responseGroup">Response detalization scale (default value is ItemInfo)</param>
         /// <returns></returns>
-        public async System.Threading.Tasks.Task<List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>> MerchandisingModuleProductGetProductsByIdsAsync (string store, List<string> ids, string responseGroup)
+        public async System.Threading.Tasks.Task<List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>> MerchandisingModuleProductGetProductsByIdsAsync (string store, List<string> ids, string responseGroup = null)
         {
             // verify the required parameter 'store' is set
             if (store == null) throw new ApiException(400, "Missing required parameter 'store' when calling MerchandisingModuleProductGetProductsByIds");
@@ -1468,7 +1468,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling MerchandisingModuleProductGetProductsByIds");
             
     
-            var path = "/api/mp/products";
+            var path_ = "/api/mp/products";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1501,11 +1501,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleProductGetProductsByIds: " + response.Content, response.Content);
 
-            return (List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>), response.Headers);
+            return (List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceMerchandisingModuleWebModelCatalogItem>));
         }
         
         /// <summary>
@@ -1526,11 +1526,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestTerms">Gets or sets search terms collection\r\n            Item format: name:value1,value2,value3</param> 
         /// <param name="requestFacets">Gets or sets the facets collection\r\n            Item format: name:value1,value2,value3</param> 
         /// <returns>VirtoCommerceMerchandisingModuleWebModelProductSearchResult</returns>            
-        public VirtoCommerceMerchandisingModuleWebModelProductSearchResult MerchandisingModuleProductSearch (string requestStore, List<string> requestPricelists, string requestResponseGroup, string requestOutline, string requestLanguage, string requestCurrency, string requestSearchPhrase, string requestSort, string requestSortOrder, DateTime? requestStartDateFrom, int? requestSkip, int? requestTake, List<string> requestTerms, List<string> requestFacets)
+        public VirtoCommerceMerchandisingModuleWebModelProductSearchResult MerchandisingModuleProductSearch (string requestStore = null, List<string> requestPricelists = null, string requestResponseGroup = null, string requestOutline = null, string requestLanguage = null, string requestCurrency = null, string requestSearchPhrase = null, string requestSort = null, string requestSortOrder = null, DateTime? requestStartDateFrom = null, int? requestSkip = null, int? requestTake = null, List<string> requestTerms = null, List<string> requestFacets = null)
         {
             
     
-            var path = "/api/mp/products/search";
+            var path_ = "/api/mp/products/search";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1574,14 +1574,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleProductSearch: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleProductSearch: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceMerchandisingModuleWebModelProductSearchResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelProductSearchResult), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelProductSearchResult) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelProductSearchResult));
         }
     
         /// <summary>
@@ -1602,11 +1602,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestTerms">Gets or sets search terms collection\r\n            Item format: name:value1,value2,value3</param>
         /// <param name="requestFacets">Gets or sets the facets collection\r\n            Item format: name:value1,value2,value3</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelProductSearchResult</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelProductSearchResult> MerchandisingModuleProductSearchAsync (string requestStore, List<string> requestPricelists, string requestResponseGroup, string requestOutline, string requestLanguage, string requestCurrency, string requestSearchPhrase, string requestSort, string requestSortOrder, DateTime? requestStartDateFrom, int? requestSkip, int? requestTake, List<string> requestTerms, List<string> requestFacets)
+        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelProductSearchResult> MerchandisingModuleProductSearchAsync (string requestStore = null, List<string> requestPricelists = null, string requestResponseGroup = null, string requestOutline = null, string requestLanguage = null, string requestCurrency = null, string requestSearchPhrase = null, string requestSort = null, string requestSortOrder = null, DateTime? requestStartDateFrom = null, int? requestSkip = null, int? requestTake = null, List<string> requestTerms = null, List<string> requestFacets = null)
         {
             
     
-            var path = "/api/mp/products/search";
+            var path_ = "/api/mp/products/search";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1650,11 +1650,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleProductSearch: " + response.Content, response.Content);
 
-            return (VirtoCommerceMerchandisingModuleWebModelProductSearchResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelProductSearchResult), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelProductSearchResult) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelProductSearchResult));
         }
         
         /// <summary>
@@ -1665,7 +1665,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="responseGroup">Response detalization scale (default value is ItemLarge)</param> 
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param> 
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCatalogItem</returns>            
-        public VirtoCommerceMerchandisingModuleWebModelCatalogItem MerchandisingModuleProductGetProduct (string store, string product, string responseGroup, string language)
+        public VirtoCommerceMerchandisingModuleWebModelCatalogItem MerchandisingModuleProductGetProduct (string store, string product, string responseGroup = null, string language = null)
         {
             
             // verify the required parameter 'store' is set
@@ -1675,7 +1675,7 @@ namespace VirtoCommerce.Client.Api
             if (product == null) throw new ApiException(400, "Missing required parameter 'product' when calling MerchandisingModuleProductGetProduct");
             
     
-            var path = "/api/mp/products/{product}";
+            var path_ = "/api/mp/products/{product}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1709,14 +1709,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleProductGetProduct: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleProductGetProduct: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceMerchandisingModuleWebModelCatalogItem) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelCatalogItem), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelCatalogItem) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelCatalogItem));
         }
     
         /// <summary>
@@ -1727,7 +1727,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="responseGroup">Response detalization scale (default value is ItemLarge)</param>
         /// <param name="language">Culture name (default value is \&quot;en-us\&quot;)</param>
         /// <returns>VirtoCommerceMerchandisingModuleWebModelCatalogItem</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCatalogItem> MerchandisingModuleProductGetProductAsync (string store, string product, string responseGroup, string language)
+        public async System.Threading.Tasks.Task<VirtoCommerceMerchandisingModuleWebModelCatalogItem> MerchandisingModuleProductGetProductAsync (string store, string product, string responseGroup = null, string language = null)
         {
             // verify the required parameter 'store' is set
             if (store == null) throw new ApiException(400, "Missing required parameter 'store' when calling MerchandisingModuleProductGetProduct");
@@ -1735,7 +1735,7 @@ namespace VirtoCommerce.Client.Api
             if (product == null) throw new ApiException(400, "Missing required parameter 'product' when calling MerchandisingModuleProductGetProduct");
             
     
-            var path = "/api/mp/products/{product}";
+            var path_ = "/api/mp/products/{product}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1769,11 +1769,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleProductGetProduct: " + response.Content, response.Content);
 
-            return (VirtoCommerceMerchandisingModuleWebModelCatalogItem) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelCatalogItem), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelCatalogItem) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelCatalogItem));
         }
         
         /// <summary>
@@ -1784,7 +1784,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/mp/stores";
+            var path_ = "/api/mp/stores";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1814,14 +1814,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleStoreGetStores: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleStoreGetStores: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommerceMerchandisingModuleWebModelStore>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceMerchandisingModuleWebModelStore>), response.Headers);
+            return (List<VirtoCommerceMerchandisingModuleWebModelStore>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceMerchandisingModuleWebModelStore>));
         }
     
         /// <summary>
@@ -1832,7 +1832,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/mp/stores";
+            var path_ = "/api/mp/stores";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1862,11 +1862,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleStoreGetStores: " + response.Content, response.Content);
 
-            return (List<VirtoCommerceMerchandisingModuleWebModelStore>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceMerchandisingModuleWebModelStore>), response.Headers);
+            return (List<VirtoCommerceMerchandisingModuleWebModelStore>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceMerchandisingModuleWebModelStore>));
         }
         
         /// <summary>
@@ -1885,7 +1885,7 @@ namespace VirtoCommerce.Client.Api
             if (language == null) throw new ApiException(400, "Missing required parameter 'language' when calling MerchandisingModuleReviewGetProductReviews");
             
     
-            var path = "/api/mp/{language}/products/{productId}/reviews";
+            var path_ = "/api/mp/{language}/products/{productId}/reviews";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1917,14 +1917,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleReviewGetProductReviews: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleReviewGetProductReviews: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceMerchandisingModuleWebModelReview) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelReview), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelReview) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelReview));
         }
     
         /// <summary>
@@ -1941,7 +1941,7 @@ namespace VirtoCommerce.Client.Api
             if (language == null) throw new ApiException(400, "Missing required parameter 'language' when calling MerchandisingModuleReviewGetProductReviews");
             
     
-            var path = "/api/mp/{language}/products/{productId}/reviews";
+            var path_ = "/api/mp/{language}/products/{productId}/reviews";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1973,11 +1973,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling MerchandisingModuleReviewGetProductReviews: " + response.Content, response.Content);
 
-            return (VirtoCommerceMerchandisingModuleWebModelReview) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceMerchandisingModuleWebModelReview), response.Headers);
+            return (VirtoCommerceMerchandisingModuleWebModelReview) ApiClient.Deserialize(response, typeof(VirtoCommerceMerchandisingModuleWebModelReview));
         }
         
     }

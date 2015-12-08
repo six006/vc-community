@@ -12,10 +12,10 @@ function ($injector, $rootScope, $scope, catalogs, bladeNavigationService, dialo
             blade.isLoading = false;
             //filter the catalogs in which we not have access
             $scope.objects = results;
-         
+
             if (selectedNode != null) {
                 //select the node in the new list
-            	angular.forEach(results, function (node) {
+                angular.forEach(results, function (node) {
                     if (selectedNode.id === node.id) {
                         selectedNode = node;
                     }
@@ -23,23 +23,6 @@ function ($injector, $rootScope, $scope, catalogs, bladeNavigationService, dialo
             }
         },
         function (error) { bladeNavigationService.setError('Error ' + error.status, $scope.blade); });
-
-    };
-
-    blade.onClose = function (closeCallback) {
-        if (blade.childrenBlades.length > 0) {
-            var callback = function () {
-                if (blade.childrenBlades.length == 0) {
-                    closeCallback();
-                };
-            };
-            angular.forEach(blade.childrenBlades, function (child) {
-                bladeNavigationService.closeBlade(child, callback);
-            });
-        }
-        else {
-            closeCallback();
-        }
     };
 
     $scope.refreshItems = function () {
@@ -50,8 +33,9 @@ function ($injector, $rootScope, $scope, catalogs, bladeNavigationService, dialo
                 id: 'itemsList1',
                 level: 1,
                 breadcrumbs: blade.breadcrumbs,
-                title: 'Categories & Items',
-                subtitle: 'Browsing ' + (selectedNode != null ? '"' + selectedNode.name + '"' : ''),
+                title: 'catalog.blades.categories-items-list.title',
+                subtitle: 'catalog.blades.categories-items-list.subtitle',
+                subtitleValues: selectedNode != null ? { name: selectedNode.name } : '',
                 catalogId: (selectedNode != null) ? selectedNode.id : null,
                 catalog: selectedNode,
                 controller: 'virtoCommerce.catalogModule.categoriesItemsListController',
@@ -73,14 +57,36 @@ function ($injector, $rootScope, $scope, catalogs, bladeNavigationService, dialo
         preventCategoryListingOnce = true;
     };
 
+    $scope.deleteCatalog = function (node) {
+        var dialog = {
+            id: "confirmDelete",
+            name: node.name,
+            callback: function (remove) {
+                if (remove) {
+                    bladeNavigationService.closeChildrenBlades(blade, function () {
+                        selectedNode = undefined;
+                        $scope.selectedNodeId = undefined;
+                        blade.isLoading = true;
+                        catalogs.delete({ id: node.id },
+                            blade.refresh,
+                            function (error) { bladeNavigationService.setError('Error ' + error.status, blade); }
+                        );
+                    });
+                }
+            }
+        };
+        dialogService.showDialog(dialog, 'Modules/$(VirtoCommerce.Catalog)/Scripts/dialogs/deleteCatalog-dialog.tpl.html', 'platformWebApp.confirmDialogController');
+
+        preventCategoryListingOnce = true;
+    };
+
     function showCatalogBlade(id, data, title) {
         var newBlade = {
             currentEntityId: id,
             currentEntity: data,
             title: title,
             id: 'catalogEdit',
-            subtitle: 'Catalog details',
-            deleteFn: onAfterCatalogDeleted,
+            subtitle: 'catalog.blades.catalog-detail.subtitle',
             controller: 'virtoCommerce.catalogModule.catalogDetailController',
             template: 'Modules/$(VirtoCommerce.Catalog)/Scripts/blades/catalog-detail.tpl.html',
         };
@@ -93,20 +99,13 @@ function ($injector, $rootScope, $scope, catalogs, bladeNavigationService, dialo
             currentEntityId: id,
             currentEntity: data,
             title: title,
-            subtitle: 'Virtual catalog details',
-            deleteFn: onAfterCatalogDeleted,
+            subtitle: 'catalog.blades.virtual-catalog.subtitle-virtual',
             id: 'catalogEdit',
             controller: 'virtoCommerce.catalogModule.virtualCatalogDetailController',
             template: 'Modules/$(VirtoCommerce.Catalog)/Scripts/blades/catalog-detail.tpl.html',
         };
 
         bladeNavigationService.showBlade(newBlade, blade);
-    }
-
-    function onAfterCatalogDeleted() {
-        selectedNode = undefined;
-        $scope.selectedNodeId = undefined;
-        blade.refresh();
     }
 
     $scope.selectNode = function (node) {
@@ -119,27 +118,17 @@ function ($injector, $rootScope, $scope, catalogs, bladeNavigationService, dialo
 
     blade.toolbarCommands = [
         {
-            name: "Refresh", icon: 'fa fa-refresh',
+            name: "platform.commands.refresh", icon: 'fa fa-refresh',
             executeMethod: blade.refresh,
             canExecuteMethod: function () {
                 return true;
             }
-        },
-        {
-            name: "Manage", icon: 'fa fa-edit',
-            executeMethod: function () {
-                $scope.editCatalog(selectedNode);
-            },
-            canExecuteMethod: function () {
-                return selectedNode;
-            },
-            permission: 'catalog:update'
         }
     ];
 
     if (authService.checkPermission('catalog:create')) {
         blade.toolbarCommands.splice(1, 0, {
-            name: "Add",
+            name: "platform.commands.add",
             icon: 'fa fa-plus',
             executeMethod: function () {
                 selectedNode = undefined;
@@ -147,8 +136,8 @@ function ($injector, $rootScope, $scope, catalogs, bladeNavigationService, dialo
 
                 var newBlade = {
                     id: 'listItemChild',
-                    title: 'New catalog',
-                    subtitle: 'Choose new catalog type',
+                    title: 'catalog.blades.catalog-add.title',
+                    subtitle: 'catalog.blades.catalog-add.subtitle',
                     controller: 'virtoCommerce.catalogModule.catalogAddController',
                     template: 'Modules/$(VirtoCommerce.Catalog)/Scripts/blades/catalog-add.tpl.html'
                 };

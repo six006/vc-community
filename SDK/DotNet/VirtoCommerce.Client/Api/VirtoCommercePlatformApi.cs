@@ -24,7 +24,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="folderUrl"></param>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        List<VirtoCommercePlatformWebModelAssetAssetListItem> AssetsSearchAssetItems (string folderUrl, string keyword);
+        List<VirtoCommercePlatformWebModelAssetAssetListItem> AssetsSearchAssetItems (string folderUrl = null, string keyword = null);
   
         /// <summary>
         /// Search asset folders and blobs
@@ -35,7 +35,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="folderUrl"></param>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        System.Threading.Tasks.Task<List<VirtoCommercePlatformWebModelAssetAssetListItem>> AssetsSearchAssetItemsAsync (string folderUrl, string keyword);
+        System.Threading.Tasks.Task<List<VirtoCommercePlatformWebModelAssetAssetListItem>> AssetsSearchAssetItemsAsync (string folderUrl = null, string keyword = null);
         
         /// <summary>
         /// Upload assets to the folder
@@ -46,7 +46,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="folderUrl">Parent folder url (relative or absolute).</param>
         /// <param name="url">Url for uploaded remote resource (optional)</param>
         /// <returns></returns>
-        List<VirtoCommercePlatformWebModelAssetBlobInfo> AssetsUploadAsset (string folderUrl, string url);
+        List<VirtoCommercePlatformWebModelAssetBlobInfo> AssetsUploadAsset (string folderUrl, string url = null);
   
         /// <summary>
         /// Upload assets to the folder
@@ -57,7 +57,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="folderUrl">Parent folder url (relative or absolute).</param>
         /// <param name="url">Url for uploaded remote resource (optional)</param>
         /// <returns></returns>
-        System.Threading.Tasks.Task<List<VirtoCommercePlatformWebModelAssetBlobInfo>> AssetsUploadAssetAsync (string folderUrl, string url);
+        System.Threading.Tasks.Task<List<VirtoCommercePlatformWebModelAssetBlobInfo>> AssetsUploadAssetAsync (string folderUrl, string url = null);
         
         /// <summary>
         /// Delete blobs by urls
@@ -294,6 +294,24 @@ namespace VirtoCommerce.Client.Api
         /// <param name="id">Job ID.</param>
         /// <returns>VirtoCommercePlatformWebModelJobsJob</returns>
         System.Threading.Tasks.Task<VirtoCommercePlatformWebModelJobsJob> JobsGetStatusAsync (string id);
+        
+        /// <summary>
+        /// Return all aviable locales
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <returns></returns>
+        List<string> LocalizationGetLocales ();
+  
+        /// <summary>
+        /// Return all aviable locales
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <returns></returns>
+        System.Threading.Tasks.Task<List<string>> LocalizationGetLocalesAsync ();
         
         /// <summary>
         /// Get installed modules
@@ -599,7 +617,7 @@ namespace VirtoCommerce.Client.Api
         /// Get testing parameters
         /// </summary>
         /// <remarks>
-        /// Method returns notification properties, that defined in notification class, this proprties used in notification template.
+        /// Method returns notification properties, that defined in notification class, this properties used in notification template.
         /// </remarks>
         /// <param name="type">Notification type</param>
         /// <returns></returns>
@@ -609,7 +627,7 @@ namespace VirtoCommerce.Client.Api
         /// Get testing parameters
         /// </summary>
         /// <remarks>
-        /// Method returns notification properties, that defined in notification class, this proprties used in notification template.
+        /// Method returns notification properties, that defined in notification class, this properties used in notification template.
         /// </remarks>
         /// <param name="type">Notification type</param>
         /// <returns></returns>
@@ -679,7 +697,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="criteriaCount"></param>
         /// <param name="criteriaOrderBy"></param>
         /// <returns>VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult</returns>
-        VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult PushNotificationSearch (List<string> criteriaIds, bool? criteriaOnlyNew, DateTime? criteriaStartDate, DateTime? criteriaEndDate, int? criteriaStart, int? criteriaCount, string criteriaOrderBy);
+        VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult PushNotificationSearch (List<string> criteriaIds = null, bool? criteriaOnlyNew = null, DateTime? criteriaStartDate = null, DateTime? criteriaEndDate = null, int? criteriaStart = null, int? criteriaCount = null, string criteriaOrderBy = null);
   
         /// <summary>
         /// Search push notifications
@@ -695,7 +713,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="criteriaCount"></param>
         /// <param name="criteriaOrderBy"></param>
         /// <returns>VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult</returns>
-        System.Threading.Tasks.Task<VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult> PushNotificationSearchAsync (List<string> criteriaIds, bool? criteriaOnlyNew, DateTime? criteriaStartDate, DateTime? criteriaEndDate, int? criteriaStart, int? criteriaCount, string criteriaOrderBy);
+        System.Threading.Tasks.Task<VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult> PushNotificationSearchAsync (List<string> criteriaIds = null, bool? criteriaOnlyNew = null, DateTime? criteriaStartDate = null, DateTime? criteriaEndDate = null, int? criteriaStart = null, int? criteriaCount = null, string criteriaOrderBy = null);
         
         /// <summary>
         /// Mark all notifications as read
@@ -819,7 +837,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestSkipCount"></param>
         /// <param name="requestTakeCount"></param>
         /// <returns>VirtoCommercePlatformCoreSecurityRoleSearchResponse</returns>
-        VirtoCommercePlatformCoreSecurityRoleSearchResponse SecuritySearchRoles (string requestKeyword, int? requestSkipCount, int? requestTakeCount);
+        VirtoCommercePlatformCoreSecurityRoleSearchResponse SecuritySearchRoles (string requestKeyword = null, int? requestSkipCount = null, int? requestTakeCount = null);
   
         /// <summary>
         /// Search roles by keyword
@@ -831,7 +849,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestSkipCount"></param>
         /// <param name="requestTakeCount"></param>
         /// <returns>VirtoCommercePlatformCoreSecurityRoleSearchResponse</returns>
-        System.Threading.Tasks.Task<VirtoCommercePlatformCoreSecurityRoleSearchResponse> SecuritySearchRolesAsync (string requestKeyword, int? requestSkipCount, int? requestTakeCount);
+        System.Threading.Tasks.Task<VirtoCommercePlatformCoreSecurityRoleSearchResponse> SecuritySearchRolesAsync (string requestKeyword = null, int? requestSkipCount = null, int? requestTakeCount = null);
         
         /// <summary>
         /// Add a new role or update an existing role
@@ -904,7 +922,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestSkipCount"></param>
         /// <param name="requestTakeCount"></param>
         /// <returns>VirtoCommercePlatformCoreSecurityUserSearchResponse</returns>
-        VirtoCommercePlatformCoreSecurityUserSearchResponse SecuritySearchUsersAsync (List<string> requestAccountTypes, string requestKeyword, int? requestSkipCount, int? requestTakeCount);
+        VirtoCommercePlatformCoreSecurityUserSearchResponse SecuritySearchUsersAsync (List<string> requestAccountTypes = null, string requestKeyword = null, int? requestSkipCount = null, int? requestTakeCount = null);
   
         /// <summary>
         /// Search users by keyword
@@ -917,7 +935,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestSkipCount"></param>
         /// <param name="requestTakeCount"></param>
         /// <returns>VirtoCommercePlatformCoreSecurityUserSearchResponse</returns>
-        System.Threading.Tasks.Task<VirtoCommercePlatformCoreSecurityUserSearchResponse> SecuritySearchUsersAsyncAsync (List<string> requestAccountTypes, string requestKeyword, int? requestSkipCount, int? requestTakeCount);
+        System.Threading.Tasks.Task<VirtoCommercePlatformCoreSecurityUserSearchResponse> SecuritySearchUsersAsyncAsync (List<string> requestAccountTypes = null, string requestKeyword = null, int? requestSkipCount = null, int? requestTakeCount = null);
         
         /// <summary>
         /// Update user details by user ID
@@ -1102,26 +1120,6 @@ namespace VirtoCommerce.Client.Api
         System.Threading.Tasks.Task<List<VirtoCommercePlatformWebModelSettingsSetting>> SettingGetModuleSettingsAsync (string id);
         
         /// <summary>
-        /// Get non-array setting value by name
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <param name="name">Setting system name.</param>
-        /// <returns>InlineResponse200</returns>
-        InlineResponse200 SettingGetValue (string name);
-  
-        /// <summary>
-        /// Get non-array setting value by name
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <param name="name">Setting system name.</param>
-        /// <returns>InlineResponse200</returns>
-        System.Threading.Tasks.Task<InlineResponse200> SettingGetValueAsync (string name);
-        
-        /// <summary>
         /// Get array setting values by name
         /// </summary>
         /// <remarks>
@@ -1213,11 +1211,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="folderUrl"></param> 
         /// <param name="keyword"></param> 
         /// <returns></returns>            
-        public List<VirtoCommercePlatformWebModelAssetAssetListItem> AssetsSearchAssetItems (string folderUrl, string keyword)
+        public List<VirtoCommercePlatformWebModelAssetAssetListItem> AssetsSearchAssetItems (string folderUrl = null, string keyword = null)
         {
             
     
-            var path = "/api/platform/assets";
+            var path_ = "/api/platform/assets";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1249,14 +1247,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling AssetsSearchAssetItems: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AssetsSearchAssetItems: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformWebModelAssetAssetListItem>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelAssetAssetListItem>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelAssetAssetListItem>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelAssetAssetListItem>));
         }
     
         /// <summary>
@@ -1265,11 +1263,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="folderUrl"></param>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        public async System.Threading.Tasks.Task<List<VirtoCommercePlatformWebModelAssetAssetListItem>> AssetsSearchAssetItemsAsync (string folderUrl, string keyword)
+        public async System.Threading.Tasks.Task<List<VirtoCommercePlatformWebModelAssetAssetListItem>> AssetsSearchAssetItemsAsync (string folderUrl = null, string keyword = null)
         {
             
     
-            var path = "/api/platform/assets";
+            var path_ = "/api/platform/assets";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1301,11 +1299,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling AssetsSearchAssetItems: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformWebModelAssetAssetListItem>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelAssetAssetListItem>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelAssetAssetListItem>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelAssetAssetListItem>));
         }
         
         /// <summary>
@@ -1314,14 +1312,14 @@ namespace VirtoCommerce.Client.Api
         /// <param name="folderUrl">Parent folder url (relative or absolute).</param> 
         /// <param name="url">Url for uploaded remote resource (optional)</param> 
         /// <returns></returns>            
-        public List<VirtoCommercePlatformWebModelAssetBlobInfo> AssetsUploadAsset (string folderUrl, string url)
+        public List<VirtoCommercePlatformWebModelAssetBlobInfo> AssetsUploadAsset (string folderUrl, string url = null)
         {
             
             // verify the required parameter 'folderUrl' is set
             if (folderUrl == null) throw new ApiException(400, "Missing required parameter 'folderUrl' when calling AssetsUploadAsset");
             
     
-            var path = "/api/platform/assets";
+            var path_ = "/api/platform/assets";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1353,14 +1351,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling AssetsUploadAsset: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AssetsUploadAsset: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformWebModelAssetBlobInfo>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelAssetBlobInfo>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelAssetBlobInfo>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelAssetBlobInfo>));
         }
     
         /// <summary>
@@ -1369,13 +1367,13 @@ namespace VirtoCommerce.Client.Api
         /// <param name="folderUrl">Parent folder url (relative or absolute).</param>
         /// <param name="url">Url for uploaded remote resource (optional)</param>
         /// <returns></returns>
-        public async System.Threading.Tasks.Task<List<VirtoCommercePlatformWebModelAssetBlobInfo>> AssetsUploadAssetAsync (string folderUrl, string url)
+        public async System.Threading.Tasks.Task<List<VirtoCommercePlatformWebModelAssetBlobInfo>> AssetsUploadAssetAsync (string folderUrl, string url = null)
         {
             // verify the required parameter 'folderUrl' is set
             if (folderUrl == null) throw new ApiException(400, "Missing required parameter 'folderUrl' when calling AssetsUploadAsset");
             
     
-            var path = "/api/platform/assets";
+            var path_ = "/api/platform/assets";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1407,11 +1405,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling AssetsUploadAsset: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformWebModelAssetBlobInfo>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelAssetBlobInfo>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelAssetBlobInfo>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelAssetBlobInfo>));
         }
         
         /// <summary>
@@ -1426,7 +1424,7 @@ namespace VirtoCommerce.Client.Api
             if (urls == null) throw new ApiException(400, "Missing required parameter 'urls' when calling AssetsDeleteBlobs");
             
     
-            var path = "/api/platform/assets";
+            var path_ = "/api/platform/assets";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1457,7 +1455,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling AssetsDeleteBlobs: " + response.Content, response.Content);
@@ -1478,7 +1476,7 @@ namespace VirtoCommerce.Client.Api
             if (urls == null) throw new ApiException(400, "Missing required parameter 'urls' when calling AssetsDeleteBlobs");
             
     
-            var path = "/api/platform/assets";
+            var path_ = "/api/platform/assets";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1509,7 +1507,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling AssetsDeleteBlobs: " + response.Content, response.Content);
 
@@ -1529,7 +1527,7 @@ namespace VirtoCommerce.Client.Api
             if (folder == null) throw new ApiException(400, "Missing required parameter 'folder' when calling AssetsCreateBlobFolder");
             
     
-            var path = "/api/platform/assets/folder";
+            var path_ = "/api/platform/assets/folder";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1560,7 +1558,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling AssetsCreateBlobFolder: " + response.Content, response.Content);
@@ -1581,7 +1579,7 @@ namespace VirtoCommerce.Client.Api
             if (folder == null) throw new ApiException(400, "Missing required parameter 'folder' when calling AssetsCreateBlobFolder");
             
     
-            var path = "/api/platform/assets/folder";
+            var path_ = "/api/platform/assets/folder";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1612,7 +1610,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling AssetsCreateBlobFolder: " + response.Content, response.Content);
 
@@ -1628,7 +1626,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/dynamic/types";
+            var path_ = "/api/platform/dynamic/types";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1658,14 +1656,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesGetObjectTypes: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesGetObjectTypes: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<string>) ApiClient.Deserialize(response.Content, typeof(List<string>), response.Headers);
+            return (List<string>) ApiClient.Deserialize(response, typeof(List<string>));
         }
     
         /// <summary>
@@ -1676,7 +1674,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/dynamic/types";
+            var path_ = "/api/platform/dynamic/types";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1706,11 +1704,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesGetObjectTypes: " + response.Content, response.Content);
 
-            return (List<string>) ApiClient.Deserialize(response.Content, typeof(List<string>), response.Headers);
+            return (List<string>) ApiClient.Deserialize(response, typeof(List<string>));
         }
         
         /// <summary>
@@ -1725,7 +1723,7 @@ namespace VirtoCommerce.Client.Api
             if (typeName == null) throw new ApiException(400, "Missing required parameter 'typeName' when calling DynamicPropertiesGetProperties");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1756,14 +1754,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesGetProperties: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesGetProperties: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty>), response.Headers);
+            return (List<VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty>));
         }
     
         /// <summary>
@@ -1777,7 +1775,7 @@ namespace VirtoCommerce.Client.Api
             if (typeName == null) throw new ApiException(400, "Missing required parameter 'typeName' when calling DynamicPropertiesGetProperties");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1808,11 +1806,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesGetProperties: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty>), response.Headers);
+            return (List<VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty>));
         }
         
         /// <summary>
@@ -1831,7 +1829,7 @@ namespace VirtoCommerce.Client.Api
             if (property == null) throw new ApiException(400, "Missing required parameter 'property' when calling DynamicPropertiesCreateProperty");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1863,14 +1861,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesCreateProperty: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesCreateProperty: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty), response.Headers);
+            return (VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty));
         }
     
         /// <summary>
@@ -1887,7 +1885,7 @@ namespace VirtoCommerce.Client.Api
             if (property == null) throw new ApiException(400, "Missing required parameter 'property' when calling DynamicPropertiesCreateProperty");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1919,11 +1917,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesCreateProperty: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty), response.Headers);
+            return (VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreDynamicPropertiesDynamicProperty));
         }
         
         /// <summary>
@@ -1946,7 +1944,7 @@ namespace VirtoCommerce.Client.Api
             if (property == null) throw new ApiException(400, "Missing required parameter 'property' when calling DynamicPropertiesUpdateProperty");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1979,7 +1977,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesUpdateProperty: " + response.Content, response.Content);
@@ -2006,7 +2004,7 @@ namespace VirtoCommerce.Client.Api
             if (property == null) throw new ApiException(400, "Missing required parameter 'property' when calling DynamicPropertiesUpdateProperty");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2039,7 +2037,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesUpdateProperty: " + response.Content, response.Content);
 
@@ -2063,7 +2061,7 @@ namespace VirtoCommerce.Client.Api
             if (propertyId == null) throw new ApiException(400, "Missing required parameter 'propertyId' when calling DynamicPropertiesDeleteProperty");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2095,7 +2093,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesDeleteProperty: " + response.Content, response.Content);
@@ -2119,7 +2117,7 @@ namespace VirtoCommerce.Client.Api
             if (propertyId == null) throw new ApiException(400, "Missing required parameter 'propertyId' when calling DynamicPropertiesDeleteProperty");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2151,7 +2149,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesDeleteProperty: " + response.Content, response.Content);
 
@@ -2175,7 +2173,7 @@ namespace VirtoCommerce.Client.Api
             if (propertyId == null) throw new ApiException(400, "Missing required parameter 'propertyId' when calling DynamicPropertiesGetDictionaryItems");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2207,14 +2205,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesGetDictionaryItems: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesGetDictionaryItems: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformCoreDynamicPropertiesDynamicPropertyDictionaryItem>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformCoreDynamicPropertiesDynamicPropertyDictionaryItem>), response.Headers);
+            return (List<VirtoCommercePlatformCoreDynamicPropertiesDynamicPropertyDictionaryItem>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformCoreDynamicPropertiesDynamicPropertyDictionaryItem>));
         }
     
         /// <summary>
@@ -2231,7 +2229,7 @@ namespace VirtoCommerce.Client.Api
             if (propertyId == null) throw new ApiException(400, "Missing required parameter 'propertyId' when calling DynamicPropertiesGetDictionaryItems");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2263,11 +2261,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesGetDictionaryItems: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformCoreDynamicPropertiesDynamicPropertyDictionaryItem>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformCoreDynamicPropertiesDynamicPropertyDictionaryItem>), response.Headers);
+            return (List<VirtoCommercePlatformCoreDynamicPropertiesDynamicPropertyDictionaryItem>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformCoreDynamicPropertiesDynamicPropertyDictionaryItem>));
         }
         
         /// <summary>
@@ -2290,7 +2288,7 @@ namespace VirtoCommerce.Client.Api
             if (items == null) throw new ApiException(400, "Missing required parameter 'items' when calling DynamicPropertiesSaveDictionaryItems");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2323,7 +2321,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesSaveDictionaryItems: " + response.Content, response.Content);
@@ -2350,7 +2348,7 @@ namespace VirtoCommerce.Client.Api
             if (items == null) throw new ApiException(400, "Missing required parameter 'items' when calling DynamicPropertiesSaveDictionaryItems");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2383,7 +2381,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesSaveDictionaryItems: " + response.Content, response.Content);
 
@@ -2411,7 +2409,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling DynamicPropertiesDeleteDictionaryItem");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2444,7 +2442,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesDeleteDictionaryItem: " + response.Content, response.Content);
@@ -2471,7 +2469,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling DynamicPropertiesDeleteDictionaryItem");
             
     
-            var path = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
+            var path_ = "/api/platform/dynamic/types/{typeName}/properties/{propertyId}/dictionaryitems";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2504,7 +2502,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling DynamicPropertiesDeleteDictionaryItem: " + response.Content, response.Content);
 
@@ -2524,7 +2522,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling JobsGetStatus");
             
     
-            var path = "/api/platform/jobs/{id}";
+            var path_ = "/api/platform/jobs/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2555,14 +2553,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling JobsGetStatus: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling JobsGetStatus: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelJobsJob) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelJobsJob), response.Headers);
+            return (VirtoCommercePlatformWebModelJobsJob) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelJobsJob));
         }
     
         /// <summary>
@@ -2576,7 +2574,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling JobsGetStatus");
             
     
-            var path = "/api/platform/jobs/{id}";
+            var path_ = "/api/platform/jobs/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2607,11 +2605,104 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling JobsGetStatus: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelJobsJob) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelJobsJob), response.Headers);
+            return (VirtoCommercePlatformWebModelJobsJob) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelJobsJob));
+        }
+        
+        /// <summary>
+        /// Return all aviable locales 
+        /// </summary>
+        /// <returns></returns>            
+        public List<string> LocalizationGetLocales ()
+        {
+            
+    
+            var path_ = "/api/platform/localization/locales";
+    
+            var pathParams = new Dictionary<String, String>();
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+
+            // to determine the Accept header
+            String[] http_header_accepts = new String[] {
+                "application/json", "text/json"
+            };
+            String http_header_accept = ApiClient.SelectHeaderAccept(http_header_accepts);
+            if (http_header_accept != null)
+                headerParams.Add("Accept", ApiClient.SelectHeaderAccept(http_header_accepts));
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            pathParams.Add("format", "json");
+            
+            
+            
+            
+            
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling LocalizationGetLocales: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling LocalizationGetLocales: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (List<string>) ApiClient.Deserialize(response, typeof(List<string>));
+        }
+    
+        /// <summary>
+        /// Return all aviable locales 
+        /// </summary>
+        /// <returns></returns>
+        public async System.Threading.Tasks.Task<List<string>> LocalizationGetLocalesAsync ()
+        {
+            
+    
+            var path_ = "/api/platform/localization/locales";
+    
+            var pathParams = new Dictionary<String, String>();
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+
+            // to determine the Accept header
+            String[] http_header_accepts = new String[] {
+                "application/json", "text/json"
+            };
+            String http_header_accept = ApiClient.SelectHeaderAccept(http_header_accepts);
+            if (http_header_accept != null)
+                headerParams.Add("Accept", ApiClient.SelectHeaderAccept(http_header_accepts));
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            pathParams.Add("format", "json");
+            
+            
+            
+            
+            
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling LocalizationGetLocales: " + response.Content, response.Content);
+
+            return (List<string>) ApiClient.Deserialize(response, typeof(List<string>));
         }
         
         /// <summary>
@@ -2622,7 +2713,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/modules";
+            var path_ = "/api/platform/modules";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2652,14 +2743,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesGetModules: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesGetModules: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformWebModelPackagingModuleDescriptor>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelPackagingModuleDescriptor>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelPackagingModuleDescriptor>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelPackagingModuleDescriptor>));
         }
     
         /// <summary>
@@ -2670,7 +2761,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/modules";
+            var path_ = "/api/platform/modules";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2700,11 +2791,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesGetModules: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformWebModelPackagingModuleDescriptor>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelPackagingModuleDescriptor>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelPackagingModuleDescriptor>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelPackagingModuleDescriptor>));
         }
         
         /// <summary>
@@ -2715,7 +2806,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/modules";
+            var path_ = "/api/platform/modules";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2745,14 +2836,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesUpload: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesUpload: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelPackagingModuleDescriptor) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelPackagingModuleDescriptor), response.Headers);
+            return (VirtoCommercePlatformWebModelPackagingModuleDescriptor) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelPackagingModuleDescriptor));
         }
     
         /// <summary>
@@ -2763,7 +2854,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/modules";
+            var path_ = "/api/platform/modules";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2793,11 +2884,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesUpload: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelPackagingModuleDescriptor) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelPackagingModuleDescriptor), response.Headers);
+            return (VirtoCommercePlatformWebModelPackagingModuleDescriptor) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelPackagingModuleDescriptor));
         }
         
         /// <summary>
@@ -2812,7 +2903,7 @@ namespace VirtoCommerce.Client.Api
             if (fileName == null) throw new ApiException(400, "Missing required parameter 'fileName' when calling ModulesInstallModule");
             
     
-            var path = "/api/platform/modules/install";
+            var path_ = "/api/platform/modules/install";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2843,14 +2934,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesInstallModule: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesInstallModule: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification), response.Headers);
+            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification));
         }
     
         /// <summary>
@@ -2864,7 +2955,7 @@ namespace VirtoCommerce.Client.Api
             if (fileName == null) throw new ApiException(400, "Missing required parameter 'fileName' when calling ModulesInstallModule");
             
     
-            var path = "/api/platform/modules/install";
+            var path_ = "/api/platform/modules/install";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2895,11 +2986,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesInstallModule: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification), response.Headers);
+            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification));
         }
         
         /// <summary>
@@ -2910,7 +3001,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/modules/restart";
+            var path_ = "/api/platform/modules/restart";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2940,7 +3031,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesRestart: " + response.Content, response.Content);
@@ -2958,7 +3049,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/modules/restart";
+            var path_ = "/api/platform/modules/restart";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2988,7 +3079,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesRestart: " + response.Content, response.Content);
 
@@ -3008,7 +3099,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling ModulesGetModuleById");
             
     
-            var path = "/api/platform/modules/{id}";
+            var path_ = "/api/platform/modules/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3039,14 +3130,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesGetModuleById: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesGetModuleById: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelPackagingModuleDescriptor) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelPackagingModuleDescriptor), response.Headers);
+            return (VirtoCommercePlatformWebModelPackagingModuleDescriptor) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelPackagingModuleDescriptor));
         }
     
         /// <summary>
@@ -3060,7 +3151,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling ModulesGetModuleById");
             
     
-            var path = "/api/platform/modules/{id}";
+            var path_ = "/api/platform/modules/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3091,11 +3182,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesGetModuleById: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelPackagingModuleDescriptor) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelPackagingModuleDescriptor), response.Headers);
+            return (VirtoCommercePlatformWebModelPackagingModuleDescriptor) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelPackagingModuleDescriptor));
         }
         
         /// <summary>
@@ -3110,7 +3201,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling ModulesUninstallModule");
             
     
-            var path = "/api/platform/modules/{id}/uninstall";
+            var path_ = "/api/platform/modules/{id}/uninstall";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3141,14 +3232,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesUninstallModule: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesUninstallModule: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification), response.Headers);
+            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification));
         }
     
         /// <summary>
@@ -3162,7 +3253,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling ModulesUninstallModule");
             
     
-            var path = "/api/platform/modules/{id}/uninstall";
+            var path_ = "/api/platform/modules/{id}/uninstall";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3193,11 +3284,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesUninstallModule: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification), response.Headers);
+            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification));
         }
         
         /// <summary>
@@ -3216,7 +3307,7 @@ namespace VirtoCommerce.Client.Api
             if (fileName == null) throw new ApiException(400, "Missing required parameter 'fileName' when calling ModulesUpdateModule");
             
     
-            var path = "/api/platform/modules/{id}/update";
+            var path_ = "/api/platform/modules/{id}/update";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3248,14 +3339,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesUpdateModule: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesUpdateModule: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification), response.Headers);
+            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification));
         }
     
         /// <summary>
@@ -3272,7 +3363,7 @@ namespace VirtoCommerce.Client.Api
             if (fileName == null) throw new ApiException(400, "Missing required parameter 'fileName' when calling ModulesUpdateModule");
             
     
-            var path = "/api/platform/modules/{id}/update";
+            var path_ = "/api/platform/modules/{id}/update";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3304,11 +3395,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ModulesUpdateModule: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification), response.Headers);
+            return (VirtoCommercePlatformWebModelPackagingModulePushNotification) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelPackagingModulePushNotification));
         }
         
         /// <summary>
@@ -3319,7 +3410,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/notification";
+            var path_ = "/api/platform/notification";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3349,14 +3440,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotifications: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotifications: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformWebModelNotificationsNotification>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelNotificationsNotification>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelNotificationsNotification>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelNotificationsNotification>));
         }
     
         /// <summary>
@@ -3367,7 +3458,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/notification";
+            var path_ = "/api/platform/notification";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3397,11 +3488,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotifications: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformWebModelNotificationsNotification>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelNotificationsNotification>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelNotificationsNotification>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelNotificationsNotification>));
         }
         
         /// <summary>
@@ -3428,7 +3519,7 @@ namespace VirtoCommerce.Client.Api
             if (count == null) throw new ApiException(400, "Missing required parameter 'count' when calling NotificationsGetNotificationJournal");
             
     
-            var path = "/api/platform/notification/journal/{objectId}/{objectTypeId}";
+            var path_ = "/api/platform/notification/journal/{objectId}/{objectTypeId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3462,14 +3553,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotificationJournal: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotificationJournal: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelNotificationsSearchNotificationsResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelNotificationsSearchNotificationsResult), response.Headers);
+            return (VirtoCommercePlatformWebModelNotificationsSearchNotificationsResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelNotificationsSearchNotificationsResult));
         }
     
         /// <summary>
@@ -3492,7 +3583,7 @@ namespace VirtoCommerce.Client.Api
             if (count == null) throw new ApiException(400, "Missing required parameter 'count' when calling NotificationsGetNotificationJournal");
             
     
-            var path = "/api/platform/notification/journal/{objectId}/{objectTypeId}";
+            var path_ = "/api/platform/notification/journal/{objectId}/{objectTypeId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3526,11 +3617,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotificationJournal: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelNotificationsSearchNotificationsResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelNotificationsSearchNotificationsResult), response.Headers);
+            return (VirtoCommercePlatformWebModelNotificationsSearchNotificationsResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelNotificationsSearchNotificationsResult));
         }
         
         /// <summary>
@@ -3545,7 +3636,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling NotificationsGetNotification");
             
     
-            var path = "/api/platform/notification/notification/{id}";
+            var path_ = "/api/platform/notification/notification/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3576,14 +3667,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotification: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotification: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelNotificationsNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelNotificationsNotification), response.Headers);
+            return (VirtoCommercePlatformWebModelNotificationsNotification) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelNotificationsNotification));
         }
     
         /// <summary>
@@ -3597,7 +3688,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling NotificationsGetNotification");
             
     
-            var path = "/api/platform/notification/notification/{id}";
+            var path_ = "/api/platform/notification/notification/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3628,11 +3719,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotification: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelNotificationsNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelNotificationsNotification), response.Headers);
+            return (VirtoCommercePlatformWebModelNotificationsNotification) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelNotificationsNotification));
         }
         
         /// <summary>
@@ -3647,7 +3738,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling NotificationsStopSendingNotifications");
             
     
-            var path = "/api/platform/notification/stopnotifications";
+            var path_ = "/api/platform/notification/stopnotifications";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3678,7 +3769,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsStopSendingNotifications: " + response.Content, response.Content);
@@ -3699,7 +3790,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling NotificationsStopSendingNotifications");
             
     
-            var path = "/api/platform/notification/stopnotifications";
+            var path_ = "/api/platform/notification/stopnotifications";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3730,7 +3821,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsStopSendingNotifications: " + response.Content, response.Content);
 
@@ -3750,7 +3841,7 @@ namespace VirtoCommerce.Client.Api
             if (notificationTemplate == null) throw new ApiException(400, "Missing required parameter 'notificationTemplate' when calling NotificationsUpdateNotificationTemplate");
             
     
-            var path = "/api/platform/notification/template";
+            var path_ = "/api/platform/notification/template";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3781,7 +3872,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsUpdateNotificationTemplate: " + response.Content, response.Content);
@@ -3802,7 +3893,7 @@ namespace VirtoCommerce.Client.Api
             if (notificationTemplate == null) throw new ApiException(400, "Missing required parameter 'notificationTemplate' when calling NotificationsUpdateNotificationTemplate");
             
     
-            var path = "/api/platform/notification/template";
+            var path_ = "/api/platform/notification/template";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3833,7 +3924,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsUpdateNotificationTemplate: " + response.Content, response.Content);
 
@@ -3853,7 +3944,7 @@ namespace VirtoCommerce.Client.Api
             if (request == null) throw new ApiException(400, "Missing required parameter 'request' when calling NotificationsRenderNotificationContent");
             
     
-            var path = "/api/platform/notification/template/rendernotificationcontent";
+            var path_ = "/api/platform/notification/template/rendernotificationcontent";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3884,14 +3975,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsRenderNotificationContent: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsRenderNotificationContent: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelNotificationsRenderNotificationContentResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelNotificationsRenderNotificationContentResult), response.Headers);
+            return (VirtoCommercePlatformWebModelNotificationsRenderNotificationContentResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelNotificationsRenderNotificationContentResult));
         }
     
         /// <summary>
@@ -3905,7 +3996,7 @@ namespace VirtoCommerce.Client.Api
             if (request == null) throw new ApiException(400, "Missing required parameter 'request' when calling NotificationsRenderNotificationContent");
             
     
-            var path = "/api/platform/notification/template/rendernotificationcontent";
+            var path_ = "/api/platform/notification/template/rendernotificationcontent";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3936,11 +4027,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsRenderNotificationContent: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelNotificationsRenderNotificationContentResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelNotificationsRenderNotificationContentResult), response.Headers);
+            return (VirtoCommercePlatformWebModelNotificationsRenderNotificationContentResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelNotificationsRenderNotificationContentResult));
         }
         
         /// <summary>
@@ -3955,7 +4046,7 @@ namespace VirtoCommerce.Client.Api
             if (request == null) throw new ApiException(400, "Missing required parameter 'request' when calling NotificationsSendNotification");
             
     
-            var path = "/api/platform/notification/template/sendnotification";
+            var path_ = "/api/platform/notification/template/sendnotification";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3986,14 +4077,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsSendNotification: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsSendNotification: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (string) ApiClient.Deserialize(response, typeof(string));
         }
     
         /// <summary>
@@ -4007,7 +4098,7 @@ namespace VirtoCommerce.Client.Api
             if (request == null) throw new ApiException(400, "Missing required parameter 'request' when calling NotificationsSendNotification");
             
     
-            var path = "/api/platform/notification/template/sendnotification";
+            var path_ = "/api/platform/notification/template/sendnotification";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4038,11 +4129,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsSendNotification: " + response.Content, response.Content);
 
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (string) ApiClient.Deserialize(response, typeof(string));
         }
         
         /// <summary>
@@ -4057,7 +4148,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling NotificationsDeleteNotificationTemplate");
             
     
-            var path = "/api/platform/notification/template/{id}";
+            var path_ = "/api/platform/notification/template/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4088,7 +4179,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsDeleteNotificationTemplate: " + response.Content, response.Content);
@@ -4109,7 +4200,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling NotificationsDeleteNotificationTemplate");
             
     
-            var path = "/api/platform/notification/template/{id}";
+            var path_ = "/api/platform/notification/template/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4140,7 +4231,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsDeleteNotificationTemplate: " + response.Content, response.Content);
 
@@ -4149,7 +4240,7 @@ namespace VirtoCommerce.Client.Api
         }
         
         /// <summary>
-        /// Get testing parameters Method returns notification properties, that defined in notification class, this proprties used in notification template.
+        /// Get testing parameters Method returns notification properties, that defined in notification class, this properties used in notification template.
         /// </summary>
         /// <param name="type">Notification type</param> 
         /// <returns></returns>            
@@ -4160,7 +4251,7 @@ namespace VirtoCommerce.Client.Api
             if (type == null) throw new ApiException(400, "Missing required parameter 'type' when calling NotificationsGetTestingParameters");
             
     
-            var path = "/api/platform/notification/template/{type}/getTestingParameters";
+            var path_ = "/api/platform/notification/template/{type}/getTestingParameters";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4191,18 +4282,18 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetTestingParameters: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetTestingParameters: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformCoreNotificationsNotificationParameter>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformCoreNotificationsNotificationParameter>), response.Headers);
+            return (List<VirtoCommercePlatformCoreNotificationsNotificationParameter>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformCoreNotificationsNotificationParameter>));
         }
     
         /// <summary>
-        /// Get testing parameters Method returns notification properties, that defined in notification class, this proprties used in notification template.
+        /// Get testing parameters Method returns notification properties, that defined in notification class, this properties used in notification template.
         /// </summary>
         /// <param name="type">Notification type</param>
         /// <returns></returns>
@@ -4212,7 +4303,7 @@ namespace VirtoCommerce.Client.Api
             if (type == null) throw new ApiException(400, "Missing required parameter 'type' when calling NotificationsGetTestingParameters");
             
     
-            var path = "/api/platform/notification/template/{type}/getTestingParameters";
+            var path_ = "/api/platform/notification/template/{type}/getTestingParameters";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4243,11 +4334,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetTestingParameters: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformCoreNotificationsNotificationParameter>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformCoreNotificationsNotificationParameter>), response.Headers);
+            return (List<VirtoCommercePlatformCoreNotificationsNotificationParameter>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformCoreNotificationsNotificationParameter>));
         }
         
         /// <summary>
@@ -4270,7 +4361,7 @@ namespace VirtoCommerce.Client.Api
             if (objectTypeId == null) throw new ApiException(400, "Missing required parameter 'objectTypeId' when calling NotificationsGetNotificationTemplates");
             
     
-            var path = "/api/platform/notification/template/{type}/{objectId}/{objectTypeId}";
+            var path_ = "/api/platform/notification/template/{type}/{objectId}/{objectTypeId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4303,14 +4394,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotificationTemplates: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotificationTemplates: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformWebModelNotificationsNotificationTemplate>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelNotificationsNotificationTemplate>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelNotificationsNotificationTemplate>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelNotificationsNotificationTemplate>));
         }
     
         /// <summary>
@@ -4330,7 +4421,7 @@ namespace VirtoCommerce.Client.Api
             if (objectTypeId == null) throw new ApiException(400, "Missing required parameter 'objectTypeId' when calling NotificationsGetNotificationTemplates");
             
     
-            var path = "/api/platform/notification/template/{type}/{objectId}/{objectTypeId}";
+            var path_ = "/api/platform/notification/template/{type}/{objectId}/{objectTypeId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4363,11 +4454,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotificationTemplates: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformWebModelNotificationsNotificationTemplate>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelNotificationsNotificationTemplate>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelNotificationsNotificationTemplate>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelNotificationsNotificationTemplate>));
         }
         
         /// <summary>
@@ -4394,7 +4485,7 @@ namespace VirtoCommerce.Client.Api
             if (language == null) throw new ApiException(400, "Missing required parameter 'language' when calling NotificationsGetNotificationTemplate");
             
     
-            var path = "/api/platform/notification/template/{type}/{objectId}/{objectTypeId}/{language}";
+            var path_ = "/api/platform/notification/template/{type}/{objectId}/{objectTypeId}/{language}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4428,14 +4519,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotificationTemplate: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotificationTemplate: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelNotificationsNotificationTemplate) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelNotificationsNotificationTemplate), response.Headers);
+            return (VirtoCommercePlatformWebModelNotificationsNotificationTemplate) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelNotificationsNotificationTemplate));
         }
     
         /// <summary>
@@ -4458,7 +4549,7 @@ namespace VirtoCommerce.Client.Api
             if (language == null) throw new ApiException(400, "Missing required parameter 'language' when calling NotificationsGetNotificationTemplate");
             
     
-            var path = "/api/platform/notification/template/{type}/{objectId}/{objectTypeId}/{language}";
+            var path_ = "/api/platform/notification/template/{type}/{objectId}/{objectTypeId}/{language}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4492,11 +4583,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling NotificationsGetNotificationTemplate: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelNotificationsNotificationTemplate) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelNotificationsNotificationTemplate), response.Headers);
+            return (VirtoCommercePlatformWebModelNotificationsNotificationTemplate) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelNotificationsNotificationTemplate));
         }
         
         /// <summary>
@@ -4510,11 +4601,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="criteriaCount"></param> 
         /// <param name="criteriaOrderBy"></param> 
         /// <returns>VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult</returns>            
-        public VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult PushNotificationSearch (List<string> criteriaIds, bool? criteriaOnlyNew, DateTime? criteriaStartDate, DateTime? criteriaEndDate, int? criteriaStart, int? criteriaCount, string criteriaOrderBy)
+        public VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult PushNotificationSearch (List<string> criteriaIds = null, bool? criteriaOnlyNew = null, DateTime? criteriaStartDate = null, DateTime? criteriaEndDate = null, int? criteriaStart = null, int? criteriaCount = null, string criteriaOrderBy = null)
         {
             
     
-            var path = "/api/platform/pushnotifications";
+            var path_ = "/api/platform/pushnotifications";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4551,14 +4642,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PushNotificationSearch: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PushNotificationSearch: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult), response.Headers);
+            return (VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult));
         }
     
         /// <summary>
@@ -4572,11 +4663,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="criteriaCount"></param>
         /// <param name="criteriaOrderBy"></param>
         /// <returns>VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult</returns>
-        public async System.Threading.Tasks.Task<VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult> PushNotificationSearchAsync (List<string> criteriaIds, bool? criteriaOnlyNew, DateTime? criteriaStartDate, DateTime? criteriaEndDate, int? criteriaStart, int? criteriaCount, string criteriaOrderBy)
+        public async System.Threading.Tasks.Task<VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult> PushNotificationSearchAsync (List<string> criteriaIds = null, bool? criteriaOnlyNew = null, DateTime? criteriaStartDate = null, DateTime? criteriaEndDate = null, int? criteriaStart = null, int? criteriaCount = null, string criteriaOrderBy = null)
         {
             
     
-            var path = "/api/platform/pushnotifications";
+            var path_ = "/api/platform/pushnotifications";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4613,11 +4704,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PushNotificationSearch: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult), response.Headers);
+            return (VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult));
         }
         
         /// <summary>
@@ -4628,7 +4719,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/pushnotifications/markAllAsRead";
+            var path_ = "/api/platform/pushnotifications/markAllAsRead";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4658,14 +4749,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PushNotificationMarkAllAsRead: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PushNotificationMarkAllAsRead: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult), response.Headers);
+            return (VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult));
         }
     
         /// <summary>
@@ -4676,7 +4767,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/pushnotifications/markAllAsRead";
+            var path_ = "/api/platform/pushnotifications/markAllAsRead";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4706,11 +4797,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PushNotificationMarkAllAsRead: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult), response.Headers);
+            return (VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCorePushNotificationsPushNotificationSearchResult));
         }
         
         /// <summary>
@@ -4725,7 +4816,7 @@ namespace VirtoCommerce.Client.Api
             if (type == null) throw new ApiException(400, "Missing required parameter 'type' when calling SecurityGenerateNewApiAccount");
             
     
-            var path = "/api/platform/security/apiaccounts/new";
+            var path_ = "/api/platform/security/apiaccounts/new";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4756,14 +4847,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGenerateNewApiAccount: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGenerateNewApiAccount: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecurityApiAccount) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityApiAccount), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityApiAccount) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityApiAccount));
         }
     
         /// <summary>
@@ -4777,7 +4868,7 @@ namespace VirtoCommerce.Client.Api
             if (type == null) throw new ApiException(400, "Missing required parameter 'type' when calling SecurityGenerateNewApiAccount");
             
     
-            var path = "/api/platform/security/apiaccounts/new";
+            var path_ = "/api/platform/security/apiaccounts/new";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4808,11 +4899,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGenerateNewApiAccount: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecurityApiAccount) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityApiAccount), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityApiAccount) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityApiAccount));
         }
         
         /// <summary>
@@ -4823,7 +4914,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/security/currentuser";
+            var path_ = "/api/platform/security/currentuser";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4853,14 +4944,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetCurrentUser: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetCurrentUser: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended));
         }
     
         /// <summary>
@@ -4871,7 +4962,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/security/currentuser";
+            var path_ = "/api/platform/security/currentuser";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4901,11 +4992,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetCurrentUser: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended));
         }
         
         /// <summary>
@@ -4920,7 +5011,7 @@ namespace VirtoCommerce.Client.Api
             if (model == null) throw new ApiException(400, "Missing required parameter 'model' when calling SecurityLogin");
             
     
-            var path = "/api/platform/security/login";
+            var path_ = "/api/platform/security/login";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -4951,14 +5042,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityLogin: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityLogin: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended));
         }
     
         /// <summary>
@@ -4972,7 +5063,7 @@ namespace VirtoCommerce.Client.Api
             if (model == null) throw new ApiException(400, "Missing required parameter 'model' when calling SecurityLogin");
             
     
-            var path = "/api/platform/security/login";
+            var path_ = "/api/platform/security/login";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5003,11 +5094,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityLogin: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended));
         }
         
         /// <summary>
@@ -5018,7 +5109,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/security/logout";
+            var path_ = "/api/platform/security/logout";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5048,7 +5139,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityLogout: " + response.Content, response.Content);
@@ -5066,7 +5157,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/security/logout";
+            var path_ = "/api/platform/security/logout";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5096,7 +5187,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityLogout: " + response.Content, response.Content);
 
@@ -5112,7 +5203,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/security/permissions";
+            var path_ = "/api/platform/security/permissions";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5142,14 +5233,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetPermissions: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetPermissions: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformCoreSecurityPermission>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformCoreSecurityPermission>), response.Headers);
+            return (List<VirtoCommercePlatformCoreSecurityPermission>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformCoreSecurityPermission>));
         }
     
         /// <summary>
@@ -5160,7 +5251,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/security/permissions";
+            var path_ = "/api/platform/security/permissions";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5190,11 +5281,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetPermissions: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformCoreSecurityPermission>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformCoreSecurityPermission>), response.Headers);
+            return (List<VirtoCommercePlatformCoreSecurityPermission>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformCoreSecurityPermission>));
         }
         
         /// <summary>
@@ -5204,11 +5295,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestSkipCount"></param> 
         /// <param name="requestTakeCount"></param> 
         /// <returns>VirtoCommercePlatformCoreSecurityRoleSearchResponse</returns>            
-        public VirtoCommercePlatformCoreSecurityRoleSearchResponse SecuritySearchRoles (string requestKeyword, int? requestSkipCount, int? requestTakeCount)
+        public VirtoCommercePlatformCoreSecurityRoleSearchResponse SecuritySearchRoles (string requestKeyword = null, int? requestSkipCount = null, int? requestTakeCount = null)
         {
             
     
-            var path = "/api/platform/security/roles";
+            var path_ = "/api/platform/security/roles";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5241,14 +5332,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecuritySearchRoles: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecuritySearchRoles: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecurityRoleSearchResponse) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityRoleSearchResponse), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityRoleSearchResponse) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityRoleSearchResponse));
         }
     
         /// <summary>
@@ -5258,11 +5349,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestSkipCount"></param>
         /// <param name="requestTakeCount"></param>
         /// <returns>VirtoCommercePlatformCoreSecurityRoleSearchResponse</returns>
-        public async System.Threading.Tasks.Task<VirtoCommercePlatformCoreSecurityRoleSearchResponse> SecuritySearchRolesAsync (string requestKeyword, int? requestSkipCount, int? requestTakeCount)
+        public async System.Threading.Tasks.Task<VirtoCommercePlatformCoreSecurityRoleSearchResponse> SecuritySearchRolesAsync (string requestKeyword = null, int? requestSkipCount = null, int? requestTakeCount = null)
         {
             
     
-            var path = "/api/platform/security/roles";
+            var path_ = "/api/platform/security/roles";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5295,11 +5386,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecuritySearchRoles: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecurityRoleSearchResponse) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityRoleSearchResponse), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityRoleSearchResponse) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityRoleSearchResponse));
         }
         
         /// <summary>
@@ -5314,7 +5405,7 @@ namespace VirtoCommerce.Client.Api
             if (role == null) throw new ApiException(400, "Missing required parameter 'role' when calling SecurityUpdateRole");
             
     
-            var path = "/api/platform/security/roles";
+            var path_ = "/api/platform/security/roles";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5345,14 +5436,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityUpdateRole: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityUpdateRole: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecurityRole) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityRole), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityRole) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityRole));
         }
     
         /// <summary>
@@ -5366,7 +5457,7 @@ namespace VirtoCommerce.Client.Api
             if (role == null) throw new ApiException(400, "Missing required parameter 'role' when calling SecurityUpdateRole");
             
     
-            var path = "/api/platform/security/roles";
+            var path_ = "/api/platform/security/roles";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5397,11 +5488,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityUpdateRole: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecurityRole) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityRole), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityRole) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityRole));
         }
         
         /// <summary>
@@ -5416,7 +5507,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling SecurityDeleteRoles");
             
     
-            var path = "/api/platform/security/roles";
+            var path_ = "/api/platform/security/roles";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5447,7 +5538,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityDeleteRoles: " + response.Content, response.Content);
@@ -5468,7 +5559,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling SecurityDeleteRoles");
             
     
-            var path = "/api/platform/security/roles";
+            var path_ = "/api/platform/security/roles";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5499,7 +5590,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityDeleteRoles: " + response.Content, response.Content);
 
@@ -5519,7 +5610,7 @@ namespace VirtoCommerce.Client.Api
             if (roleId == null) throw new ApiException(400, "Missing required parameter 'roleId' when calling SecurityGetRole");
             
     
-            var path = "/api/platform/security/roles/{roleId}";
+            var path_ = "/api/platform/security/roles/{roleId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5550,14 +5641,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetRole: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetRole: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecurityRole) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityRole), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityRole) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityRole));
         }
     
         /// <summary>
@@ -5571,7 +5662,7 @@ namespace VirtoCommerce.Client.Api
             if (roleId == null) throw new ApiException(400, "Missing required parameter 'roleId' when calling SecurityGetRole");
             
     
-            var path = "/api/platform/security/roles/{roleId}";
+            var path_ = "/api/platform/security/roles/{roleId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5602,11 +5693,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetRole: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecurityRole) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityRole), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityRole) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityRole));
         }
         
         /// <summary>
@@ -5617,11 +5708,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestSkipCount"></param> 
         /// <param name="requestTakeCount"></param> 
         /// <returns>VirtoCommercePlatformCoreSecurityUserSearchResponse</returns>            
-        public VirtoCommercePlatformCoreSecurityUserSearchResponse SecuritySearchUsersAsync (List<string> requestAccountTypes, string requestKeyword, int? requestSkipCount, int? requestTakeCount)
+        public VirtoCommercePlatformCoreSecurityUserSearchResponse SecuritySearchUsersAsync (List<string> requestAccountTypes = null, string requestKeyword = null, int? requestSkipCount = null, int? requestTakeCount = null)
         {
             
     
-            var path = "/api/platform/security/users";
+            var path_ = "/api/platform/security/users";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5655,14 +5746,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecuritySearchUsersAsync: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecuritySearchUsersAsync: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecurityUserSearchResponse) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityUserSearchResponse), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityUserSearchResponse) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityUserSearchResponse));
         }
     
         /// <summary>
@@ -5673,11 +5764,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="requestSkipCount"></param>
         /// <param name="requestTakeCount"></param>
         /// <returns>VirtoCommercePlatformCoreSecurityUserSearchResponse</returns>
-        public async System.Threading.Tasks.Task<VirtoCommercePlatformCoreSecurityUserSearchResponse> SecuritySearchUsersAsyncAsync (List<string> requestAccountTypes, string requestKeyword, int? requestSkipCount, int? requestTakeCount)
+        public async System.Threading.Tasks.Task<VirtoCommercePlatformCoreSecurityUserSearchResponse> SecuritySearchUsersAsyncAsync (List<string> requestAccountTypes = null, string requestKeyword = null, int? requestSkipCount = null, int? requestTakeCount = null)
         {
             
     
-            var path = "/api/platform/security/users";
+            var path_ = "/api/platform/security/users";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5711,11 +5802,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecuritySearchUsersAsync: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecurityUserSearchResponse) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityUserSearchResponse), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityUserSearchResponse) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityUserSearchResponse));
         }
         
         /// <summary>
@@ -5730,7 +5821,7 @@ namespace VirtoCommerce.Client.Api
             if (user == null) throw new ApiException(400, "Missing required parameter 'user' when calling SecurityUpdateAsync");
             
     
-            var path = "/api/platform/security/users";
+            var path_ = "/api/platform/security/users";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5761,14 +5852,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityUpdateAsync: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityUpdateAsync: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecuritySecurityResult), response.Headers);
+            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecuritySecurityResult));
         }
     
         /// <summary>
@@ -5782,7 +5873,7 @@ namespace VirtoCommerce.Client.Api
             if (user == null) throw new ApiException(400, "Missing required parameter 'user' when calling SecurityUpdateAsync");
             
     
-            var path = "/api/platform/security/users";
+            var path_ = "/api/platform/security/users";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5813,11 +5904,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityUpdateAsync: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecuritySecurityResult), response.Headers);
+            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecuritySecurityResult));
         }
         
         /// <summary>
@@ -5832,7 +5923,7 @@ namespace VirtoCommerce.Client.Api
             if (names == null) throw new ApiException(400, "Missing required parameter 'names' when calling SecurityDeleteAsync");
             
     
-            var path = "/api/platform/security/users";
+            var path_ = "/api/platform/security/users";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5863,7 +5954,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityDeleteAsync: " + response.Content, response.Content);
@@ -5884,7 +5975,7 @@ namespace VirtoCommerce.Client.Api
             if (names == null) throw new ApiException(400, "Missing required parameter 'names' when calling SecurityDeleteAsync");
             
     
-            var path = "/api/platform/security/users";
+            var path_ = "/api/platform/security/users";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5915,7 +6006,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityDeleteAsync: " + response.Content, response.Content);
 
@@ -5935,7 +6026,7 @@ namespace VirtoCommerce.Client.Api
             if (user == null) throw new ApiException(400, "Missing required parameter 'user' when calling SecurityCreateAsync");
             
     
-            var path = "/api/platform/security/users/create";
+            var path_ = "/api/platform/security/users/create";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -5966,14 +6057,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityCreateAsync: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityCreateAsync: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecuritySecurityResult), response.Headers);
+            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecuritySecurityResult));
         }
     
         /// <summary>
@@ -5987,7 +6078,7 @@ namespace VirtoCommerce.Client.Api
             if (user == null) throw new ApiException(400, "Missing required parameter 'user' when calling SecurityCreateAsync");
             
     
-            var path = "/api/platform/security/users/create";
+            var path_ = "/api/platform/security/users/create";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6018,11 +6109,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityCreateAsync: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecuritySecurityResult), response.Headers);
+            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecuritySecurityResult));
         }
         
         /// <summary>
@@ -6037,7 +6128,7 @@ namespace VirtoCommerce.Client.Api
             if (userName == null) throw new ApiException(400, "Missing required parameter 'userName' when calling SecurityGetUserByName");
             
     
-            var path = "/api/platform/security/users/{userName}";
+            var path_ = "/api/platform/security/users/{userName}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6068,14 +6159,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetUserByName: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetUserByName: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended));
         }
     
         /// <summary>
@@ -6089,7 +6180,7 @@ namespace VirtoCommerce.Client.Api
             if (userName == null) throw new ApiException(400, "Missing required parameter 'userName' when calling SecurityGetUserByName");
             
     
-            var path = "/api/platform/security/users/{userName}";
+            var path_ = "/api/platform/security/users/{userName}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6120,11 +6211,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityGetUserByName: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended), response.Headers);
+            return (VirtoCommercePlatformCoreSecurityApplicationUserExtended) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecurityApplicationUserExtended));
         }
         
         /// <summary>
@@ -6143,7 +6234,7 @@ namespace VirtoCommerce.Client.Api
             if (changePassword == null) throw new ApiException(400, "Missing required parameter 'changePassword' when calling SecurityChangePassword");
             
     
-            var path = "/api/platform/security/users/{userName}/changepassword";
+            var path_ = "/api/platform/security/users/{userName}/changepassword";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6175,14 +6266,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityChangePassword: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityChangePassword: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecuritySecurityResult), response.Headers);
+            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecuritySecurityResult));
         }
     
         /// <summary>
@@ -6199,7 +6290,7 @@ namespace VirtoCommerce.Client.Api
             if (changePassword == null) throw new ApiException(400, "Missing required parameter 'changePassword' when calling SecurityChangePassword");
             
     
-            var path = "/api/platform/security/users/{userName}/changepassword";
+            var path_ = "/api/platform/security/users/{userName}/changepassword";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6231,11 +6322,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityChangePassword: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecuritySecurityResult), response.Headers);
+            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecuritySecurityResult));
         }
         
         /// <summary>
@@ -6254,7 +6345,7 @@ namespace VirtoCommerce.Client.Api
             if (resetPassword == null) throw new ApiException(400, "Missing required parameter 'resetPassword' when calling SecurityResetPassword");
             
     
-            var path = "/api/platform/security/users/{userName}/resetpassword";
+            var path_ = "/api/platform/security/users/{userName}/resetpassword";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6286,14 +6377,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityResetPassword: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityResetPassword: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecuritySecurityResult), response.Headers);
+            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecuritySecurityResult));
         }
     
         /// <summary>
@@ -6310,7 +6401,7 @@ namespace VirtoCommerce.Client.Api
             if (resetPassword == null) throw new ApiException(400, "Missing required parameter 'resetPassword' when calling SecurityResetPassword");
             
     
-            var path = "/api/platform/security/users/{userName}/resetpassword";
+            var path_ = "/api/platform/security/users/{userName}/resetpassword";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6342,11 +6433,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SecurityResetPassword: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformCoreSecuritySecurityResult), response.Headers);
+            return (VirtoCommercePlatformCoreSecuritySecurityResult) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformCoreSecuritySecurityResult));
         }
         
         /// <summary>
@@ -6357,7 +6448,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/settings";
+            var path_ = "/api/platform/settings";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6387,14 +6478,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetAllSettings: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetAllSettings: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformWebModelSettingsSetting>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelSettingsSetting>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelSettingsSetting>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelSettingsSetting>));
         }
     
         /// <summary>
@@ -6405,7 +6496,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/platform/settings";
+            var path_ = "/api/platform/settings";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6435,11 +6526,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetAllSettings: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformWebModelSettingsSetting>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelSettingsSetting>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelSettingsSetting>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelSettingsSetting>));
         }
         
         /// <summary>
@@ -6454,7 +6545,7 @@ namespace VirtoCommerce.Client.Api
             if (settings == null) throw new ApiException(400, "Missing required parameter 'settings' when calling SettingUpdate");
             
     
-            var path = "/api/platform/settings";
+            var path_ = "/api/platform/settings";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6485,7 +6576,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingUpdate: " + response.Content, response.Content);
@@ -6506,7 +6597,7 @@ namespace VirtoCommerce.Client.Api
             if (settings == null) throw new ApiException(400, "Missing required parameter 'settings' when calling SettingUpdate");
             
     
-            var path = "/api/platform/settings";
+            var path_ = "/api/platform/settings";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6537,7 +6628,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingUpdate: " + response.Content, response.Content);
 
@@ -6557,7 +6648,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling SettingGetModuleSettings");
             
     
-            var path = "/api/platform/settings/modules/{id}";
+            var path_ = "/api/platform/settings/modules/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6588,14 +6679,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetModuleSettings: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetModuleSettings: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePlatformWebModelSettingsSetting>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelSettingsSetting>), response.Headers);
+            return (List<VirtoCommercePlatformWebModelSettingsSetting>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelSettingsSetting>));
         }
     
         /// <summary>
@@ -6609,7 +6700,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling SettingGetModuleSettings");
             
     
-            var path = "/api/platform/settings/modules/{id}";
+            var path_ = "/api/platform/settings/modules/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6640,113 +6731,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetModuleSettings: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePlatformWebModelSettingsSetting>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePlatformWebModelSettingsSetting>), response.Headers);
-        }
-        
-        /// <summary>
-        /// Get non-array setting value by name 
-        /// </summary>
-        /// <param name="name">Setting system name.</param> 
-        /// <returns>InlineResponse200</returns>            
-        public InlineResponse200 SettingGetValue (string name)
-        {
-            
-            // verify the required parameter 'name' is set
-            if (name == null) throw new ApiException(400, "Missing required parameter 'name' when calling SettingGetValue");
-            
-    
-            var path = "/api/platform/settings/value/{name}";
-    
-            var pathParams = new Dictionary<String, String>();
-            var queryParams = new Dictionary<String, String>();
-            var headerParams = new Dictionary<String, String>();
-            var formParams = new Dictionary<String, String>();
-            var fileParams = new Dictionary<String, FileParameter>();
-            String postBody = null;
-
-            // to determine the Accept header
-            String[] http_header_accepts = new String[] {
-                "application/json", "text/json"
-            };
-            String http_header_accept = ApiClient.SelectHeaderAccept(http_header_accepts);
-            if (http_header_accept != null)
-                headerParams.Add("Accept", ApiClient.SelectHeaderAccept(http_header_accepts));
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            pathParams.Add("format", "json");
-            if (name != null) pathParams.Add("name", ApiClient.ParameterToString(name)); // path parameter
-            
-            
-            
-            
-            
-    
-            // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
-            // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
-    
-            if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling SettingGetValue: " + response.Content, response.Content);
-            else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling SettingGetValue: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (InlineResponse200) ApiClient.Deserialize(response.Content, typeof(InlineResponse200), response.Headers);
-        }
-    
-        /// <summary>
-        /// Get non-array setting value by name 
-        /// </summary>
-        /// <param name="name">Setting system name.</param>
-        /// <returns>InlineResponse200</returns>
-        public async System.Threading.Tasks.Task<InlineResponse200> SettingGetValueAsync (string name)
-        {
-            // verify the required parameter 'name' is set
-            if (name == null) throw new ApiException(400, "Missing required parameter 'name' when calling SettingGetValue");
-            
-    
-            var path = "/api/platform/settings/value/{name}";
-    
-            var pathParams = new Dictionary<String, String>();
-            var queryParams = new Dictionary<String, String>();
-            var headerParams = new Dictionary<String, String>();
-            var formParams = new Dictionary<String, String>();
-            var fileParams = new Dictionary<String, FileParameter>();
-            String postBody = null;
-
-            // to determine the Accept header
-            String[] http_header_accepts = new String[] {
-                "application/json", "text/json"
-            };
-            String http_header_accept = ApiClient.SelectHeaderAccept(http_header_accepts);
-            if (http_header_accept != null)
-                headerParams.Add("Accept", ApiClient.SelectHeaderAccept(http_header_accepts));
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            pathParams.Add("format", "json");
-            if (name != null) pathParams.Add("name", ApiClient.ParameterToString(name)); // path parameter
-            
-            
-            
-            
-            
-    
-            // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
-            // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
-            if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling SettingGetValue: " + response.Content, response.Content);
-
-            return (InlineResponse200) ApiClient.Deserialize(response.Content, typeof(InlineResponse200), response.Headers);
+            return (List<VirtoCommercePlatformWebModelSettingsSetting>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePlatformWebModelSettingsSetting>));
         }
         
         /// <summary>
@@ -6761,7 +6750,7 @@ namespace VirtoCommerce.Client.Api
             if (name == null) throw new ApiException(400, "Missing required parameter 'name' when calling SettingGetArray");
             
     
-            var path = "/api/platform/settings/values/{name}";
+            var path_ = "/api/platform/settings/values/{name}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6792,14 +6781,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetArray: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetArray: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<Object>) ApiClient.Deserialize(response.Content, typeof(List<Object>), response.Headers);
+            return (List<Object>) ApiClient.Deserialize(response, typeof(List<Object>));
         }
     
         /// <summary>
@@ -6813,7 +6802,7 @@ namespace VirtoCommerce.Client.Api
             if (name == null) throw new ApiException(400, "Missing required parameter 'name' when calling SettingGetArray");
             
     
-            var path = "/api/platform/settings/values/{name}";
+            var path_ = "/api/platform/settings/values/{name}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6844,11 +6833,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetArray: " + response.Content, response.Content);
 
-            return (List<Object>) ApiClient.Deserialize(response.Content, typeof(List<Object>), response.Headers);
+            return (List<Object>) ApiClient.Deserialize(response, typeof(List<Object>));
         }
         
         /// <summary>
@@ -6863,7 +6852,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling SettingGetSetting");
             
     
-            var path = "/api/platform/settings/{id}";
+            var path_ = "/api/platform/settings/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6894,14 +6883,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetSetting: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetSetting: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePlatformWebModelSettingsSetting) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelSettingsSetting), response.Headers);
+            return (VirtoCommercePlatformWebModelSettingsSetting) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelSettingsSetting));
         }
     
         /// <summary>
@@ -6915,7 +6904,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling SettingGetSetting");
             
     
-            var path = "/api/platform/settings/{id}";
+            var path_ = "/api/platform/settings/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -6946,11 +6935,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling SettingGetSetting: " + response.Content, response.Content);
 
-            return (VirtoCommercePlatformWebModelSettingsSetting) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePlatformWebModelSettingsSetting), response.Headers);
+            return (VirtoCommercePlatformWebModelSettingsSetting) ApiClient.Deserialize(response, typeof(VirtoCommercePlatformWebModelSettingsSetting));
         }
         
     }

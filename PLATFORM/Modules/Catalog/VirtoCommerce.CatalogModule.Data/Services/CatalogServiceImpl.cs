@@ -34,12 +34,10 @@ namespace VirtoCommerce.CatalogModule.Data.Services
 			coreModel.Catalog retVal = null;
 			using (var repository = _catalogRepositoryFactory())
 			{
-				var dbCatalogBase = repository.GetCatalogById(catalogId);
-                if (dbCatalogBase != null)
+				var dbCatalog = repository.GetCatalogById(catalogId);
+                if (dbCatalog != null)
                 {
-                    var dbProperties = repository.GetCatalogProperties(dbCatalogBase);
-                    var properties = dbProperties.Select(x => x.ToCoreModel(dbCatalogBase.ToCoreModel(), null)).ToArray();
-                    retVal = dbCatalogBase.ToCoreModel(properties);
+                      retVal = dbCatalog.ToCoreModel();
                 }
 			}
 			return retVal;
@@ -85,7 +83,9 @@ namespace VirtoCommerce.CatalogModule.Data.Services
 		{
 			using (var repository = _catalogRepositoryFactory())
 			{
-				repository.RemoveCatalogs(catalogIds);
+                var seoInfos = _commerceService.GetObjectsSeo(catalogIds);
+                _commerceService.DeleteSeo(seoInfos.Select(x => x.Id).ToArray());
+                repository.RemoveCatalogs(catalogIds);
 				CommitChanges(repository);
 			}
 		}

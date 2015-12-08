@@ -23,7 +23,8 @@ namespace VirtoCommerce.CartModule.Data.Converters
 			retVal.InjectFrom(entity);
 			retVal.Currency = (CurrencyCodes)Enum.Parse(typeof(CurrencyCodes), entity.Currency);
 			retVal.TaxDetails = entity.TaxDetails.Select(x => x.ToCoreModel()).ToList();
-			return retVal;
+            retVal.Discounts = entity.Discounts.Select(x => x.ToCoreModel()).ToList();
+            return retVal;
 		}
 
 		public static LineItemEntity ToDataModel(this LineItem lineItem)
@@ -39,7 +40,13 @@ namespace VirtoCommerce.CartModule.Data.Converters
 				retVal.TaxDetails = new ObservableCollection<TaxDetailEntity>();
 				retVal.TaxDetails.AddRange(lineItem.TaxDetails.Select(x => x.ToDataModel()));
 			}
-			return retVal;
+
+            if (lineItem.Discounts != null)
+            {
+                retVal.Discounts = new ObservableCollection<DiscountEntity>();
+                retVal.Discounts.AddRange(lineItem.Discounts.Select(x => x.ToDataModel()));
+            }
+            return retVal;
 		}
 
 		/// <summary>
@@ -52,7 +59,7 @@ namespace VirtoCommerce.CartModule.Data.Converters
 			if (target == null)
 				throw new ArgumentNullException("target");
 
-			var patchInjection = new PatchInjection<LineItemEntity>(x => x.Quantity, x => x.SalePrice, x => x.PlacedPrice, x => x.ListPrice, x => x.TaxIncluded, x => x.TaxTotal, x => x.TaxType);
+			var patchInjection = new PatchInjection<LineItemEntity>(x => x.Quantity, x => x.SalePrice, x => x.PlacedPrice, x => x.ListPrice, x => x.ExtendedPrice, x => x.TaxIncluded, x => x.DiscountTotal, x => x.TaxTotal, x => x.TaxType);
 			target.InjectFrom(patchInjection, source);
 
 			if (!source.TaxDetails.IsNullCollection())
@@ -60,7 +67,11 @@ namespace VirtoCommerce.CartModule.Data.Converters
 				var taxDetailComparer = AnonymousComparer.Create((TaxDetailEntity x) => x.Name);
 				source.TaxDetails.Patch(target.TaxDetails, taxDetailComparer, (sourceTaxDetail, targetTaxDetail) => sourceTaxDetail.Patch(targetTaxDetail));
 			}
-		}
+            if (!source.Discounts.IsNullCollection())
+            {
+                source.Discounts.Patch(target.Discounts, new DiscountComparer(), (sourceDiscount, targetDiscount) => sourceDiscount.Patch(targetDiscount));
+            }
+        }
 
 	}
 }

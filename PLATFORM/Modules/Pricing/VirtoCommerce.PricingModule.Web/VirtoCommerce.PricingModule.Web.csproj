@@ -95,6 +95,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <Content Include="Localizations\en.VirtoCommerce.Pricing.json" />
     <None Include="packages.config" />
     <Content Include="module.manifest" />
     <None Include="Web.Debug.config">
@@ -131,9 +133,10 @@
     <Content Include="Scripts\widgets\pricesWidget.tpl.html" />
     <Content Include="Scripts\widgets\itemPricesWidget.js" />
     <Content Include="Scripts\widgets\itemPricesWidget.tpl.html" />
-    <Content Include="Web.config" />
+    <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binders\PriceEvaluationContextBinder.cs" />
     <Compile Include="Controllers\Api\PricingModuleController.cs" />
     <Compile Include="Security\PricingPredefinedPermissions.cs" />
     <Compile Include="Converters\PricelistAssignmentConverter.cs" />

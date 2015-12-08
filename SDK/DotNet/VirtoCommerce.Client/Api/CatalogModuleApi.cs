@@ -236,8 +236,8 @@ namespace VirtoCommerce.Client.Api
         /// Data export is an async process. An ExportNotification is returned for progress reporting.
         /// </remarks>
         /// <param name="exportInfo">The export configuration.</param>
-        /// <returns>VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification</returns>
-        VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification CatalogModuleExportImportDoExport (VirtoCommerceCatalogModuleWebExportImportCsvExportInfo exportInfo);
+        /// <returns>VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification</returns>
+        VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification CatalogModuleExportImportDoExport (VirtoCommerceCatalogModuleWebExportImportCsvExportInfo exportInfo);
   
         /// <summary>
         /// Start catalog data export process.
@@ -246,8 +246,8 @@ namespace VirtoCommerce.Client.Api
         /// Data export is an async process. An ExportNotification is returned for progress reporting.
         /// </remarks>
         /// <param name="exportInfo">The export configuration.</param>
-        /// <returns>VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification</returns>
-        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification> CatalogModuleExportImportDoExportAsync (VirtoCommerceCatalogModuleWebExportImportCsvExportInfo exportInfo);
+        /// <returns>VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification</returns>
+        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification> CatalogModuleExportImportDoExportAsync (VirtoCommerceCatalogModuleWebExportImportCsvExportInfo exportInfo);
         
         /// <summary>
         /// Start catalog data import process.
@@ -256,8 +256,8 @@ namespace VirtoCommerce.Client.Api
         /// Data import is an async process. An ImportNotification is returned for progress reporting.
         /// </remarks>
         /// <param name="importInfo">The import data configuration.</param>
-        /// <returns>VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification</returns>
-        VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification CatalogModuleExportImportDoImport (VirtoCommerceCatalogModuleWebExportImportCsvImportInfo importInfo);
+        /// <returns>VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification</returns>
+        VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification CatalogModuleExportImportDoImport (VirtoCommerceCatalogModuleWebExportImportCsvImportInfo importInfo);
   
         /// <summary>
         /// Start catalog data import process.
@@ -266,8 +266,8 @@ namespace VirtoCommerce.Client.Api
         /// Data import is an async process. An ImportNotification is returned for progress reporting.
         /// </remarks>
         /// <param name="importInfo">The import data configuration.</param>
-        /// <returns>VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification</returns>
-        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification> CatalogModuleExportImportDoImportAsync (VirtoCommerceCatalogModuleWebExportImportCsvImportInfo importInfo);
+        /// <returns>VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification</returns>
+        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification> CatalogModuleExportImportDoImportAsync (VirtoCommerceCatalogModuleWebExportImportCsvImportInfo importInfo);
         
         /// <summary>
         /// Gets the CSV mapping configuration.
@@ -278,7 +278,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="fileUrl">The file URL.</param>
         /// <param name="delimiter">The CSV delimiter.</param>
         /// <returns>VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration</returns>
-        VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration CatalogModuleExportImportGetMappingConfiguration (string fileUrl, string delimiter);
+        VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration CatalogModuleExportImportGetMappingConfiguration (string fileUrl, string delimiter = null);
   
         /// <summary>
         /// Gets the CSV mapping configuration.
@@ -289,7 +289,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="fileUrl">The file URL.</param>
         /// <param name="delimiter">The CSV delimiter.</param>
         /// <returns>VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration</returns>
-        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration> CatalogModuleExportImportGetMappingConfigurationAsync (string fileUrl, string delimiter);
+        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration> CatalogModuleExportImportGetMappingConfigurationAsync (string fileUrl, string delimiter = null);
         
         /// <summary>
         /// Searches for the items by complex criteria.
@@ -304,7 +304,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="criteriaStart">Gets or sets the start index of total results from which entries should be returned.</param>
         /// <param name="criteriaCount">Gets or sets the maximum count of results to return.</param>
         /// <returns>VirtoCommerceCatalogModuleWebModelListEntrySearchResult</returns>
-        VirtoCommerceCatalogModuleWebModelListEntrySearchResult CatalogModuleListEntryListItemsSearch (string criteriaResponseGroup, string criteriaKeyword, string criteriaCategoryId, string criteriaCatalogId, int? criteriaStart, int? criteriaCount);
+        VirtoCommerceCatalogModuleWebModelListEntrySearchResult CatalogModuleListEntryListItemsSearch (string criteriaResponseGroup = null, string criteriaKeyword = null, string criteriaCategoryId = null, string criteriaCatalogId = null, int? criteriaStart = null, int? criteriaCount = null);
   
         /// <summary>
         /// Searches for the items by complex criteria.
@@ -319,7 +319,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="criteriaStart">Gets or sets the start index of total results from which entries should be returned.</param>
         /// <param name="criteriaCount">Gets or sets the maximum count of results to return.</param>
         /// <returns>VirtoCommerceCatalogModuleWebModelListEntrySearchResult</returns>
-        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelListEntrySearchResult> CatalogModuleListEntryListItemsSearchAsync (string criteriaResponseGroup, string criteriaKeyword, string criteriaCategoryId, string criteriaCatalogId, int? criteriaStart, int? criteriaCount);
+        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelListEntrySearchResult> CatalogModuleListEntryListItemsSearchAsync (string criteriaResponseGroup = null, string criteriaKeyword = null, string criteriaCategoryId = null, string criteriaCatalogId = null, int? criteriaStart = null, int? criteriaCount = null);
         
         /// <summary>
         /// Move categories or products to another location.
@@ -530,7 +530,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="propertyId">The property id.</param>
         /// <param name="keyword">The keyword. (Optional)</param>
         /// <returns></returns>
-        List<VirtoCommerceCatalogModuleWebModelPropertyValue> CatalogModulePropertiesGetPropertyValues (string propertyId, string keyword);
+        List<VirtoCommerceCatalogModuleWebModelPropertyValue> CatalogModulePropertiesGetPropertyValues (string propertyId, string keyword = null);
   
         /// <summary>
         /// Gets all dictionary values that specified property can have.
@@ -541,7 +541,59 @@ namespace VirtoCommerce.Client.Api
         /// <param name="propertyId">The property id.</param>
         /// <param name="keyword">The keyword. (Optional)</param>
         /// <returns></returns>
-        System.Threading.Tasks.Task<List<VirtoCommerceCatalogModuleWebModelPropertyValue>> CatalogModulePropertiesGetPropertyValuesAsync (string propertyId, string keyword);
+        System.Threading.Tasks.Task<List<VirtoCommerceCatalogModuleWebModelPropertyValue>> CatalogModulePropertiesGetPropertyValuesAsync (string propertyId, string keyword = null);
+        
+        /// <summary>
+        /// Searches for the items by complex criteria.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="criteriaResponseGroup"></param>
+        /// <param name="criteriaKeyword"></param>
+        /// <param name="criteriaSearchInChildren"></param>
+        /// <param name="criteriaCategoryId"></param>
+        /// <param name="criteriaCategoriesIds"></param>
+        /// <param name="criteriaCatalogId"></param>
+        /// <param name="criteriaCatalogsIds"></param>
+        /// <param name="criteriaLanguageCode"></param>
+        /// <param name="criteriaCurrency"></param>
+        /// <param name="criteriaCode"></param>
+        /// <param name="criteriaSort"></param>
+        /// <param name="criteriaFacets"></param>
+        /// <param name="criteriaHideDirectLinkedCategories"></param>
+        /// <param name="criteriaPropertyValues"></param>
+        /// <param name="criteriaStart"></param>
+        /// <param name="criteriaCount"></param>
+        /// <param name="criteriaIndexDate"></param>
+        /// <returns>VirtoCommerceCatalogModuleWebModelCatalogSearchResult</returns>
+        VirtoCommerceCatalogModuleWebModelCatalogSearchResult CatalogModuleSearchSearch (string criteriaResponseGroup = null, string criteriaKeyword = null, bool? criteriaSearchInChildren = null, string criteriaCategoryId = null, List<string> criteriaCategoriesIds = null, string criteriaCatalogId = null, List<string> criteriaCatalogsIds = null, string criteriaLanguageCode = null, string criteriaCurrency = null, string criteriaCode = null, string criteriaSort = null, List<string> criteriaFacets = null, bool? criteriaHideDirectLinkedCategories = null, List<string> criteriaPropertyValues = null, int? criteriaStart = null, int? criteriaCount = null, DateTime? criteriaIndexDate = null);
+  
+        /// <summary>
+        /// Searches for the items by complex criteria.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="criteriaResponseGroup"></param>
+        /// <param name="criteriaKeyword"></param>
+        /// <param name="criteriaSearchInChildren"></param>
+        /// <param name="criteriaCategoryId"></param>
+        /// <param name="criteriaCategoriesIds"></param>
+        /// <param name="criteriaCatalogId"></param>
+        /// <param name="criteriaCatalogsIds"></param>
+        /// <param name="criteriaLanguageCode"></param>
+        /// <param name="criteriaCurrency"></param>
+        /// <param name="criteriaCode"></param>
+        /// <param name="criteriaSort"></param>
+        /// <param name="criteriaFacets"></param>
+        /// <param name="criteriaHideDirectLinkedCategories"></param>
+        /// <param name="criteriaPropertyValues"></param>
+        /// <param name="criteriaStart"></param>
+        /// <param name="criteriaCount"></param>
+        /// <param name="criteriaIndexDate"></param>
+        /// <returns>VirtoCommerceCatalogModuleWebModelCatalogSearchResult</returns>
+        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelCatalogSearchResult> CatalogModuleSearchSearchAsync (string criteriaResponseGroup = null, string criteriaKeyword = null, bool? criteriaSearchInChildren = null, string criteriaCategoryId = null, List<string> criteriaCategoriesIds = null, string criteriaCatalogId = null, List<string> criteriaCatalogsIds = null, string criteriaLanguageCode = null, string criteriaCurrency = null, string criteriaCode = null, string criteriaSort = null, List<string> criteriaFacets = null, bool? criteriaHideDirectLinkedCategories = null, List<string> criteriaPropertyValues = null, int? criteriaStart = null, int? criteriaCount = null, DateTime? criteriaIndexDate = null);
         
         /// <summary>
         /// Gets the template for a new category.
@@ -552,7 +604,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="catalogId">The catalog id.</param>
         /// <param name="parentCategoryId">The parent category id. (Optional)</param>
         /// <returns>VirtoCommerceCatalogModuleWebModelCategory</returns>
-        VirtoCommerceCatalogModuleWebModelCategory CatalogModuleCategoriesGetNewCategory (string catalogId, string parentCategoryId);
+        VirtoCommerceCatalogModuleWebModelCategory CatalogModuleCategoriesGetNewCategory (string catalogId, string parentCategoryId = null);
   
         /// <summary>
         /// Gets the template for a new category.
@@ -563,7 +615,7 @@ namespace VirtoCommerce.Client.Api
         /// <param name="catalogId">The catalog id.</param>
         /// <param name="parentCategoryId">The parent category id. (Optional)</param>
         /// <returns>VirtoCommerceCatalogModuleWebModelCategory</returns>
-        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelCategory> CatalogModuleCategoriesGetNewCategoryAsync (string catalogId, string parentCategoryId);
+        System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelCategory> CatalogModuleCategoriesGetNewCategoryAsync (string catalogId, string parentCategoryId = null);
         
         /// <summary>
         /// Gets the template for a new product (inside category).
@@ -681,7 +733,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/catalog/catalogs";
+            var path_ = "/api/catalog/catalogs";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -711,14 +763,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGetCatalogs: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGetCatalogs: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommerceCatalogModuleWebModelCatalog>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceCatalogModuleWebModelCatalog>), response.Headers);
+            return (List<VirtoCommerceCatalogModuleWebModelCatalog>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceCatalogModuleWebModelCatalog>));
         }
     
         /// <summary>
@@ -729,7 +781,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/catalog/catalogs";
+            var path_ = "/api/catalog/catalogs";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -759,11 +811,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGetCatalogs: " + response.Content, response.Content);
 
-            return (List<VirtoCommerceCatalogModuleWebModelCatalog>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceCatalogModuleWebModelCatalog>), response.Headers);
+            return (List<VirtoCommerceCatalogModuleWebModelCatalog>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceCatalogModuleWebModelCatalog>));
         }
         
         /// <summary>
@@ -778,7 +830,7 @@ namespace VirtoCommerce.Client.Api
             if (catalog == null) throw new ApiException(400, "Missing required parameter 'catalog' when calling CatalogModuleCatalogsUpdate");
             
     
-            var path = "/api/catalog/catalogs";
+            var path_ = "/api/catalog/catalogs";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -809,7 +861,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsUpdate: " + response.Content, response.Content);
@@ -830,7 +882,7 @@ namespace VirtoCommerce.Client.Api
             if (catalog == null) throw new ApiException(400, "Missing required parameter 'catalog' when calling CatalogModuleCatalogsUpdate");
             
     
-            var path = "/api/catalog/catalogs";
+            var path_ = "/api/catalog/catalogs";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -861,7 +913,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsUpdate: " + response.Content, response.Content);
 
@@ -881,7 +933,7 @@ namespace VirtoCommerce.Client.Api
             if (catalog == null) throw new ApiException(400, "Missing required parameter 'catalog' when calling CatalogModuleCatalogsCreate");
             
     
-            var path = "/api/catalog/catalogs";
+            var path_ = "/api/catalog/catalogs";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -912,14 +964,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsCreate: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsCreate: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCatalog), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCatalog));
         }
     
         /// <summary>
@@ -933,7 +985,7 @@ namespace VirtoCommerce.Client.Api
             if (catalog == null) throw new ApiException(400, "Missing required parameter 'catalog' when calling CatalogModuleCatalogsCreate");
             
     
-            var path = "/api/catalog/catalogs";
+            var path_ = "/api/catalog/catalogs";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -964,11 +1016,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsCreate: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCatalog), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCatalog));
         }
         
         /// <summary>
@@ -979,7 +1031,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/catalog/catalogs/getnew";
+            var path_ = "/api/catalog/catalogs/getnew";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1009,14 +1061,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGetNewCatalog: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGetNewCatalog: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCatalog), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCatalog));
         }
     
         /// <summary>
@@ -1027,7 +1079,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/catalog/catalogs/getnew";
+            var path_ = "/api/catalog/catalogs/getnew";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1057,11 +1109,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGetNewCatalog: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCatalog), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCatalog));
         }
         
         /// <summary>
@@ -1072,7 +1124,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/catalog/catalogs/getnewvirtual";
+            var path_ = "/api/catalog/catalogs/getnewvirtual";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1102,14 +1154,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGetNewVirtualCatalog: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGetNewVirtualCatalog: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCatalog), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCatalog));
         }
     
         /// <summary>
@@ -1120,7 +1172,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/catalog/catalogs/getnewvirtual";
+            var path_ = "/api/catalog/catalogs/getnewvirtual";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1150,11 +1202,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGetNewVirtualCatalog: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCatalog), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCatalog));
         }
         
         /// <summary>
@@ -1169,7 +1221,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling CatalogModuleCatalogsGet");
             
     
-            var path = "/api/catalog/catalogs/{id}";
+            var path_ = "/api/catalog/catalogs/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1200,14 +1252,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCatalog), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCatalog));
         }
     
         /// <summary>
@@ -1221,7 +1273,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling CatalogModuleCatalogsGet");
             
     
-            var path = "/api/catalog/catalogs/{id}";
+            var path_ = "/api/catalog/catalogs/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1252,11 +1304,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsGet: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCatalog), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCatalog) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCatalog));
         }
         
         /// <summary>
@@ -1271,7 +1323,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling CatalogModuleCatalogsDelete");
             
     
-            var path = "/api/catalog/catalogs/{id}";
+            var path_ = "/api/catalog/catalogs/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1302,7 +1354,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsDelete: " + response.Content, response.Content);
@@ -1323,7 +1375,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling CatalogModuleCatalogsDelete");
             
     
-            var path = "/api/catalog/catalogs/{id}";
+            var path_ = "/api/catalog/catalogs/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1354,7 +1406,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCatalogsDelete: " + response.Content, response.Content);
 
@@ -1374,7 +1426,7 @@ namespace VirtoCommerce.Client.Api
             if (category == null) throw new ApiException(400, "Missing required parameter 'category' when calling CatalogModuleCategoriesCreateOrUpdateCategory");
             
     
-            var path = "/api/catalog/categories";
+            var path_ = "/api/catalog/categories";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1405,7 +1457,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCategoriesCreateOrUpdateCategory: " + response.Content, response.Content);
@@ -1426,7 +1478,7 @@ namespace VirtoCommerce.Client.Api
             if (category == null) throw new ApiException(400, "Missing required parameter 'category' when calling CatalogModuleCategoriesCreateOrUpdateCategory");
             
     
-            var path = "/api/catalog/categories";
+            var path_ = "/api/catalog/categories";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1457,7 +1509,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCategoriesCreateOrUpdateCategory: " + response.Content, response.Content);
 
@@ -1477,7 +1529,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling CatalogModuleCategoriesDelete");
             
     
-            var path = "/api/catalog/categories";
+            var path_ = "/api/catalog/categories";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1508,7 +1560,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCategoriesDelete: " + response.Content, response.Content);
@@ -1529,7 +1581,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling CatalogModuleCategoriesDelete");
             
     
-            var path = "/api/catalog/categories";
+            var path_ = "/api/catalog/categories";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1560,7 +1612,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCategoriesDelete: " + response.Content, response.Content);
 
@@ -1580,7 +1632,7 @@ namespace VirtoCommerce.Client.Api
             if (categoryId == null) throw new ApiException(400, "Missing required parameter 'categoryId' when calling CatalogModulePropertiesGetNewCategoryProperty");
             
     
-            var path = "/api/catalog/categories/{categoryId}/properties/getnew";
+            var path_ = "/api/catalog/categories/{categoryId}/properties/getnew";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1611,14 +1663,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGetNewCategoryProperty: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGetNewCategoryProperty: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProperty), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProperty));
         }
     
         /// <summary>
@@ -1632,7 +1684,7 @@ namespace VirtoCommerce.Client.Api
             if (categoryId == null) throw new ApiException(400, "Missing required parameter 'categoryId' when calling CatalogModulePropertiesGetNewCategoryProperty");
             
     
-            var path = "/api/catalog/categories/{categoryId}/properties/getnew";
+            var path_ = "/api/catalog/categories/{categoryId}/properties/getnew";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1663,11 +1715,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGetNewCategoryProperty: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProperty), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProperty));
         }
         
         /// <summary>
@@ -1682,7 +1734,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling CatalogModuleCategoriesGet");
             
     
-            var path = "/api/catalog/categories/{id}";
+            var path_ = "/api/catalog/categories/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1713,14 +1765,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCategoriesGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCategoriesGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelCategory) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCategory), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCategory) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCategory));
         }
     
         /// <summary>
@@ -1734,7 +1786,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling CatalogModuleCategoriesGet");
             
     
-            var path = "/api/catalog/categories/{id}";
+            var path_ = "/api/catalog/categories/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1765,26 +1817,26 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCategoriesGet: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelCategory) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCategory), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCategory) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCategory));
         }
         
         /// <summary>
         /// Start catalog data export process. Data export is an async process. An ExportNotification is returned for progress reporting.
         /// </summary>
         /// <param name="exportInfo">The export configuration.</param> 
-        /// <returns>VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification</returns>            
-        public VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification CatalogModuleExportImportDoExport (VirtoCommerceCatalogModuleWebExportImportCsvExportInfo exportInfo)
+        /// <returns>VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification</returns>            
+        public VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification CatalogModuleExportImportDoExport (VirtoCommerceCatalogModuleWebExportImportCsvExportInfo exportInfo)
         {
             
             // verify the required parameter 'exportInfo' is set
             if (exportInfo == null) throw new ApiException(400, "Missing required parameter 'exportInfo' when calling CatalogModuleExportImportDoExport");
             
     
-            var path = "/api/catalog/export";
+            var path_ = "/api/catalog/export";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1815,28 +1867,28 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleExportImportDoExport: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleExportImportDoExport: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification));
         }
     
         /// <summary>
         /// Start catalog data export process. Data export is an async process. An ExportNotification is returned for progress reporting.
         /// </summary>
         /// <param name="exportInfo">The export configuration.</param>
-        /// <returns>VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification> CatalogModuleExportImportDoExportAsync (VirtoCommerceCatalogModuleWebExportImportCsvExportInfo exportInfo)
+        /// <returns>VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification</returns>
+        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification> CatalogModuleExportImportDoExportAsync (VirtoCommerceCatalogModuleWebExportImportCsvExportInfo exportInfo)
         {
             // verify the required parameter 'exportInfo' is set
             if (exportInfo == null) throw new ApiException(400, "Missing required parameter 'exportInfo' when calling CatalogModuleExportImportDoExport");
             
     
-            var path = "/api/catalog/export";
+            var path_ = "/api/catalog/export";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1867,26 +1919,26 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleExportImportDoExport: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification));
         }
         
         /// <summary>
         /// Start catalog data import process. Data import is an async process. An ImportNotification is returned for progress reporting.
         /// </summary>
         /// <param name="importInfo">The import data configuration.</param> 
-        /// <returns>VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification</returns>            
-        public VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification CatalogModuleExportImportDoImport (VirtoCommerceCatalogModuleWebExportImportCsvImportInfo importInfo)
+        /// <returns>VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification</returns>            
+        public VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification CatalogModuleExportImportDoImport (VirtoCommerceCatalogModuleWebExportImportCsvImportInfo importInfo)
         {
             
             // verify the required parameter 'importInfo' is set
             if (importInfo == null) throw new ApiException(400, "Missing required parameter 'importInfo' when calling CatalogModuleExportImportDoImport");
             
     
-            var path = "/api/catalog/import";
+            var path_ = "/api/catalog/import";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1917,28 +1969,28 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleExportImportDoImport: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleExportImportDoImport: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification));
         }
     
         /// <summary>
         /// Start catalog data import process. Data import is an async process. An ImportNotification is returned for progress reporting.
         /// </summary>
         /// <param name="importInfo">The import data configuration.</param>
-        /// <returns>VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification> CatalogModuleExportImportDoImportAsync (VirtoCommerceCatalogModuleWebExportImportCsvImportInfo importInfo)
+        /// <returns>VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification</returns>
+        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification> CatalogModuleExportImportDoImportAsync (VirtoCommerceCatalogModuleWebExportImportCsvImportInfo importInfo)
         {
             // verify the required parameter 'importInfo' is set
             if (importInfo == null) throw new ApiException(400, "Missing required parameter 'importInfo' when calling CatalogModuleExportImportDoImport");
             
     
-            var path = "/api/catalog/import";
+            var path_ = "/api/catalog/import";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1969,11 +2021,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleExportImportDoImport: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification));
         }
         
         /// <summary>
@@ -1982,14 +2034,14 @@ namespace VirtoCommerce.Client.Api
         /// <param name="fileUrl">The file URL.</param> 
         /// <param name="delimiter">The CSV delimiter.</param> 
         /// <returns>VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration</returns>            
-        public VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration CatalogModuleExportImportGetMappingConfiguration (string fileUrl, string delimiter)
+        public VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration CatalogModuleExportImportGetMappingConfiguration (string fileUrl, string delimiter = null)
         {
             
             // verify the required parameter 'fileUrl' is set
             if (fileUrl == null) throw new ApiException(400, "Missing required parameter 'fileUrl' when calling CatalogModuleExportImportGetMappingConfiguration");
             
     
-            var path = "/api/catalog/import/mappingconfiguration";
+            var path_ = "/api/catalog/import/mappingconfiguration";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2021,14 +2073,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleExportImportGetMappingConfiguration: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleExportImportGetMappingConfiguration: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration), response.Headers);
+            return (VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration));
         }
     
         /// <summary>
@@ -2037,13 +2089,13 @@ namespace VirtoCommerce.Client.Api
         /// <param name="fileUrl">The file URL.</param>
         /// <param name="delimiter">The CSV delimiter.</param>
         /// <returns>VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration> CatalogModuleExportImportGetMappingConfigurationAsync (string fileUrl, string delimiter)
+        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration> CatalogModuleExportImportGetMappingConfigurationAsync (string fileUrl, string delimiter = null)
         {
             // verify the required parameter 'fileUrl' is set
             if (fileUrl == null) throw new ApiException(400, "Missing required parameter 'fileUrl' when calling CatalogModuleExportImportGetMappingConfiguration");
             
     
-            var path = "/api/catalog/import/mappingconfiguration";
+            var path_ = "/api/catalog/import/mappingconfiguration";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2075,11 +2127,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleExportImportGetMappingConfiguration: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration), response.Headers);
+            return (VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebExportImportCsvProductMappingConfiguration));
         }
         
         /// <summary>
@@ -2092,11 +2144,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="criteriaStart">Gets or sets the start index of total results from which entries should be returned.</param> 
         /// <param name="criteriaCount">Gets or sets the maximum count of results to return.</param> 
         /// <returns>VirtoCommerceCatalogModuleWebModelListEntrySearchResult</returns>            
-        public VirtoCommerceCatalogModuleWebModelListEntrySearchResult CatalogModuleListEntryListItemsSearch (string criteriaResponseGroup, string criteriaKeyword, string criteriaCategoryId, string criteriaCatalogId, int? criteriaStart, int? criteriaCount)
+        public VirtoCommerceCatalogModuleWebModelListEntrySearchResult CatalogModuleListEntryListItemsSearch (string criteriaResponseGroup = null, string criteriaKeyword = null, string criteriaCategoryId = null, string criteriaCatalogId = null, int? criteriaStart = null, int? criteriaCount = null)
         {
             
     
-            var path = "/api/catalog/listentries";
+            var path_ = "/api/catalog/listentries";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2132,14 +2184,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleListEntryListItemsSearch: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleListEntryListItemsSearch: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelListEntrySearchResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelListEntrySearchResult), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelListEntrySearchResult) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelListEntrySearchResult));
         }
     
         /// <summary>
@@ -2152,11 +2204,11 @@ namespace VirtoCommerce.Client.Api
         /// <param name="criteriaStart">Gets or sets the start index of total results from which entries should be returned.</param>
         /// <param name="criteriaCount">Gets or sets the maximum count of results to return.</param>
         /// <returns>VirtoCommerceCatalogModuleWebModelListEntrySearchResult</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelListEntrySearchResult> CatalogModuleListEntryListItemsSearchAsync (string criteriaResponseGroup, string criteriaKeyword, string criteriaCategoryId, string criteriaCatalogId, int? criteriaStart, int? criteriaCount)
+        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelListEntrySearchResult> CatalogModuleListEntryListItemsSearchAsync (string criteriaResponseGroup = null, string criteriaKeyword = null, string criteriaCategoryId = null, string criteriaCatalogId = null, int? criteriaStart = null, int? criteriaCount = null)
         {
             
     
-            var path = "/api/catalog/listentries";
+            var path_ = "/api/catalog/listentries";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2192,11 +2244,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleListEntryListItemsSearch: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelListEntrySearchResult) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelListEntrySearchResult), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelListEntrySearchResult) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelListEntrySearchResult));
         }
         
         /// <summary>
@@ -2211,7 +2263,7 @@ namespace VirtoCommerce.Client.Api
             if (moveInfo == null) throw new ApiException(400, "Missing required parameter 'moveInfo' when calling CatalogModuleListEntryMove");
             
     
-            var path = "/api/catalog/listentries/move";
+            var path_ = "/api/catalog/listentries/move";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2242,7 +2294,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleListEntryMove: " + response.Content, response.Content);
@@ -2263,7 +2315,7 @@ namespace VirtoCommerce.Client.Api
             if (moveInfo == null) throw new ApiException(400, "Missing required parameter 'moveInfo' when calling CatalogModuleListEntryMove");
             
     
-            var path = "/api/catalog/listentries/move";
+            var path_ = "/api/catalog/listentries/move";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2294,7 +2346,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleListEntryMove: " + response.Content, response.Content);
 
@@ -2314,7 +2366,7 @@ namespace VirtoCommerce.Client.Api
             if (links == null) throw new ApiException(400, "Missing required parameter 'links' when calling CatalogModuleListEntryCreateLinks");
             
     
-            var path = "/api/catalog/listentrylinks";
+            var path_ = "/api/catalog/listentrylinks";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2345,7 +2397,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleListEntryCreateLinks: " + response.Content, response.Content);
@@ -2366,7 +2418,7 @@ namespace VirtoCommerce.Client.Api
             if (links == null) throw new ApiException(400, "Missing required parameter 'links' when calling CatalogModuleListEntryCreateLinks");
             
     
-            var path = "/api/catalog/listentrylinks";
+            var path_ = "/api/catalog/listentrylinks";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2397,7 +2449,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleListEntryCreateLinks: " + response.Content, response.Content);
 
@@ -2417,7 +2469,7 @@ namespace VirtoCommerce.Client.Api
             if (links == null) throw new ApiException(400, "Missing required parameter 'links' when calling CatalogModuleListEntryDeleteLinks");
             
     
-            var path = "/api/catalog/listentrylinks/delete";
+            var path_ = "/api/catalog/listentrylinks/delete";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2448,7 +2500,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleListEntryDeleteLinks: " + response.Content, response.Content);
@@ -2469,7 +2521,7 @@ namespace VirtoCommerce.Client.Api
             if (links == null) throw new ApiException(400, "Missing required parameter 'links' when calling CatalogModuleListEntryDeleteLinks");
             
     
-            var path = "/api/catalog/listentrylinks/delete";
+            var path_ = "/api/catalog/listentrylinks/delete";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2500,7 +2552,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleListEntryDeleteLinks: " + response.Content, response.Content);
 
@@ -2520,7 +2572,7 @@ namespace VirtoCommerce.Client.Api
             if (product == null) throw new ApiException(400, "Missing required parameter 'product' when calling CatalogModuleProductsUpdate");
             
     
-            var path = "/api/catalog/products";
+            var path_ = "/api/catalog/products";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2551,7 +2603,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsUpdate: " + response.Content, response.Content);
@@ -2572,7 +2624,7 @@ namespace VirtoCommerce.Client.Api
             if (product == null) throw new ApiException(400, "Missing required parameter 'product' when calling CatalogModuleProductsUpdate");
             
     
-            var path = "/api/catalog/products";
+            var path_ = "/api/catalog/products";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2603,7 +2655,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsUpdate: " + response.Content, response.Content);
 
@@ -2623,7 +2675,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling CatalogModuleProductsDelete");
             
     
-            var path = "/api/catalog/products";
+            var path_ = "/api/catalog/products";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2654,7 +2706,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsDelete: " + response.Content, response.Content);
@@ -2675,7 +2727,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling CatalogModuleProductsDelete");
             
     
-            var path = "/api/catalog/products";
+            var path_ = "/api/catalog/products";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2706,7 +2758,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsDelete: " + response.Content, response.Content);
 
@@ -2726,7 +2778,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling CatalogModuleProductsGet");
             
     
-            var path = "/api/catalog/products/{id}";
+            var path_ = "/api/catalog/products/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2757,14 +2809,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProduct), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProduct));
         }
     
         /// <summary>
@@ -2778,7 +2830,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling CatalogModuleProductsGet");
             
     
-            var path = "/api/catalog/products/{id}";
+            var path_ = "/api/catalog/products/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2809,11 +2861,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGet: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProduct), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProduct));
         }
         
         /// <summary>
@@ -2828,7 +2880,7 @@ namespace VirtoCommerce.Client.Api
             if (productId == null) throw new ApiException(400, "Missing required parameter 'productId' when calling CatalogModuleProductsGetNewVariation");
             
     
-            var path = "/api/catalog/products/{productId}/getnewvariation";
+            var path_ = "/api/catalog/products/{productId}/getnewvariation";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2859,14 +2911,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGetNewVariation: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGetNewVariation: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProduct), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProduct));
         }
     
         /// <summary>
@@ -2880,7 +2932,7 @@ namespace VirtoCommerce.Client.Api
             if (productId == null) throw new ApiException(400, "Missing required parameter 'productId' when calling CatalogModuleProductsGetNewVariation");
             
     
-            var path = "/api/catalog/products/{productId}/getnewvariation";
+            var path_ = "/api/catalog/products/{productId}/getnewvariation";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2911,11 +2963,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGetNewVariation: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProduct), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProduct));
         }
         
         /// <summary>
@@ -2930,7 +2982,7 @@ namespace VirtoCommerce.Client.Api
             if (property == null) throw new ApiException(400, "Missing required parameter 'property' when calling CatalogModulePropertiesCreateOrUpdateProperty");
             
     
-            var path = "/api/catalog/properties";
+            var path_ = "/api/catalog/properties";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -2961,7 +3013,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesCreateOrUpdateProperty: " + response.Content, response.Content);
@@ -2982,7 +3034,7 @@ namespace VirtoCommerce.Client.Api
             if (property == null) throw new ApiException(400, "Missing required parameter 'property' when calling CatalogModulePropertiesCreateOrUpdateProperty");
             
     
-            var path = "/api/catalog/properties";
+            var path_ = "/api/catalog/properties";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3013,7 +3065,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesCreateOrUpdateProperty: " + response.Content, response.Content);
 
@@ -3033,7 +3085,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling CatalogModulePropertiesDelete");
             
     
-            var path = "/api/catalog/properties";
+            var path_ = "/api/catalog/properties";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3064,7 +3116,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesDelete: " + response.Content, response.Content);
@@ -3085,7 +3137,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling CatalogModulePropertiesDelete");
             
     
-            var path = "/api/catalog/properties";
+            var path_ = "/api/catalog/properties";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3116,7 +3168,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesDelete: " + response.Content, response.Content);
 
@@ -3136,7 +3188,7 @@ namespace VirtoCommerce.Client.Api
             if (propertyId == null) throw new ApiException(400, "Missing required parameter 'propertyId' when calling CatalogModulePropertiesGet");
             
     
-            var path = "/api/catalog/properties/{propertyId}";
+            var path_ = "/api/catalog/properties/{propertyId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3167,14 +3219,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProperty), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProperty));
         }
     
         /// <summary>
@@ -3188,7 +3240,7 @@ namespace VirtoCommerce.Client.Api
             if (propertyId == null) throw new ApiException(400, "Missing required parameter 'propertyId' when calling CatalogModulePropertiesGet");
             
     
-            var path = "/api/catalog/properties/{propertyId}";
+            var path_ = "/api/catalog/properties/{propertyId}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3219,11 +3271,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGet: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProperty), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProperty));
         }
         
         /// <summary>
@@ -3232,14 +3284,14 @@ namespace VirtoCommerce.Client.Api
         /// <param name="propertyId">The property id.</param> 
         /// <param name="keyword">The keyword. (Optional)</param> 
         /// <returns></returns>            
-        public List<VirtoCommerceCatalogModuleWebModelPropertyValue> CatalogModulePropertiesGetPropertyValues (string propertyId, string keyword)
+        public List<VirtoCommerceCatalogModuleWebModelPropertyValue> CatalogModulePropertiesGetPropertyValues (string propertyId, string keyword = null)
         {
             
             // verify the required parameter 'propertyId' is set
             if (propertyId == null) throw new ApiException(400, "Missing required parameter 'propertyId' when calling CatalogModulePropertiesGetPropertyValues");
             
     
-            var path = "/api/catalog/properties/{propertyId}/values";
+            var path_ = "/api/catalog/properties/{propertyId}/values";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3271,14 +3323,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGetPropertyValues: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGetPropertyValues: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommerceCatalogModuleWebModelPropertyValue>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceCatalogModuleWebModelPropertyValue>), response.Headers);
+            return (List<VirtoCommerceCatalogModuleWebModelPropertyValue>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceCatalogModuleWebModelPropertyValue>));
         }
     
         /// <summary>
@@ -3287,13 +3339,13 @@ namespace VirtoCommerce.Client.Api
         /// <param name="propertyId">The property id.</param>
         /// <param name="keyword">The keyword. (Optional)</param>
         /// <returns></returns>
-        public async System.Threading.Tasks.Task<List<VirtoCommerceCatalogModuleWebModelPropertyValue>> CatalogModulePropertiesGetPropertyValuesAsync (string propertyId, string keyword)
+        public async System.Threading.Tasks.Task<List<VirtoCommerceCatalogModuleWebModelPropertyValue>> CatalogModulePropertiesGetPropertyValuesAsync (string propertyId, string keyword = null)
         {
             // verify the required parameter 'propertyId' is set
             if (propertyId == null) throw new ApiException(400, "Missing required parameter 'propertyId' when calling CatalogModulePropertiesGetPropertyValues");
             
     
-            var path = "/api/catalog/properties/{propertyId}/values";
+            var path_ = "/api/catalog/properties/{propertyId}/values";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3325,11 +3377,172 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGetPropertyValues: " + response.Content, response.Content);
 
-            return (List<VirtoCommerceCatalogModuleWebModelPropertyValue>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommerceCatalogModuleWebModelPropertyValue>), response.Headers);
+            return (List<VirtoCommerceCatalogModuleWebModelPropertyValue>) ApiClient.Deserialize(response, typeof(List<VirtoCommerceCatalogModuleWebModelPropertyValue>));
+        }
+        
+        /// <summary>
+        /// Searches for the items by complex criteria. 
+        /// </summary>
+        /// <param name="criteriaResponseGroup"></param> 
+        /// <param name="criteriaKeyword"></param> 
+        /// <param name="criteriaSearchInChildren"></param> 
+        /// <param name="criteriaCategoryId"></param> 
+        /// <param name="criteriaCategoriesIds"></param> 
+        /// <param name="criteriaCatalogId"></param> 
+        /// <param name="criteriaCatalogsIds"></param> 
+        /// <param name="criteriaLanguageCode"></param> 
+        /// <param name="criteriaCurrency"></param> 
+        /// <param name="criteriaCode"></param> 
+        /// <param name="criteriaSort"></param> 
+        /// <param name="criteriaFacets"></param> 
+        /// <param name="criteriaHideDirectLinkedCategories"></param> 
+        /// <param name="criteriaPropertyValues"></param> 
+        /// <param name="criteriaStart"></param> 
+        /// <param name="criteriaCount"></param> 
+        /// <param name="criteriaIndexDate"></param> 
+        /// <returns>VirtoCommerceCatalogModuleWebModelCatalogSearchResult</returns>            
+        public VirtoCommerceCatalogModuleWebModelCatalogSearchResult CatalogModuleSearchSearch (string criteriaResponseGroup = null, string criteriaKeyword = null, bool? criteriaSearchInChildren = null, string criteriaCategoryId = null, List<string> criteriaCategoriesIds = null, string criteriaCatalogId = null, List<string> criteriaCatalogsIds = null, string criteriaLanguageCode = null, string criteriaCurrency = null, string criteriaCode = null, string criteriaSort = null, List<string> criteriaFacets = null, bool? criteriaHideDirectLinkedCategories = null, List<string> criteriaPropertyValues = null, int? criteriaStart = null, int? criteriaCount = null, DateTime? criteriaIndexDate = null)
+        {
+            
+    
+            var path_ = "/api/catalog/search";
+    
+            var pathParams = new Dictionary<String, String>();
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+
+            // to determine the Accept header
+            String[] http_header_accepts = new String[] {
+                "application/json", "text/json"
+            };
+            String http_header_accept = ApiClient.SelectHeaderAccept(http_header_accepts);
+            if (http_header_accept != null)
+                headerParams.Add("Accept", ApiClient.SelectHeaderAccept(http_header_accepts));
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            pathParams.Add("format", "json");
+            
+            if (criteriaResponseGroup != null) queryParams.Add("criteria.responseGroup", ApiClient.ParameterToString(criteriaResponseGroup)); // query parameter
+            if (criteriaKeyword != null) queryParams.Add("criteria.keyword", ApiClient.ParameterToString(criteriaKeyword)); // query parameter
+            if (criteriaSearchInChildren != null) queryParams.Add("criteria.searchInChildren", ApiClient.ParameterToString(criteriaSearchInChildren)); // query parameter
+            if (criteriaCategoryId != null) queryParams.Add("criteria.categoryId", ApiClient.ParameterToString(criteriaCategoryId)); // query parameter
+            if (criteriaCategoriesIds != null) queryParams.Add("criteria.categoriesIds", ApiClient.ParameterToString(criteriaCategoriesIds)); // query parameter
+            if (criteriaCatalogId != null) queryParams.Add("criteria.catalogId", ApiClient.ParameterToString(criteriaCatalogId)); // query parameter
+            if (criteriaCatalogsIds != null) queryParams.Add("criteria.catalogsIds", ApiClient.ParameterToString(criteriaCatalogsIds)); // query parameter
+            if (criteriaLanguageCode != null) queryParams.Add("criteria.languageCode", ApiClient.ParameterToString(criteriaLanguageCode)); // query parameter
+            if (criteriaCurrency != null) queryParams.Add("criteria.currency", ApiClient.ParameterToString(criteriaCurrency)); // query parameter
+            if (criteriaCode != null) queryParams.Add("criteria.code", ApiClient.ParameterToString(criteriaCode)); // query parameter
+            if (criteriaSort != null) queryParams.Add("criteria.sort", ApiClient.ParameterToString(criteriaSort)); // query parameter
+            if (criteriaFacets != null) queryParams.Add("criteria.facets", ApiClient.ParameterToString(criteriaFacets)); // query parameter
+            if (criteriaHideDirectLinkedCategories != null) queryParams.Add("criteria.hideDirectLinkedCategories", ApiClient.ParameterToString(criteriaHideDirectLinkedCategories)); // query parameter
+            if (criteriaPropertyValues != null) queryParams.Add("criteria.propertyValues", ApiClient.ParameterToString(criteriaPropertyValues)); // query parameter
+            if (criteriaStart != null) queryParams.Add("criteria.start", ApiClient.ParameterToString(criteriaStart)); // query parameter
+            if (criteriaCount != null) queryParams.Add("criteria.count", ApiClient.ParameterToString(criteriaCount)); // query parameter
+            if (criteriaIndexDate != null) queryParams.Add("criteria.indexDate", ApiClient.ParameterToString(criteriaIndexDate)); // query parameter
+            
+            
+            
+            
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleSearchSearch: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleSearchSearch: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (VirtoCommerceCatalogModuleWebModelCatalogSearchResult) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCatalogSearchResult));
+        }
+    
+        /// <summary>
+        /// Searches for the items by complex criteria. 
+        /// </summary>
+        /// <param name="criteriaResponseGroup"></param>
+        /// <param name="criteriaKeyword"></param>
+        /// <param name="criteriaSearchInChildren"></param>
+        /// <param name="criteriaCategoryId"></param>
+        /// <param name="criteriaCategoriesIds"></param>
+        /// <param name="criteriaCatalogId"></param>
+        /// <param name="criteriaCatalogsIds"></param>
+        /// <param name="criteriaLanguageCode"></param>
+        /// <param name="criteriaCurrency"></param>
+        /// <param name="criteriaCode"></param>
+        /// <param name="criteriaSort"></param>
+        /// <param name="criteriaFacets"></param>
+        /// <param name="criteriaHideDirectLinkedCategories"></param>
+        /// <param name="criteriaPropertyValues"></param>
+        /// <param name="criteriaStart"></param>
+        /// <param name="criteriaCount"></param>
+        /// <param name="criteriaIndexDate"></param>
+        /// <returns>VirtoCommerceCatalogModuleWebModelCatalogSearchResult</returns>
+        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelCatalogSearchResult> CatalogModuleSearchSearchAsync (string criteriaResponseGroup = null, string criteriaKeyword = null, bool? criteriaSearchInChildren = null, string criteriaCategoryId = null, List<string> criteriaCategoriesIds = null, string criteriaCatalogId = null, List<string> criteriaCatalogsIds = null, string criteriaLanguageCode = null, string criteriaCurrency = null, string criteriaCode = null, string criteriaSort = null, List<string> criteriaFacets = null, bool? criteriaHideDirectLinkedCategories = null, List<string> criteriaPropertyValues = null, int? criteriaStart = null, int? criteriaCount = null, DateTime? criteriaIndexDate = null)
+        {
+            
+    
+            var path_ = "/api/catalog/search";
+    
+            var pathParams = new Dictionary<String, String>();
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+
+            // to determine the Accept header
+            String[] http_header_accepts = new String[] {
+                "application/json", "text/json"
+            };
+            String http_header_accept = ApiClient.SelectHeaderAccept(http_header_accepts);
+            if (http_header_accept != null)
+                headerParams.Add("Accept", ApiClient.SelectHeaderAccept(http_header_accepts));
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            pathParams.Add("format", "json");
+            
+            if (criteriaResponseGroup != null) queryParams.Add("criteria.responseGroup", ApiClient.ParameterToString(criteriaResponseGroup)); // query parameter
+            if (criteriaKeyword != null) queryParams.Add("criteria.keyword", ApiClient.ParameterToString(criteriaKeyword)); // query parameter
+            if (criteriaSearchInChildren != null) queryParams.Add("criteria.searchInChildren", ApiClient.ParameterToString(criteriaSearchInChildren)); // query parameter
+            if (criteriaCategoryId != null) queryParams.Add("criteria.categoryId", ApiClient.ParameterToString(criteriaCategoryId)); // query parameter
+            if (criteriaCategoriesIds != null) queryParams.Add("criteria.categoriesIds", ApiClient.ParameterToString(criteriaCategoriesIds)); // query parameter
+            if (criteriaCatalogId != null) queryParams.Add("criteria.catalogId", ApiClient.ParameterToString(criteriaCatalogId)); // query parameter
+            if (criteriaCatalogsIds != null) queryParams.Add("criteria.catalogsIds", ApiClient.ParameterToString(criteriaCatalogsIds)); // query parameter
+            if (criteriaLanguageCode != null) queryParams.Add("criteria.languageCode", ApiClient.ParameterToString(criteriaLanguageCode)); // query parameter
+            if (criteriaCurrency != null) queryParams.Add("criteria.currency", ApiClient.ParameterToString(criteriaCurrency)); // query parameter
+            if (criteriaCode != null) queryParams.Add("criteria.code", ApiClient.ParameterToString(criteriaCode)); // query parameter
+            if (criteriaSort != null) queryParams.Add("criteria.sort", ApiClient.ParameterToString(criteriaSort)); // query parameter
+            if (criteriaFacets != null) queryParams.Add("criteria.facets", ApiClient.ParameterToString(criteriaFacets)); // query parameter
+            if (criteriaHideDirectLinkedCategories != null) queryParams.Add("criteria.hideDirectLinkedCategories", ApiClient.ParameterToString(criteriaHideDirectLinkedCategories)); // query parameter
+            if (criteriaPropertyValues != null) queryParams.Add("criteria.propertyValues", ApiClient.ParameterToString(criteriaPropertyValues)); // query parameter
+            if (criteriaStart != null) queryParams.Add("criteria.start", ApiClient.ParameterToString(criteriaStart)); // query parameter
+            if (criteriaCount != null) queryParams.Add("criteria.count", ApiClient.ParameterToString(criteriaCount)); // query parameter
+            if (criteriaIndexDate != null) queryParams.Add("criteria.indexDate", ApiClient.ParameterToString(criteriaIndexDate)); // query parameter
+            
+            
+            
+            
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleSearchSearch: " + response.Content, response.Content);
+
+            return (VirtoCommerceCatalogModuleWebModelCatalogSearchResult) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCatalogSearchResult));
         }
         
         /// <summary>
@@ -3338,14 +3551,14 @@ namespace VirtoCommerce.Client.Api
         /// <param name="catalogId">The catalog id.</param> 
         /// <param name="parentCategoryId">The parent category id. (Optional)</param> 
         /// <returns>VirtoCommerceCatalogModuleWebModelCategory</returns>            
-        public VirtoCommerceCatalogModuleWebModelCategory CatalogModuleCategoriesGetNewCategory (string catalogId, string parentCategoryId)
+        public VirtoCommerceCatalogModuleWebModelCategory CatalogModuleCategoriesGetNewCategory (string catalogId, string parentCategoryId = null)
         {
             
             // verify the required parameter 'catalogId' is set
             if (catalogId == null) throw new ApiException(400, "Missing required parameter 'catalogId' when calling CatalogModuleCategoriesGetNewCategory");
             
     
-            var path = "/api/catalog/{catalogId}/categories/newcategory";
+            var path_ = "/api/catalog/{catalogId}/categories/newcategory";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3377,14 +3590,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCategoriesGetNewCategory: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCategoriesGetNewCategory: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelCategory) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCategory), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCategory) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCategory));
         }
     
         /// <summary>
@@ -3393,13 +3606,13 @@ namespace VirtoCommerce.Client.Api
         /// <param name="catalogId">The catalog id.</param>
         /// <param name="parentCategoryId">The parent category id. (Optional)</param>
         /// <returns>VirtoCommerceCatalogModuleWebModelCategory</returns>
-        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelCategory> CatalogModuleCategoriesGetNewCategoryAsync (string catalogId, string parentCategoryId)
+        public async System.Threading.Tasks.Task<VirtoCommerceCatalogModuleWebModelCategory> CatalogModuleCategoriesGetNewCategoryAsync (string catalogId, string parentCategoryId = null)
         {
             // verify the required parameter 'catalogId' is set
             if (catalogId == null) throw new ApiException(400, "Missing required parameter 'catalogId' when calling CatalogModuleCategoriesGetNewCategory");
             
     
-            var path = "/api/catalog/{catalogId}/categories/newcategory";
+            var path_ = "/api/catalog/{catalogId}/categories/newcategory";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3431,11 +3644,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleCategoriesGetNewCategory: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelCategory) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelCategory), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelCategory) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelCategory));
         }
         
         /// <summary>
@@ -3454,7 +3667,7 @@ namespace VirtoCommerce.Client.Api
             if (categoryId == null) throw new ApiException(400, "Missing required parameter 'categoryId' when calling CatalogModuleProductsGetNewProductByCatalogAndCategory");
             
     
-            var path = "/api/catalog/{catalogId}/categories/{categoryId}/products/getnew";
+            var path_ = "/api/catalog/{catalogId}/categories/{categoryId}/products/getnew";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3486,14 +3699,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGetNewProductByCatalogAndCategory: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGetNewProductByCatalogAndCategory: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProduct), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProduct));
         }
     
         /// <summary>
@@ -3510,7 +3723,7 @@ namespace VirtoCommerce.Client.Api
             if (categoryId == null) throw new ApiException(400, "Missing required parameter 'categoryId' when calling CatalogModuleProductsGetNewProductByCatalogAndCategory");
             
     
-            var path = "/api/catalog/{catalogId}/categories/{categoryId}/products/getnew";
+            var path_ = "/api/catalog/{catalogId}/categories/{categoryId}/products/getnew";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3542,11 +3755,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGetNewProductByCatalogAndCategory: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProduct), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProduct));
         }
         
         /// <summary>
@@ -3561,7 +3774,7 @@ namespace VirtoCommerce.Client.Api
             if (catalogId == null) throw new ApiException(400, "Missing required parameter 'catalogId' when calling CatalogModuleProductsGetNewProductByCatalog");
             
     
-            var path = "/api/catalog/{catalogId}/products/getnew";
+            var path_ = "/api/catalog/{catalogId}/products/getnew";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3592,14 +3805,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGetNewProductByCatalog: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGetNewProductByCatalog: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProduct), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProduct));
         }
     
         /// <summary>
@@ -3613,7 +3826,7 @@ namespace VirtoCommerce.Client.Api
             if (catalogId == null) throw new ApiException(400, "Missing required parameter 'catalogId' when calling CatalogModuleProductsGetNewProductByCatalog");
             
     
-            var path = "/api/catalog/{catalogId}/products/getnew";
+            var path_ = "/api/catalog/{catalogId}/products/getnew";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3644,11 +3857,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModuleProductsGetNewProductByCatalog: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProduct), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProduct) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProduct));
         }
         
         /// <summary>
@@ -3663,7 +3876,7 @@ namespace VirtoCommerce.Client.Api
             if (catalogId == null) throw new ApiException(400, "Missing required parameter 'catalogId' when calling CatalogModulePropertiesGetNewCatalogProperty");
             
     
-            var path = "/api/catalog/{catalogId}/properties/getnew";
+            var path_ = "/api/catalog/{catalogId}/properties/getnew";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3694,14 +3907,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGetNewCatalogProperty: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGetNewCatalogProperty: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProperty), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProperty));
         }
     
         /// <summary>
@@ -3715,7 +3928,7 @@ namespace VirtoCommerce.Client.Api
             if (catalogId == null) throw new ApiException(400, "Missing required parameter 'catalogId' when calling CatalogModulePropertiesGetNewCatalogProperty");
             
     
-            var path = "/api/catalog/{catalogId}/properties/getnew";
+            var path_ = "/api/catalog/{catalogId}/properties/getnew";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -3746,11 +3959,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling CatalogModulePropertiesGetNewCatalogProperty: " + response.Content, response.Content);
 
-            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response.Content, typeof(VirtoCommerceCatalogModuleWebModelProperty), response.Headers);
+            return (VirtoCommerceCatalogModuleWebModelProperty) ApiClient.Deserialize(response, typeof(VirtoCommerceCatalogModuleWebModelProperty));
         }
         
     }

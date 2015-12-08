@@ -1,6 +1,10 @@
 ﻿using System;
-using System.Globalization;
+using System.Collections.Generic;
+using System.Linq;
+using VirtoCommerce.Storefront.Model.Cart;
+using VirtoCommerce.Storefront.Model.Catalog;
 using VirtoCommerce.Storefront.Model.Common;
+using VirtoCommerce.Storefront.Model.Order;
 
 namespace VirtoCommerce.Storefront.Model
 {
@@ -10,47 +14,95 @@ namespace VirtoCommerce.Storefront.Model
     public class WorkContext : IDisposable
     {
         /// <summary>
+        /// Current request url example: http:/host/app/store/en-us/search?page=2
+        /// </summary>
+        public Uri RequestUrl { get; set; }
+
+        public Login Login { get; set; }
+        /// <summary>
         /// Current customer
         /// </summary>
-        public Customer Customer { get; set; }
-        /// <summary>
-        /// Language culture name format (e.g. en-US)
-        /// </summary>
-        public string CurrentLanguage { get; set; }
-        /// <summary>
-        /// Currency code in ISO 4217 format (e.g. USD)
-        /// </summary>
-        public string CurrentCurrency { get; set; }
+        public Customer CurrentCustomer { get; set; }
 
-        public CultureInfo CurrentCulture
+        /// <summary>
+        /// Current language and culture
+        /// </summary>
+        public Language CurrentLanguage { get; set; }
+
+        /// <summary>
+        /// Current currency
+        /// </summary>
+        public Currency CurrentCurrency { get; set; }
+
+        private SeoInfo _seoInfo;
+        public SeoInfo CurrentPageSeo
         {
             get
             {
-                var retVal = CultureInfo.CurrentCulture;
-                if(CurrentLanguage != null)
+                if (_seoInfo == null)
                 {
-                    retVal = CultureInfo.GetCultureInfo(CurrentLanguage);
+                    //TODO: next need detec seo from category or product or cart etc
+                    _seoInfo = CurrentStore.SeoInfos.FirstOrDefault();
                 }
-                return retVal;
+                return _seoInfo;
             }
-
-        }
-
-        public RegionInfo CurrentRegionInfo
-        {
-            get
+            set
             {
-                return new RegionInfo(CurrentCulture.Name);
+                _seoInfo = value;
             }
-
         }
 
+        /// <summary>
+        /// Current store
+        /// </summary>
         public Store CurrentStore { get; set; }
+
+        /// <summary>
+        /// Current shopping cart
+        /// </summary>
+        public ShoppingCart CurrentCart { get; set; }
 
         /// <summary>
         /// List of all supported stores
         /// </summary>
         public Store[] AllStores { get; set; }
+        public string ErrorMessage { get; set; }
+
+        #region Catalog Properties
+        /// <summary>
+        /// Represent current product
+        /// </summary>
+        public Product CurrentProduct { get; set; }
+
+        public Category CurrentCategory { get; set; }
+
+        /// <summary>
+        /// Current search catalog criterias
+        /// </summary>
+        public CatalogSearchCriteria CurrentCatalogSearchCriteria { get; set; }
+
+        public CatalogSearchResult CurrentCatalogSearchResult { get; set; }
+        #endregion
+
+        private DateTime? _utcNow;
+        /// <summary>
+        /// Represent current storefront datetime in UTC (may be changes to test in future or past events)
+        /// </summary>
+        public DateTime StorefrontUtcNow
+        {
+            get
+            {
+                return _utcNow == null ? DateTime.UtcNow : _utcNow.Value;
+            }
+            set
+            {
+                _utcNow = value;
+            }
+        }
+
+        public Country[] AllCountries { get; set; }
+
+        public CustomerOrder Order { get; set; }
 
         #region IDisposable Implementation
 

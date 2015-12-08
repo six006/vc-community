@@ -32,10 +32,12 @@ namespace VirtoCommerce.CartModule.Web.Controllers.Api
         /// <summary>
         /// Get shopping cart by store id and customer id
         /// </summary>
+        /// <remarks>
+        /// Returns shopping cart or null if it is not found
+        /// </remarks>
         /// <param name="storeId">Store id</param>
         /// <param name="customerId">Customer id</param>
         /// <response code="200"></response>
-        /// <response code="404">Shopping cart not found</response>
         [HttpGet]
 		[ResponseType(typeof(webModel.ShoppingCart))]
 		[Route("{storeId}/{customerId}/carts/current")]
@@ -53,11 +55,13 @@ namespace VirtoCommerce.CartModule.Web.Controllers.Api
 			};
 
 			var searchResult = this._searchService.Search(criteria);
-			var retVal = searchResult.ShopingCarts.FirstOrDefault(x=>x.Name == "default");
-			if(retVal == null)
-			{
-				return NotFound();
-			}
+			var retVal = searchResult.ShopingCarts.FirstOrDefault(x => !string.IsNullOrEmpty(x.Name) && x.Name.Equals("default", StringComparison.OrdinalIgnoreCase));
+
+            if (retVal == null)
+            {
+                return Ok();
+            }
+
 			return Ok(retVal.ToWebModel());
 		}
 
@@ -208,38 +212,7 @@ namespace VirtoCommerce.CartModule.Web.Controllers.Api
             return this.Ok(retVal);
         }
 
-		/// <summary>
-        /// Apply coupon for shopping cart
-        /// </summary>
-        /// <param name="cartId">Shopping cart id</param>
-        /// <param name="couponCode">Coupon code</param>
-		[HttpPost]
-		[ResponseType(typeof(webModel.ShoppingCart))]
-		[Route("carts/{cartId}/coupons/{couponCode}")]
-		public IHttpActionResult ApplyCoupon(string cartId, string couponCode)
-		{
-			var retVal = _shoppingCartService.GetById(cartId);
-
-			//TODO: check coupon from marketing service 
-
-			var coupon = new Domain.Cart.Model.Coupon
-			{
-				CouponCode = couponCode
-			};
-			var discount = new Domain.Cart.Model.Discount
-			{
-				Description = couponCode,
-				PromotionId = couponCode,
-				DiscountAmount = 10
-			};
-			retVal.Discounts.Add(discount);
-			retVal.Coupon = coupon;
-			_shoppingCartService.Update(new[] { retVal });
-
-
-			return this.Ok(retVal.ToWebModel());
-		}
-
+		
 		/// <summary>
         /// Delete shopping carts by ids
         /// </summary>

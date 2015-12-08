@@ -100,11 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Binders\CatalogItemSearchCriteriaBinder.cs" />
-    <Compile Include="Controllers\MerchandisingModuleReviewController.cs" />
-    <Compile Include="Controllers\MerchandisingModuleMarketingController.cs" />
-    <Compile Include="Controllers\MerchandisingModuleCategoryController.cs" />
-    <Compile Include="Controllers\MerchandisingModuleStoreController.cs" />
-    <Compile Include="Controllers\MerchandisingModulePriceController.cs" />
     <Compile Include="Controllers\MerchandisingModuleProductController.cs" />
     <Compile Include="Controllers\MerchandisingNotificationController.cs" />
     <Compile Include="Converters\AssetConverter.cs" />
@@ -165,14 +160,14 @@
     <Compile Include="Services\ItemBrowsingService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <Content Include="module.manifest" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="web.config">
+    <None Include="web.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

@@ -49,7 +49,6 @@
         var newBlade = {
             id: "settingDetailChild",
             currentEntityId: node.name,
-            title: blade.title,
             controller: 'platformWebApp.settingDictionaryController',
             template: '$(Platform)/Scripts/app/settings/blades/setting-dictionary.tpl.html'
         };
@@ -85,7 +84,7 @@
     $scope.blade.headIcon = 'fa-wrench';
     $scope.blade.toolbarCommands = [
         {
-            name: "Reset", icon: 'fa fa-undo',
+            name: "platform.commands.reset", icon: 'fa fa-undo',
             executeMethod: function () {
                 blade.currentEntities = angular.copy(blade.origEntity);
             },
@@ -100,8 +99,8 @@
         if (isDirty()) {
             var dialog = {
                 id: "confirmItemChange",
-                title: "Save changes",
-                message: "The settings has been modified. Do you want to confirm changes?",
+                title: "platform.dialogs.settings-save.title",
+                message: "platform.dialogs.settings-save.message",
                 callback: function (needSave) {
                     if (needSave) {
                         $scope.saveChanges();

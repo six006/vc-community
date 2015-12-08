@@ -11,19 +11,19 @@ using VirtoCommerce.Platform.Core.Common;
 
 namespace VirtoCommerce.CatalogModule.Data.Model
 {
-    public abstract class Item : AuditableEntity
+    public class Item : AuditableEntity
     {
 		public Item()
 		{
-			Id = Guid.NewGuid().ToString("N");
 			CategoryLinks = new NullCollection<CategoryItemRelation>();
 			Images = new NullCollection<Image>();
 			Assets = new NullCollection<Asset>();
 			AssociationGroups = new NullCollection<AssociationGroup>();
 			EditorialReviews = new NullCollection<EditorialReview>();
-			ItemPropertyValues = new NullCollection<ItemPropertyValue>();
+			ItemPropertyValues = new NullCollection<PropertyValue>();
 			Childrens = new NullCollection<Item>();
-		}
+            Assosiations = new NullCollection<Association>();
+        }
 
 		[StringLength(1024)]
 		[Required]
@@ -94,26 +94,20 @@ namespace VirtoCommerce.CatalogModule.Data.Model
 
 		public virtual ObservableCollection<Image> Images { get; set; }
 
-		public virtual ObservableCollection<AssociationGroup> AssociationGroups { get; set; }
+        public virtual ObservableCollection<Association> Assosiations { get; set; }
+        public virtual ObservableCollection<AssociationGroup> AssociationGroups { get; set; }
 
 		public virtual ObservableCollection<EditorialReview> EditorialReviews { get; set; }
 
-		public virtual ObservableCollection<ItemPropertyValue> ItemPropertyValues { get; set; }
+		public virtual ObservableCollection<PropertyValue> ItemPropertyValues { get; set; }
 
-		[StringLength(128)]
-		public string PropertySetId { get; set; }
-
-        public virtual PropertySet PropertySet { get; set; }
-
-		[StringLength(128)]
+		
 		public string CatalogId { get; set; }
-
-        public virtual CatalogBase Catalog { get; set; }
+        public virtual Catalog Catalog { get; set; }
 
 		public string CategoryId { get; set; }
 		public virtual Category Category { get; set; }
 
-		[StringLength(128)]
 		public string ParentId { get; set; }
 		public virtual Item Parent { get; set; }
 

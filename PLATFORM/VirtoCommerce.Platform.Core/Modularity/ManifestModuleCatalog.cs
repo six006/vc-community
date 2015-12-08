@@ -10,11 +10,13 @@ namespace VirtoCommerce.Platform.Core.Modularity
     {
         private readonly string _contentVirtualPath;
         private readonly string _assembliesPath;
+        private readonly string _platformPath;
         private static readonly string[] _assemblyFileExtensions = { ".dll", ".pdb", ".exe", ".xml" };
 
         public IModuleManifestProvider ManifestProvider { get; private set; }
 
-        public ManifestModuleCatalog(IModuleManifestProvider manifestProvider, string contentVirtualPath, string assembliesPath)
+        public ManifestModuleCatalog(IModuleManifestProvider manifestProvider, string contentVirtualPath, 
+            string assembliesPath, string platformPath)
         {
             ManifestProvider = manifestProvider;
             if (contentVirtualPath != null)
@@ -22,6 +24,7 @@ namespace VirtoCommerce.Platform.Core.Modularity
                 _contentVirtualPath = contentVirtualPath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
             }
             _assembliesPath = assembliesPath;
+            _platformPath = platformPath;
         }
 
         protected override void InnerLoad()

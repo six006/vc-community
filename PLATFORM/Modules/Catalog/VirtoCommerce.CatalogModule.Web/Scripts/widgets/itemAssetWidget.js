@@ -1,18 +1,18 @@
 ﻿angular.module('virtoCommerce.catalogModule')
 .controller('virtoCommerce.catalogModule.itemAssetWidgetController', ['$scope', 'platformWebApp.bladeNavigationService', function ($scope, bladeNavigationService) {
 
-    $scope.currentBlade = $scope.widget.blade;
+    var blade = $scope.widget.blade;
 
     $scope.openBlade = function () {
-        var blade = {
+        var newBlade = {
             id: "itemAsset",
-            itemId: $scope.currentBlade.item.id,
-            title: $scope.currentBlade.origItem.name,
-            subtitle: 'item assets',
+            itemId: blade.item.id,
+            title: blade.origItem.name,
+            subtitle: 'catalog.widgets.itemAsset.blade-subtitle',
             controller: 'virtoCommerce.catalogModule.itemAssetController',
             template: 'Modules/$(VirtoCommerce.Catalog)/Scripts/blades/item-asset-detail.tpl.html'
         };
-        bladeNavigationService.showBlade(blade, $scope.currentBlade);
+        bladeNavigationService.showBlade(newBlade, blade);
     };
 
 }]);

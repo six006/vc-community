@@ -174,6 +174,80 @@ namespace VirtoCommerce.Client.Api
         System.Threading.Tasks.Task<VirtoCommercePricingModuleWebModelPricelistAssignment> PricingModuleGetPricelistAssignmentByIdAsync (string id);
         
         /// <summary>
+        /// Evaluate prices by given context
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="evalContextStoreId"></param>
+        /// <param name="evalContextCatalogId"></param>
+        /// <param name="evalContextProductIds"></param>
+        /// <param name="evalContextPricelistIds"></param>
+        /// <param name="evalContextQuantity"></param>
+        /// <param name="evalContextCustomerId"></param>
+        /// <param name="evalContextOrganizationId"></param>
+        /// <param name="evalContextCertainDate"></param>
+        /// <param name="evalContextCurrency"></param>
+        /// <param name="evalContextTags"></param>
+        /// <param name="evalContextContextObject"></param>
+        /// <param name="evalContextGeoCity"></param>
+        /// <param name="evalContextGeoState"></param>
+        /// <param name="evalContextGeoCountry"></param>
+        /// <param name="evalContextGeoContinent"></param>
+        /// <param name="evalContextGeoZipCode"></param>
+        /// <param name="evalContextGeoConnectionType"></param>
+        /// <param name="evalContextGeoTimeZone"></param>
+        /// <param name="evalContextGeoIpRoutingType"></param>
+        /// <param name="evalContextGeoIspSecondLevel"></param>
+        /// <param name="evalContextGeoIspTopLevel"></param>
+        /// <param name="evalContextShopperAge"></param>
+        /// <param name="evalContextShopperGender"></param>
+        /// <param name="evalContextLanguage"></param>
+        /// <param name="evalContextShopperSearchedPhraseInStore"></param>
+        /// <param name="evalContextShopperSearchedPhraseOnInternet"></param>
+        /// <param name="evalContextCurrentUrl"></param>
+        /// <param name="evalContextReferredUrl"></param>
+        /// <returns></returns>
+        List<VirtoCommercePricingModuleWebModelPrice> PricingModuleEvaluatePrices (string evalContextStoreId = null, string evalContextCatalogId = null, List<string> evalContextProductIds = null, List<string> evalContextPricelistIds = null, double? evalContextQuantity = null, string evalContextCustomerId = null, string evalContextOrganizationId = null, DateTime? evalContextCertainDate = null, string evalContextCurrency = null, List<string> evalContextTags = null, Dictionary<string, string> evalContextContextObject = null, string evalContextGeoCity = null, string evalContextGeoState = null, string evalContextGeoCountry = null, string evalContextGeoContinent = null, string evalContextGeoZipCode = null, string evalContextGeoConnectionType = null, string evalContextGeoTimeZone = null, string evalContextGeoIpRoutingType = null, string evalContextGeoIspSecondLevel = null, string evalContextGeoIspTopLevel = null, int? evalContextShopperAge = null, string evalContextShopperGender = null, string evalContextLanguage = null, string evalContextShopperSearchedPhraseInStore = null, string evalContextShopperSearchedPhraseOnInternet = null, string evalContextCurrentUrl = null, string evalContextReferredUrl = null);
+  
+        /// <summary>
+        /// Evaluate prices by given context
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="evalContextStoreId"></param>
+        /// <param name="evalContextCatalogId"></param>
+        /// <param name="evalContextProductIds"></param>
+        /// <param name="evalContextPricelistIds"></param>
+        /// <param name="evalContextQuantity"></param>
+        /// <param name="evalContextCustomerId"></param>
+        /// <param name="evalContextOrganizationId"></param>
+        /// <param name="evalContextCertainDate"></param>
+        /// <param name="evalContextCurrency"></param>
+        /// <param name="evalContextTags"></param>
+        /// <param name="evalContextContextObject"></param>
+        /// <param name="evalContextGeoCity"></param>
+        /// <param name="evalContextGeoState"></param>
+        /// <param name="evalContextGeoCountry"></param>
+        /// <param name="evalContextGeoContinent"></param>
+        /// <param name="evalContextGeoZipCode"></param>
+        /// <param name="evalContextGeoConnectionType"></param>
+        /// <param name="evalContextGeoTimeZone"></param>
+        /// <param name="evalContextGeoIpRoutingType"></param>
+        /// <param name="evalContextGeoIspSecondLevel"></param>
+        /// <param name="evalContextGeoIspTopLevel"></param>
+        /// <param name="evalContextShopperAge"></param>
+        /// <param name="evalContextShopperGender"></param>
+        /// <param name="evalContextLanguage"></param>
+        /// <param name="evalContextShopperSearchedPhraseInStore"></param>
+        /// <param name="evalContextShopperSearchedPhraseOnInternet"></param>
+        /// <param name="evalContextCurrentUrl"></param>
+        /// <param name="evalContextReferredUrl"></param>
+        /// <returns></returns>
+        System.Threading.Tasks.Task<List<VirtoCommercePricingModuleWebModelPrice>> PricingModuleEvaluatePricesAsync (string evalContextStoreId = null, string evalContextCatalogId = null, List<string> evalContextProductIds = null, List<string> evalContextPricelistIds = null, double? evalContextQuantity = null, string evalContextCustomerId = null, string evalContextOrganizationId = null, DateTime? evalContextCertainDate = null, string evalContextCurrency = null, List<string> evalContextTags = null, Dictionary<string, string> evalContextContextObject = null, string evalContextGeoCity = null, string evalContextGeoState = null, string evalContextGeoCountry = null, string evalContextGeoContinent = null, string evalContextGeoZipCode = null, string evalContextGeoConnectionType = null, string evalContextGeoTimeZone = null, string evalContextGeoIpRoutingType = null, string evalContextGeoIspSecondLevel = null, string evalContextGeoIspTopLevel = null, int? evalContextShopperAge = null, string evalContextShopperGender = null, string evalContextLanguage = null, string evalContextShopperSearchedPhraseInStore = null, string evalContextShopperSearchedPhraseOnInternet = null, string evalContextCurrentUrl = null, string evalContextReferredUrl = null);
+        
+        /// <summary>
         /// Get pricelists
         /// </summary>
         /// <remarks>
@@ -349,7 +423,7 @@ namespace VirtoCommerce.Client.Api
             if (productId == null) throw new ApiException(400, "Missing required parameter 'productId' when calling PricingModuleGetProductPriceLists");
             
     
-            var path = "/api/catalog/products/{productId}/pricelists";
+            var path_ = "/api/catalog/products/{productId}/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -380,14 +454,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetProductPriceLists: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetProductPriceLists: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePricingModuleWebModelPricelist>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePricingModuleWebModelPricelist>), response.Headers);
+            return (List<VirtoCommercePricingModuleWebModelPricelist>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePricingModuleWebModelPricelist>));
         }
     
         /// <summary>
@@ -401,7 +475,7 @@ namespace VirtoCommerce.Client.Api
             if (productId == null) throw new ApiException(400, "Missing required parameter 'productId' when calling PricingModuleGetProductPriceLists");
             
     
-            var path = "/api/catalog/products/{productId}/pricelists";
+            var path_ = "/api/catalog/products/{productId}/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -432,11 +506,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetProductPriceLists: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePricingModuleWebModelPricelist>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePricingModuleWebModelPricelist>), response.Headers);
+            return (List<VirtoCommercePricingModuleWebModelPricelist>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePricingModuleWebModelPricelist>));
         }
         
         /// <summary>
@@ -455,7 +529,7 @@ namespace VirtoCommerce.Client.Api
             if (priceList == null) throw new ApiException(400, "Missing required parameter 'priceList' when calling PricingModuleUpdateProductPriceLists");
             
     
-            var path = "/api/catalog/products/{productId}/pricelists";
+            var path_ = "/api/catalog/products/{productId}/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -487,7 +561,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleUpdateProductPriceLists: " + response.Content, response.Content);
@@ -511,7 +585,7 @@ namespace VirtoCommerce.Client.Api
             if (priceList == null) throw new ApiException(400, "Missing required parameter 'priceList' when calling PricingModuleUpdateProductPriceLists");
             
     
-            var path = "/api/catalog/products/{productId}/pricelists";
+            var path_ = "/api/catalog/products/{productId}/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -543,7 +617,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleUpdateProductPriceLists: " + response.Content, response.Content);
 
@@ -559,7 +633,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/pricing/assignments";
+            var path_ = "/api/pricing/assignments";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -589,14 +663,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPricelistAssignments: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPricelistAssignments: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePricingModuleWebModelPricelistAssignment>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePricingModuleWebModelPricelistAssignment>), response.Headers);
+            return (List<VirtoCommercePricingModuleWebModelPricelistAssignment>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePricingModuleWebModelPricelistAssignment>));
         }
     
         /// <summary>
@@ -607,7 +681,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/pricing/assignments";
+            var path_ = "/api/pricing/assignments";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -637,11 +711,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPricelistAssignments: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePricingModuleWebModelPricelistAssignment>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePricingModuleWebModelPricelistAssignment>), response.Headers);
+            return (List<VirtoCommercePricingModuleWebModelPricelistAssignment>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePricingModuleWebModelPricelistAssignment>));
         }
         
         /// <summary>
@@ -656,7 +730,7 @@ namespace VirtoCommerce.Client.Api
             if (assignment == null) throw new ApiException(400, "Missing required parameter 'assignment' when calling PricingModuleUpdatePriceListAssignment");
             
     
-            var path = "/api/pricing/assignments";
+            var path_ = "/api/pricing/assignments";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -687,7 +761,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleUpdatePriceListAssignment: " + response.Content, response.Content);
@@ -708,7 +782,7 @@ namespace VirtoCommerce.Client.Api
             if (assignment == null) throw new ApiException(400, "Missing required parameter 'assignment' when calling PricingModuleUpdatePriceListAssignment");
             
     
-            var path = "/api/pricing/assignments";
+            var path_ = "/api/pricing/assignments";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -739,7 +813,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleUpdatePriceListAssignment: " + response.Content, response.Content);
 
@@ -759,7 +833,7 @@ namespace VirtoCommerce.Client.Api
             if (assignment == null) throw new ApiException(400, "Missing required parameter 'assignment' when calling PricingModuleCreatePricelistAssignment");
             
     
-            var path = "/api/pricing/assignments";
+            var path_ = "/api/pricing/assignments";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -790,14 +864,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleCreatePricelistAssignment: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleCreatePricelistAssignment: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment), response.Headers);
+            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment));
         }
     
         /// <summary>
@@ -811,7 +885,7 @@ namespace VirtoCommerce.Client.Api
             if (assignment == null) throw new ApiException(400, "Missing required parameter 'assignment' when calling PricingModuleCreatePricelistAssignment");
             
     
-            var path = "/api/pricing/assignments";
+            var path_ = "/api/pricing/assignments";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -842,11 +916,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleCreatePricelistAssignment: " + response.Content, response.Content);
 
-            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment), response.Headers);
+            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment));
         }
         
         /// <summary>
@@ -861,7 +935,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling PricingModuleDeleteAssignments");
             
     
-            var path = "/api/pricing/assignments";
+            var path_ = "/api/pricing/assignments";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -892,7 +966,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleDeleteAssignments: " + response.Content, response.Content);
@@ -913,7 +987,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling PricingModuleDeleteAssignments");
             
     
-            var path = "/api/pricing/assignments";
+            var path_ = "/api/pricing/assignments";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -944,7 +1018,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleDeleteAssignments: " + response.Content, response.Content);
 
@@ -960,7 +1034,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/pricing/assignments/new";
+            var path_ = "/api/pricing/assignments/new";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -990,14 +1064,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetNewPricelistAssignments: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetNewPricelistAssignments: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment), response.Headers);
+            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment));
         }
     
         /// <summary>
@@ -1008,7 +1082,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/pricing/assignments/new";
+            var path_ = "/api/pricing/assignments/new";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1038,11 +1112,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetNewPricelistAssignments: " + response.Content, response.Content);
 
-            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment), response.Headers);
+            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment));
         }
         
         /// <summary>
@@ -1057,7 +1131,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling PricingModuleGetPricelistAssignmentById");
             
     
-            var path = "/api/pricing/assignments/{id}";
+            var path_ = "/api/pricing/assignments/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1088,14 +1162,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPricelistAssignmentById: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPricelistAssignmentById: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment), response.Headers);
+            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment));
         }
     
         /// <summary>
@@ -1109,7 +1183,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling PricingModuleGetPricelistAssignmentById");
             
     
-            var path = "/api/pricing/assignments/{id}";
+            var path_ = "/api/pricing/assignments/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1140,11 +1214,216 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPricelistAssignmentById: " + response.Content, response.Content);
 
-            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment), response.Headers);
+            return (VirtoCommercePricingModuleWebModelPricelistAssignment) ApiClient.Deserialize(response, typeof(VirtoCommercePricingModuleWebModelPricelistAssignment));
+        }
+        
+        /// <summary>
+        /// Evaluate prices by given context 
+        /// </summary>
+        /// <param name="evalContextStoreId"></param> 
+        /// <param name="evalContextCatalogId"></param> 
+        /// <param name="evalContextProductIds"></param> 
+        /// <param name="evalContextPricelistIds"></param> 
+        /// <param name="evalContextQuantity"></param> 
+        /// <param name="evalContextCustomerId"></param> 
+        /// <param name="evalContextOrganizationId"></param> 
+        /// <param name="evalContextCertainDate"></param> 
+        /// <param name="evalContextCurrency"></param> 
+        /// <param name="evalContextTags"></param> 
+        /// <param name="evalContextContextObject"></param> 
+        /// <param name="evalContextGeoCity"></param> 
+        /// <param name="evalContextGeoState"></param> 
+        /// <param name="evalContextGeoCountry"></param> 
+        /// <param name="evalContextGeoContinent"></param> 
+        /// <param name="evalContextGeoZipCode"></param> 
+        /// <param name="evalContextGeoConnectionType"></param> 
+        /// <param name="evalContextGeoTimeZone"></param> 
+        /// <param name="evalContextGeoIpRoutingType"></param> 
+        /// <param name="evalContextGeoIspSecondLevel"></param> 
+        /// <param name="evalContextGeoIspTopLevel"></param> 
+        /// <param name="evalContextShopperAge"></param> 
+        /// <param name="evalContextShopperGender"></param> 
+        /// <param name="evalContextLanguage"></param> 
+        /// <param name="evalContextShopperSearchedPhraseInStore"></param> 
+        /// <param name="evalContextShopperSearchedPhraseOnInternet"></param> 
+        /// <param name="evalContextCurrentUrl"></param> 
+        /// <param name="evalContextReferredUrl"></param> 
+        /// <returns></returns>            
+        public List<VirtoCommercePricingModuleWebModelPrice> PricingModuleEvaluatePrices (string evalContextStoreId = null, string evalContextCatalogId = null, List<string> evalContextProductIds = null, List<string> evalContextPricelistIds = null, double? evalContextQuantity = null, string evalContextCustomerId = null, string evalContextOrganizationId = null, DateTime? evalContextCertainDate = null, string evalContextCurrency = null, List<string> evalContextTags = null, Dictionary<string, string> evalContextContextObject = null, string evalContextGeoCity = null, string evalContextGeoState = null, string evalContextGeoCountry = null, string evalContextGeoContinent = null, string evalContextGeoZipCode = null, string evalContextGeoConnectionType = null, string evalContextGeoTimeZone = null, string evalContextGeoIpRoutingType = null, string evalContextGeoIspSecondLevel = null, string evalContextGeoIspTopLevel = null, int? evalContextShopperAge = null, string evalContextShopperGender = null, string evalContextLanguage = null, string evalContextShopperSearchedPhraseInStore = null, string evalContextShopperSearchedPhraseOnInternet = null, string evalContextCurrentUrl = null, string evalContextReferredUrl = null)
+        {
+            
+    
+            var path_ = "/api/pricing/evaluate";
+    
+            var pathParams = new Dictionary<String, String>();
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+
+            // to determine the Accept header
+            String[] http_header_accepts = new String[] {
+                "application/json", "text/json"
+            };
+            String http_header_accept = ApiClient.SelectHeaderAccept(http_header_accepts);
+            if (http_header_accept != null)
+                headerParams.Add("Accept", ApiClient.SelectHeaderAccept(http_header_accepts));
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            pathParams.Add("format", "json");
+            
+            if (evalContextStoreId != null) queryParams.Add("evalContext.storeId", ApiClient.ParameterToString(evalContextStoreId)); // query parameter
+            if (evalContextCatalogId != null) queryParams.Add("evalContext.catalogId", ApiClient.ParameterToString(evalContextCatalogId)); // query parameter
+            if (evalContextProductIds != null) queryParams.Add("evalContext.productIds", ApiClient.ParameterToString(evalContextProductIds)); // query parameter
+            if (evalContextPricelistIds != null) queryParams.Add("evalContext.pricelistIds", ApiClient.ParameterToString(evalContextPricelistIds)); // query parameter
+            if (evalContextQuantity != null) queryParams.Add("evalContext.quantity", ApiClient.ParameterToString(evalContextQuantity)); // query parameter
+            if (evalContextCustomerId != null) queryParams.Add("evalContext.customerId", ApiClient.ParameterToString(evalContextCustomerId)); // query parameter
+            if (evalContextOrganizationId != null) queryParams.Add("evalContext.organizationId", ApiClient.ParameterToString(evalContextOrganizationId)); // query parameter
+            if (evalContextCertainDate != null) queryParams.Add("evalContext.certainDate", ApiClient.ParameterToString(evalContextCertainDate)); // query parameter
+            if (evalContextCurrency != null) queryParams.Add("evalContext.currency", ApiClient.ParameterToString(evalContextCurrency)); // query parameter
+            if (evalContextTags != null) queryParams.Add("evalContext.tags", ApiClient.ParameterToString(evalContextTags)); // query parameter
+            if (evalContextContextObject != null) queryParams.Add("evalContext.contextObject", ApiClient.ParameterToString(evalContextContextObject)); // query parameter
+            if (evalContextGeoCity != null) queryParams.Add("evalContext.geoCity", ApiClient.ParameterToString(evalContextGeoCity)); // query parameter
+            if (evalContextGeoState != null) queryParams.Add("evalContext.geoState", ApiClient.ParameterToString(evalContextGeoState)); // query parameter
+            if (evalContextGeoCountry != null) queryParams.Add("evalContext.geoCountry", ApiClient.ParameterToString(evalContextGeoCountry)); // query parameter
+            if (evalContextGeoContinent != null) queryParams.Add("evalContext.geoContinent", ApiClient.ParameterToString(evalContextGeoContinent)); // query parameter
+            if (evalContextGeoZipCode != null) queryParams.Add("evalContext.geoZipCode", ApiClient.ParameterToString(evalContextGeoZipCode)); // query parameter
+            if (evalContextGeoConnectionType != null) queryParams.Add("evalContext.geoConnectionType", ApiClient.ParameterToString(evalContextGeoConnectionType)); // query parameter
+            if (evalContextGeoTimeZone != null) queryParams.Add("evalContext.geoTimeZone", ApiClient.ParameterToString(evalContextGeoTimeZone)); // query parameter
+            if (evalContextGeoIpRoutingType != null) queryParams.Add("evalContext.geoIpRoutingType", ApiClient.ParameterToString(evalContextGeoIpRoutingType)); // query parameter
+            if (evalContextGeoIspSecondLevel != null) queryParams.Add("evalContext.geoIspSecondLevel", ApiClient.ParameterToString(evalContextGeoIspSecondLevel)); // query parameter
+            if (evalContextGeoIspTopLevel != null) queryParams.Add("evalContext.geoIspTopLevel", ApiClient.ParameterToString(evalContextGeoIspTopLevel)); // query parameter
+            if (evalContextShopperAge != null) queryParams.Add("evalContext.shopperAge", ApiClient.ParameterToString(evalContextShopperAge)); // query parameter
+            if (evalContextShopperGender != null) queryParams.Add("evalContext.shopperGender", ApiClient.ParameterToString(evalContextShopperGender)); // query parameter
+            if (evalContextLanguage != null) queryParams.Add("evalContext.language", ApiClient.ParameterToString(evalContextLanguage)); // query parameter
+            if (evalContextShopperSearchedPhraseInStore != null) queryParams.Add("evalContext.shopperSearchedPhraseInStore", ApiClient.ParameterToString(evalContextShopperSearchedPhraseInStore)); // query parameter
+            if (evalContextShopperSearchedPhraseOnInternet != null) queryParams.Add("evalContext.shopperSearchedPhraseOnInternet", ApiClient.ParameterToString(evalContextShopperSearchedPhraseOnInternet)); // query parameter
+            if (evalContextCurrentUrl != null) queryParams.Add("evalContext.currentUrl", ApiClient.ParameterToString(evalContextCurrentUrl)); // query parameter
+            if (evalContextReferredUrl != null) queryParams.Add("evalContext.referredUrl", ApiClient.ParameterToString(evalContextReferredUrl)); // query parameter
+            
+            
+            
+            
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleEvaluatePrices: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleEvaluatePrices: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (List<VirtoCommercePricingModuleWebModelPrice>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePricingModuleWebModelPrice>));
+        }
+    
+        /// <summary>
+        /// Evaluate prices by given context 
+        /// </summary>
+        /// <param name="evalContextStoreId"></param>
+        /// <param name="evalContextCatalogId"></param>
+        /// <param name="evalContextProductIds"></param>
+        /// <param name="evalContextPricelistIds"></param>
+        /// <param name="evalContextQuantity"></param>
+        /// <param name="evalContextCustomerId"></param>
+        /// <param name="evalContextOrganizationId"></param>
+        /// <param name="evalContextCertainDate"></param>
+        /// <param name="evalContextCurrency"></param>
+        /// <param name="evalContextTags"></param>
+        /// <param name="evalContextContextObject"></param>
+        /// <param name="evalContextGeoCity"></param>
+        /// <param name="evalContextGeoState"></param>
+        /// <param name="evalContextGeoCountry"></param>
+        /// <param name="evalContextGeoContinent"></param>
+        /// <param name="evalContextGeoZipCode"></param>
+        /// <param name="evalContextGeoConnectionType"></param>
+        /// <param name="evalContextGeoTimeZone"></param>
+        /// <param name="evalContextGeoIpRoutingType"></param>
+        /// <param name="evalContextGeoIspSecondLevel"></param>
+        /// <param name="evalContextGeoIspTopLevel"></param>
+        /// <param name="evalContextShopperAge"></param>
+        /// <param name="evalContextShopperGender"></param>
+        /// <param name="evalContextLanguage"></param>
+        /// <param name="evalContextShopperSearchedPhraseInStore"></param>
+        /// <param name="evalContextShopperSearchedPhraseOnInternet"></param>
+        /// <param name="evalContextCurrentUrl"></param>
+        /// <param name="evalContextReferredUrl"></param>
+        /// <returns></returns>
+        public async System.Threading.Tasks.Task<List<VirtoCommercePricingModuleWebModelPrice>> PricingModuleEvaluatePricesAsync (string evalContextStoreId = null, string evalContextCatalogId = null, List<string> evalContextProductIds = null, List<string> evalContextPricelistIds = null, double? evalContextQuantity = null, string evalContextCustomerId = null, string evalContextOrganizationId = null, DateTime? evalContextCertainDate = null, string evalContextCurrency = null, List<string> evalContextTags = null, Dictionary<string, string> evalContextContextObject = null, string evalContextGeoCity = null, string evalContextGeoState = null, string evalContextGeoCountry = null, string evalContextGeoContinent = null, string evalContextGeoZipCode = null, string evalContextGeoConnectionType = null, string evalContextGeoTimeZone = null, string evalContextGeoIpRoutingType = null, string evalContextGeoIspSecondLevel = null, string evalContextGeoIspTopLevel = null, int? evalContextShopperAge = null, string evalContextShopperGender = null, string evalContextLanguage = null, string evalContextShopperSearchedPhraseInStore = null, string evalContextShopperSearchedPhraseOnInternet = null, string evalContextCurrentUrl = null, string evalContextReferredUrl = null)
+        {
+            
+    
+            var path_ = "/api/pricing/evaluate";
+    
+            var pathParams = new Dictionary<String, String>();
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+
+            // to determine the Accept header
+            String[] http_header_accepts = new String[] {
+                "application/json", "text/json"
+            };
+            String http_header_accept = ApiClient.SelectHeaderAccept(http_header_accepts);
+            if (http_header_accept != null)
+                headerParams.Add("Accept", ApiClient.SelectHeaderAccept(http_header_accepts));
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            pathParams.Add("format", "json");
+            
+            if (evalContextStoreId != null) queryParams.Add("evalContext.storeId", ApiClient.ParameterToString(evalContextStoreId)); // query parameter
+            if (evalContextCatalogId != null) queryParams.Add("evalContext.catalogId", ApiClient.ParameterToString(evalContextCatalogId)); // query parameter
+            if (evalContextProductIds != null) queryParams.Add("evalContext.productIds", ApiClient.ParameterToString(evalContextProductIds)); // query parameter
+            if (evalContextPricelistIds != null) queryParams.Add("evalContext.pricelistIds", ApiClient.ParameterToString(evalContextPricelistIds)); // query parameter
+            if (evalContextQuantity != null) queryParams.Add("evalContext.quantity", ApiClient.ParameterToString(evalContextQuantity)); // query parameter
+            if (evalContextCustomerId != null) queryParams.Add("evalContext.customerId", ApiClient.ParameterToString(evalContextCustomerId)); // query parameter
+            if (evalContextOrganizationId != null) queryParams.Add("evalContext.organizationId", ApiClient.ParameterToString(evalContextOrganizationId)); // query parameter
+            if (evalContextCertainDate != null) queryParams.Add("evalContext.certainDate", ApiClient.ParameterToString(evalContextCertainDate)); // query parameter
+            if (evalContextCurrency != null) queryParams.Add("evalContext.currency", ApiClient.ParameterToString(evalContextCurrency)); // query parameter
+            if (evalContextTags != null) queryParams.Add("evalContext.tags", ApiClient.ParameterToString(evalContextTags)); // query parameter
+            if (evalContextContextObject != null) queryParams.Add("evalContext.contextObject", ApiClient.ParameterToString(evalContextContextObject)); // query parameter
+            if (evalContextGeoCity != null) queryParams.Add("evalContext.geoCity", ApiClient.ParameterToString(evalContextGeoCity)); // query parameter
+            if (evalContextGeoState != null) queryParams.Add("evalContext.geoState", ApiClient.ParameterToString(evalContextGeoState)); // query parameter
+            if (evalContextGeoCountry != null) queryParams.Add("evalContext.geoCountry", ApiClient.ParameterToString(evalContextGeoCountry)); // query parameter
+            if (evalContextGeoContinent != null) queryParams.Add("evalContext.geoContinent", ApiClient.ParameterToString(evalContextGeoContinent)); // query parameter
+            if (evalContextGeoZipCode != null) queryParams.Add("evalContext.geoZipCode", ApiClient.ParameterToString(evalContextGeoZipCode)); // query parameter
+            if (evalContextGeoConnectionType != null) queryParams.Add("evalContext.geoConnectionType", ApiClient.ParameterToString(evalContextGeoConnectionType)); // query parameter
+            if (evalContextGeoTimeZone != null) queryParams.Add("evalContext.geoTimeZone", ApiClient.ParameterToString(evalContextGeoTimeZone)); // query parameter
+            if (evalContextGeoIpRoutingType != null) queryParams.Add("evalContext.geoIpRoutingType", ApiClient.ParameterToString(evalContextGeoIpRoutingType)); // query parameter
+            if (evalContextGeoIspSecondLevel != null) queryParams.Add("evalContext.geoIspSecondLevel", ApiClient.ParameterToString(evalContextGeoIspSecondLevel)); // query parameter
+            if (evalContextGeoIspTopLevel != null) queryParams.Add("evalContext.geoIspTopLevel", ApiClient.ParameterToString(evalContextGeoIspTopLevel)); // query parameter
+            if (evalContextShopperAge != null) queryParams.Add("evalContext.shopperAge", ApiClient.ParameterToString(evalContextShopperAge)); // query parameter
+            if (evalContextShopperGender != null) queryParams.Add("evalContext.shopperGender", ApiClient.ParameterToString(evalContextShopperGender)); // query parameter
+            if (evalContextLanguage != null) queryParams.Add("evalContext.language", ApiClient.ParameterToString(evalContextLanguage)); // query parameter
+            if (evalContextShopperSearchedPhraseInStore != null) queryParams.Add("evalContext.shopperSearchedPhraseInStore", ApiClient.ParameterToString(evalContextShopperSearchedPhraseInStore)); // query parameter
+            if (evalContextShopperSearchedPhraseOnInternet != null) queryParams.Add("evalContext.shopperSearchedPhraseOnInternet", ApiClient.ParameterToString(evalContextShopperSearchedPhraseOnInternet)); // query parameter
+            if (evalContextCurrentUrl != null) queryParams.Add("evalContext.currentUrl", ApiClient.ParameterToString(evalContextCurrentUrl)); // query parameter
+            if (evalContextReferredUrl != null) queryParams.Add("evalContext.referredUrl", ApiClient.ParameterToString(evalContextReferredUrl)); // query parameter
+            
+            
+            
+            
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleEvaluatePrices: " + response.Content, response.Content);
+
+            return (List<VirtoCommercePricingModuleWebModelPrice>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePricingModuleWebModelPrice>));
         }
         
         /// <summary>
@@ -1155,7 +1434,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/pricing/pricelists";
+            var path_ = "/api/pricing/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1185,14 +1464,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPriceLists: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPriceLists: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePricingModuleWebModelPricelist>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePricingModuleWebModelPricelist>), response.Headers);
+            return (List<VirtoCommercePricingModuleWebModelPricelist>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePricingModuleWebModelPricelist>));
         }
     
         /// <summary>
@@ -1203,7 +1482,7 @@ namespace VirtoCommerce.Client.Api
         {
             
     
-            var path = "/api/pricing/pricelists";
+            var path_ = "/api/pricing/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1233,11 +1512,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPriceLists: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePricingModuleWebModelPricelist>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePricingModuleWebModelPricelist>), response.Headers);
+            return (List<VirtoCommercePricingModuleWebModelPricelist>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePricingModuleWebModelPricelist>));
         }
         
         /// <summary>
@@ -1252,7 +1531,7 @@ namespace VirtoCommerce.Client.Api
             if (priceList == null) throw new ApiException(400, "Missing required parameter 'priceList' when calling PricingModuleUpdatePriceList");
             
     
-            var path = "/api/pricing/pricelists";
+            var path_ = "/api/pricing/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1283,7 +1562,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleUpdatePriceList: " + response.Content, response.Content);
@@ -1304,7 +1583,7 @@ namespace VirtoCommerce.Client.Api
             if (priceList == null) throw new ApiException(400, "Missing required parameter 'priceList' when calling PricingModuleUpdatePriceList");
             
     
-            var path = "/api/pricing/pricelists";
+            var path_ = "/api/pricing/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1335,7 +1614,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleUpdatePriceList: " + response.Content, response.Content);
 
@@ -1355,7 +1634,7 @@ namespace VirtoCommerce.Client.Api
             if (priceList == null) throw new ApiException(400, "Missing required parameter 'priceList' when calling PricingModuleCreatePriceList");
             
     
-            var path = "/api/pricing/pricelists";
+            var path_ = "/api/pricing/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1386,14 +1665,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleCreatePriceList: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleCreatePriceList: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePricingModuleWebModelPricelist) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePricingModuleWebModelPricelist), response.Headers);
+            return (VirtoCommercePricingModuleWebModelPricelist) ApiClient.Deserialize(response, typeof(VirtoCommercePricingModuleWebModelPricelist));
         }
     
         /// <summary>
@@ -1407,7 +1686,7 @@ namespace VirtoCommerce.Client.Api
             if (priceList == null) throw new ApiException(400, "Missing required parameter 'priceList' when calling PricingModuleCreatePriceList");
             
     
-            var path = "/api/pricing/pricelists";
+            var path_ = "/api/pricing/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1438,11 +1717,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleCreatePriceList: " + response.Content, response.Content);
 
-            return (VirtoCommercePricingModuleWebModelPricelist) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePricingModuleWebModelPricelist), response.Headers);
+            return (VirtoCommercePricingModuleWebModelPricelist) ApiClient.Deserialize(response, typeof(VirtoCommercePricingModuleWebModelPricelist));
         }
         
         /// <summary>
@@ -1457,7 +1736,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling PricingModuleDeletePriceLists");
             
     
-            var path = "/api/pricing/pricelists";
+            var path_ = "/api/pricing/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1488,7 +1767,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleDeletePriceLists: " + response.Content, response.Content);
@@ -1509,7 +1788,7 @@ namespace VirtoCommerce.Client.Api
             if (ids == null) throw new ApiException(400, "Missing required parameter 'ids' when calling PricingModuleDeletePriceLists");
             
     
-            var path = "/api/pricing/pricelists";
+            var path_ = "/api/pricing/pricelists";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1540,7 +1819,7 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleDeletePriceLists: " + response.Content, response.Content);
 
@@ -1560,7 +1839,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling PricingModuleGetPriceListById");
             
     
-            var path = "/api/pricing/pricelists/{id}";
+            var path_ = "/api/pricing/pricelists/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1591,14 +1870,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPriceListById: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPriceListById: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (VirtoCommercePricingModuleWebModelPricelist) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePricingModuleWebModelPricelist), response.Headers);
+            return (VirtoCommercePricingModuleWebModelPricelist) ApiClient.Deserialize(response, typeof(VirtoCommercePricingModuleWebModelPricelist));
         }
     
         /// <summary>
@@ -1612,7 +1891,7 @@ namespace VirtoCommerce.Client.Api
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling PricingModuleGetPriceListById");
             
     
-            var path = "/api/pricing/pricelists/{id}";
+            var path_ = "/api/pricing/pricelists/{id}";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1643,11 +1922,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetPriceListById: " + response.Content, response.Content);
 
-            return (VirtoCommercePricingModuleWebModelPricelist) ApiClient.Deserialize(response.Content, typeof(VirtoCommercePricingModuleWebModelPricelist), response.Headers);
+            return (VirtoCommercePricingModuleWebModelPricelist) ApiClient.Deserialize(response, typeof(VirtoCommercePricingModuleWebModelPricelist));
         }
         
         /// <summary>
@@ -1662,7 +1941,7 @@ namespace VirtoCommerce.Client.Api
             if (productId == null) throw new ApiException(400, "Missing required parameter 'productId' when calling PricingModuleGetProductPrices");
             
     
-            var path = "/api/products/{productId}/prices";
+            var path_ = "/api/products/{productId}/prices";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1693,14 +1972,14 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetProductPrices: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetProductPrices: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<VirtoCommercePricingModuleWebModelPrice>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePricingModuleWebModelPrice>), response.Headers);
+            return (List<VirtoCommercePricingModuleWebModelPrice>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePricingModuleWebModelPrice>));
         }
     
         /// <summary>
@@ -1714,7 +1993,7 @@ namespace VirtoCommerce.Client.Api
             if (productId == null) throw new ApiException(400, "Missing required parameter 'productId' when calling PricingModuleGetProductPrices");
             
     
-            var path = "/api/products/{productId}/prices";
+            var path_ = "/api/products/{productId}/prices";
     
             var pathParams = new Dictionary<String, String>();
             var queryParams = new Dictionary<String, String>();
@@ -1745,11 +2024,11 @@ namespace VirtoCommerce.Client.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
+            IRestResponse response = (IRestResponse) await ApiClient.CallApiAsync(path_, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, pathParams, authSettings);
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling PricingModuleGetProductPrices: " + response.Content, response.Content);
 
-            return (List<VirtoCommercePricingModuleWebModelPrice>) ApiClient.Deserialize(response.Content, typeof(List<VirtoCommercePricingModuleWebModelPrice>), response.Headers);
+            return (List<VirtoCommercePricingModuleWebModelPrice>) ApiClient.Deserialize(response, typeof(List<VirtoCommercePricingModuleWebModelPrice>));
         }
         
     }

@@ -10,6 +10,7 @@ using VirtoCommerce.Platform.Core.Caching;
 using dataModel = VirtoCommerce.CatalogModule.Data.Model;
 using coreModel = VirtoCommerce.Domain.Catalog.Model;
 using VirtoCommerce.Domain.Commerce.Services;
+using VirtoCommerce.CatalogModule.Data.Converters;
 
 namespace VirtoCommerce.CatalogModule.Data.Services
 {
@@ -36,15 +37,15 @@ namespace VirtoCommerce.CatalogModule.Data.Services
 			var retVal = new coreModel.SearchResult();
 			var taskList = new List<Task>();
 
-			if ((criteria.ResponseGroup & coreModel.ResponseGroup.WithProducts) == coreModel.ResponseGroup.WithProducts)
+			if ((criteria.ResponseGroup & coreModel.SearchResponseGroup.WithProducts) == coreModel.SearchResponseGroup.WithProducts)
 			{
 				taskList.Add(Task.Factory.StartNew(() => SearchItems(criteria, retVal)));
 			}
-			if ((criteria.ResponseGroup & coreModel.ResponseGroup.WithCatalogs) == coreModel.ResponseGroup.WithCatalogs)
+			if ((criteria.ResponseGroup & coreModel.SearchResponseGroup.WithCatalogs) == coreModel.SearchResponseGroup.WithCatalogs)
 			{
 				taskList.Add(Task.Factory.StartNew(() => SearchCatalogs(criteria, retVal)));
 			}
-			if ((criteria.ResponseGroup & coreModel.ResponseGroup.WithCategories) == coreModel.ResponseGroup.WithCategories)
+			if ((criteria.ResponseGroup & coreModel.SearchResponseGroup.WithCategories) == coreModel.SearchResponseGroup.WithCategories)
 			{
 				taskList.Add(Task.Factory.StartNew(() => SearchCategories(criteria, retVal)));
 			}
@@ -62,97 +63,51 @@ namespace VirtoCommerce.CatalogModule.Data.Services
 			{
 				var query = repository.Categories;
 
-				dataModel.CatalogBase dbCatalog = null;
-				var isVirtual = false;
+			    //Get list of search in categories
+                var searchCategoryIds = criteria.CategoriesIds;
+                if (searchCategoryIds != null && criteria.SearchInChildren)
+                {
+                    searchCategoryIds = searchCategoryIds.Concat(repository.GetAllChildrenCategoriesIds(searchCategoryIds)).ToArray();
+                }
 
-				if(!String.IsNullOrEmpty(criteria.CatalogId))
-				{
-					 dbCatalog = repository.GetCatalogById(criteria.CatalogId);
-					 isVirtual = dbCatalog is dataModel.VirtualCatalog;
-
-					 query = query.Where(x => x.CatalogId == criteria.CatalogId);
-				}
-
-				if (!String.IsNullOrEmpty(criteria.Keyword))
+                //Filter by keyword in all categories
+ 				if (!String.IsNullOrEmpty(criteria.Keyword))
 				{
 					query = query.Where(x => x.Name.Contains(criteria.Keyword) || x.Code.Contains(criteria.Keyword));
 				}
-				else if (!String.IsNullOrEmpty(criteria.CategoryId))
+				else if (searchCategoryIds != null)
 				{
-					if (isVirtual)
-					{
-						var dbCategory = repository.GetCategoryById(criteria.CategoryId);
-						//Need return all linked categories also
-						var allLinkedPhysicalCategoriesIds = dbCategory.IncommingLinks.Select(x => x.SourceCategoryId).ToArray();
-						query = repository.Categories;
-						if (allLinkedPhysicalCategoriesIds.Any())
-						{
-							if (criteria.HideDirectLinedCategories)
-							{
-								query = query.Where(x => x.ParentCategoryId == criteria.CategoryId || allLinkedPhysicalCategoriesIds.Contains(x.ParentCategoryId));
-							}
-							else
-							{
-								query = query.Where(x => x.ParentCategoryId == criteria.CategoryId || allLinkedPhysicalCategoriesIds.Contains(x.Id));
-							}
-						}
-						else
-						{
-							query = query.Where(x => x.ParentCategoryId == criteria.CategoryId);
-						}
-					}
-					else
-					{
-						query = query.Where(x => x.ParentCategoryId == criteria.CategoryId);
-					}
-				}
+                    if (criteria.HideDirectLinkedCategories)
+                    {
+                        query = query.Where(x => searchCategoryIds.Contains(x.ParentCategoryId) || x.OutgoingLinks.Any(y => searchCategoryIds.Contains(y.TargetCategory.ParentCategoryId)));
+                    }
+                    else
+                    {
+                        query = query.Where(x => searchCategoryIds.Contains(x.ParentCategoryId) || x.OutgoingLinks.Any(y => searchCategoryIds.Contains(y.TargetCategoryId)));
+                    }
+ 				}
 				else if (!String.IsNullOrEmpty(criteria.Code))
 				{
 					query = query.Where(x => x.Code == criteria.Code);
 				}
-				else if (!String.IsNullOrEmpty(criteria.SeoKeyword))
-				{
-					var urlKeyword = _commerceService.GetSeoByKeyword(criteria.SeoKeyword).Where(x => x.ObjectType == typeof(coreModel.Category).Name).FirstOrDefault();
-					if (urlKeyword == null)
-					{
-						query = query.Where(x => false);
-					}
-					else
-					{
-						query = query.Where(x => x.Id == urlKeyword.ObjectId);
-					}
-				}
-				else if (!String.IsNullOrEmpty(criteria.CatalogId))
-				{
-					query = query.Where(x => x.CatalogId == criteria.CatalogId && (x.ParentCategoryId == null || criteria.GetAllCategories));
-					if (isVirtual)
-					{
-						//Need return only catalog linked categories 
-						var allLinkedCategoriesIds = ((dataModel.VirtualCatalog)dbCatalog).IncommingLinks
-																						  .Where(x => x.TargetCategoryId == null)
-																						  .Select(x => x.SourceCategoryId);
-						//Search in all catalogs
-						query = repository.Categories;
-						query = query.Where(x => (x.CatalogId == criteria.CatalogId && (x.ParentCategoryId == null || criteria.GetAllCategories)) || allLinkedCategoriesIds.Contains(x.Id));
-					}
-				}
+                else if (criteria.CatalogsIds != null)
+                {
+                    query = query.Where(x => (criteria.CatalogsIds.Contains(x.CatalogId) && (x.ParentCategoryId == null || criteria.SearchInChildren)) || (x.OutgoingLinks.Any(y => y.TargetCategoryId == null && criteria.CatalogsIds.Contains(y.TargetCatalogId))));
 
-				var categoryIds = query.Select(x => x.Id).ToArray();
+                }
 
-				var categories = new ConcurrentBag<coreModel.Category>();
-				var parallelOptions = new ParallelOptions
-				{
-					MaxDegreeOfParallelism = 10
-				};
-				Parallel.ForEach(categoryIds, parallelOptions, (x) =>
-				{
-					var category = _categoryService.GetById(x);
+                var categoryIds = query.Select(x => x.Id).ToArray();
+                var categoryResponseGroup = coreModel.CategoryResponseGroup.Info | coreModel.CategoryResponseGroup.WithImages | coreModel.CategoryResponseGroup.WithSeo | CategoryResponseGroup.WithLinks | CategoryResponseGroup.WithParents;
+                if ((criteria.ResponseGroup & coreModel.SearchResponseGroup.WithProperties) == coreModel.SearchResponseGroup.WithProperties)
+                {
+                    categoryResponseGroup |= coreModel.CategoryResponseGroup.WithProperties;
+                }
 
-					categories.Add(category);
-
-				});
-				//Must order by priority
-				result.Categories = categories.OrderByDescending(x => x.Priority).ThenBy(x => x.Name).ToList();
+                result.Categories = _categoryService.GetByIds(categoryIds, categoryResponseGroup)
+                                                    .OrderByDescending(x => x.Priority)
+                                                    .ThenBy(x => x.Name)
+                                                    .ToList();
+            
 			}
 		}
 
@@ -183,63 +138,44 @@ namespace VirtoCommerce.CatalogModule.Data.Services
         {
             using (var repository = _catalogRepositoryFactory())
             {
-				var searchInAllCategories = criteria.GetAllCategories || !String.IsNullOrEmpty(criteria.Keyword);
-				var isVirtual = false;
-				if (criteria.CatalogId != null)
-				{
-					var dbCatalog = repository.GetCatalogById(criteria.CatalogId);
-					isVirtual = dbCatalog is dataModel.VirtualCatalog;
-				}
+			         
+                //list of search categories
+                var searchCategoryIds = criteria.CategoriesIds;
+                if(searchCategoryIds != null && criteria.SearchInChildren)
+                {
+                    searchCategoryIds = searchCategoryIds.Concat(repository.GetAllChildrenCategoriesIds(searchCategoryIds)).ToArray();
+                }
 
 				var query = repository.Items;
-				if ((criteria.ResponseGroup & coreModel.ResponseGroup.WithVariations) != coreModel.ResponseGroup.WithVariations)
+				if ((criteria.ResponseGroup & coreModel.SearchResponseGroup.WithVariations) != coreModel.SearchResponseGroup.WithVariations)
 				{
 					query = query.Where(x => x.ParentId == null);
 				}
 
-
-				if (!searchInAllCategories && !String.IsNullOrEmpty(criteria.CategoryId))
+                if(searchCategoryIds != null)
+                {
+                   query = query.Where(x => searchCategoryIds.Contains(x.CategoryId) || x.CategoryLinks.Any(c => searchCategoryIds.Contains(c.CategoryId)));
+                }
+				else if (criteria.CatalogsIds != null)
 				{
-					if (isVirtual)
-					{
-						var dbCategory = repository.GetCategoryById(criteria.CategoryId);
-						////Need return all items belongs to linked categories
-						//var allLinkedPhysicalCategoriesIds = dbCategory.IncommingLinks.Select(x => x.SourceCategoryId).ToArray();
-
-						query = query.Where(x => x.CategoryId == criteria.CategoryId || x.CategoryLinks.Any(c => c.CategoryId == criteria.CategoryId));
-					}
-					else
-					{
-						query = query.Where(x => x.CategoryId == criteria.CategoryId);
-					}
-
-				}
-				else if (!String.IsNullOrEmpty(criteria.CatalogId))
-				{
-					query = query.Where(x => x.CatalogId == criteria.CatalogId && (searchInAllCategories || x.CategoryId == null));
-
+					query = query.Where(x => criteria.CatalogsIds.Contains(x.CatalogId) && (criteria.SearchInChildren || x.CategoryId == null));
 				}
 
 				if (!String.IsNullOrEmpty(criteria.Code))
 				{
 					query = query.Where(x => x.Code == criteria.Code);
 				}
-				else if (!String.IsNullOrEmpty(criteria.SeoKeyword))
-				{
-					var urlKeyword = _commerceService.GetSeoByKeyword(criteria.SeoKeyword).Where(x => x.ObjectType == typeof(coreModel.CatalogProduct).Name).FirstOrDefault();
-					if (urlKeyword == null)
-					{
-						query = query.Where(x => false);
-					}
-					else
-					{
-						query = query.Where(x => x.Id == urlKeyword.ObjectId);
-					}
-				}
 				else if (!String.IsNullOrEmpty(criteria.Keyword))
 				{
 					query = query.Where(x => x.Name.Contains(criteria.Keyword) || x.Code.Contains(criteria.Keyword));
 				}
+
+                //Filter by property  dictionary values
+                if(criteria.PropertyValues != null && criteria.PropertyValues.Any())
+                {
+                    var propValueIds = criteria.PropertyValues.Select(x => x.ValueId).Distinct().ToArray();
+                    query = query.Where(x => x.ItemPropertyValues.Any(y => propValueIds.Contains(y.KeyValue)));
+                }
 
                 result.TotalCount = query.Count();
 
@@ -249,18 +185,40 @@ namespace VirtoCommerce.CatalogModule.Data.Services
                                    .Select(x => x.Id)
                                    .ToArray();
 
-				var productResponseGroup = coreModel.ItemResponseGroup.ItemInfo | coreModel.ItemResponseGroup.ItemAssets | ItemResponseGroup.Categories;
-				if ((criteria.ResponseGroup & coreModel.ResponseGroup.WithProperties) ==coreModel.ResponseGroup.WithProperties)
+				var productResponseGroup = coreModel.ItemResponseGroup.ItemInfo | coreModel.ItemResponseGroup.ItemAssets | ItemResponseGroup.Links | ItemResponseGroup.Seo;
+				if ((criteria.ResponseGroup & coreModel.SearchResponseGroup.WithProperties) ==coreModel.SearchResponseGroup.WithProperties)
 				{
 					productResponseGroup |= coreModel.ItemResponseGroup.ItemProperties;
 				}
-				if ((criteria.ResponseGroup & coreModel.ResponseGroup.WithVariations) == coreModel.ResponseGroup.WithVariations)
+				if ((criteria.ResponseGroup & coreModel.SearchResponseGroup.WithVariations) == coreModel.SearchResponseGroup.WithVariations)
 				{
 					productResponseGroup |= coreModel.ItemResponseGroup.Variations;
 				}
 
 				var products = _itemService.GetByIds(itemIds, productResponseGroup);
                 result.Products = products.OrderByDescending(x => x.Name).ToList();
+
+                ////TODO: Filter facet properties with related store settings, currently we display all dictionary properties
+                ////populate property values facets (only for resulting product range because its DB and its very expensive operation)
+                ////IS VERY NOT OPTIMAL SOLUTION
+                //var dictPropValues = result.Products.SelectMany(x => x.PropertyValues).Where(x => x.ValueId != null)
+                //                                       .GroupBy(x=>x.ValueId)
+                //                                       .Select(x=>x.First())
+                //                                       .ToArray();
+                //if(dictPropValues.Any())
+                //{
+                //    var propDictValueIds = dictPropValues.Select(x => x.ValueId).ToArray();
+                //    var propertyIds = repository.PropertyDictionaryValues.Where(x => propDictValueIds.Contains(x.Id))
+                //                                                         .Select(x => x.PropertyId)
+                //                                                         .Distinct()
+                //                                                         .ToArray();
+
+                //    var properties = repository.GetPropertiesByIds(propertyIds).Select(x=>x.ToCoreModel(x.Catalog.ToCoreModel(), x.Category != null ? x.Category.ToCoreModel() : null));
+                //    foreach(var dictProp in dictPropValues)
+                //    {
+                //        dictProp.Property = properties.FirstOrDefault(x => String.Equals(x.Name, dictProp.PropertyName, StringComparison.InvariantCultureIgnoreCase));
+                //    }
+                //}          
             }
         }
     }

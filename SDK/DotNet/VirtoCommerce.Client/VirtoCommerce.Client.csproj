@@ -72,9 +72,7 @@
     <Compile Include="Client\Configuration.cs" />
     <Compile Include="HmacApiClient.cs" />
     <Compile Include="HmacUtility.cs" />
-    <Compile Include="Model\InlineResponse200.cs" />
     <Compile Include="Model\VirtoCommerceCartModuleWebModelAddress.cs" />
-    <Compile Include="Model\VirtoCommerceCartModuleWebModelCoupon.cs" />
     <Compile Include="Model\VirtoCommerceCartModuleWebModelDiscount.cs" />
     <Compile Include="Model\VirtoCommerceCartModuleWebModelLineItem.cs" />
     <Compile Include="Model\VirtoCommerceCartModuleWebModelPayment.cs" />
@@ -91,11 +89,10 @@
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelAsset.cs" />
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelCatalog.cs" />
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelCatalogLanguage.cs" />
+    <Compile Include="Model\VirtoCommerceCatalogModuleWebModelCatalogSearchResult.cs" />
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelCategory.cs" />
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelCategoryLink.cs" />
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelEditorialReview.cs" />
-    <Compile Include="Model\VirtoCommerceCatalogModuleWebModelEventNotificationsExportNotification.cs" />
-    <Compile Include="Model\VirtoCommerceCatalogModuleWebModelEventNotificationsImportNotification.cs" />
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelImage.cs" />
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelListEntry.cs" />
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelListEntryLink.cs" />
@@ -108,6 +105,8 @@
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelPropertyAttribute.cs" />
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelPropertyDictionaryValue.cs" />
     <Compile Include="Model\VirtoCommerceCatalogModuleWebModelPropertyValue.cs" />
+    <Compile Include="Model\VirtoCommerceCatalogModuleWebModelPushNotificationsExportNotification.cs" />
+    <Compile Include="Model\VirtoCommerceCatalogModuleWebModelPushNotificationsImportNotification.cs" />
     <Compile Include="Model\VirtoCommerceContentWebModelsCheckNameResult.cs" />
     <Compile Include="Model\VirtoCommerceContentWebModelsGetPagesCriteria.cs" />
     <Compile Include="Model\VirtoCommerceContentWebModelsGetPagesResult.cs" />
@@ -122,6 +121,7 @@
     <Compile Include="Model\VirtoCommerceContentWebModelsThemeAsset.cs" />
     <Compile Include="Model\VirtoCommerceContentWebModelsThemeAssetFolder.cs" />
     <Compile Include="Model\VirtoCommerceCoreModuleWebModelFulfillmentCenter.cs" />
+    <Compile Include="Model\VirtoCommerceCoreModuleWebModelSignInResult.cs" />
     <Compile Include="Model\VirtoCommerceCustomerModuleWebModelAddress.cs" />
     <Compile Include="Model\VirtoCommerceCustomerModuleWebModelContact.cs" />
     <Compile Include="Model\VirtoCommerceCustomerModuleWebModelMember.cs" />
@@ -143,6 +143,7 @@
     <Compile Include="Model\VirtoCommerceDomainCatalogModelPropertyDictionaryValue.cs" />
     <Compile Include="Model\VirtoCommerceDomainCatalogModelPropertyDisplayName.cs" />
     <Compile Include="Model\VirtoCommerceDomainCatalogModelPropertyValue.cs" />
+    <Compile Include="Model\VirtoCommerceDomainCatalogModelSearchCriteria.cs" />
     <Compile Include="Model\VirtoCommerceDomainCommerceModelAddress.cs" />
     <Compile Include="Model\VirtoCommerceDomainCommerceModelSeoInfo.cs" />
     <Compile Include="Model\VirtoCommerceDomainCommerceModelTaxDetail.cs" />
@@ -155,7 +156,9 @@
     <Compile Include="Model\VirtoCommerceDomainMarketingModelPromotionEvaluationContext.cs" />
     <Compile Include="Model\VirtoCommerceDomainOrderModelSearchCriteria.cs" />
     <Compile Include="Model\VirtoCommerceDomainPaymentModelBankCardInfo.cs" />
+    <Compile Include="Model\VirtoCommerceDomainPaymentModelPostProcessPaymentResult.cs" />
     <Compile Include="Model\VirtoCommerceDomainPricingModelPrice.cs" />
+    <Compile Include="Model\VirtoCommerceDomainPricingModelPriceEvaluationContext.cs" />
     <Compile Include="Model\VirtoCommerceDomainQuoteModelQuoteAttachment.cs" />
     <Compile Include="Model\VirtoCommerceDomainQuoteModelQuoteItem.cs" />
     <Compile Include="Model\VirtoCommerceDomainQuoteModelQuoteRequest.cs" />
@@ -172,6 +175,7 @@
     <Compile Include="Model\VirtoCommerceMarketingModuleWebModelDynamicContentPublication.cs" />
     <Compile Include="Model\VirtoCommerceMarketingModuleWebModelMarketingSearchResult.cs" />
     <Compile Include="Model\VirtoCommerceMarketingModuleWebModelPromotion.cs" />
+    <Compile Include="Model\VirtoCommerceMarketingModuleWebModelPromotionReward.cs" />
     <Compile Include="Model\VirtoCommerceMerchandisingModuleWebModelAsset.cs" />
     <Compile Include="Model\VirtoCommerceMerchandisingModuleWebModelAssociation.cs" />
     <Compile Include="Model\VirtoCommerceMerchandisingModuleWebModelCatalogItem.cs" />
@@ -208,6 +212,7 @@
     <Compile Include="Model\VirtoCommerceOrderModuleWebModelMoney.cs" />
     <Compile Include="Model\VirtoCommerceOrderModuleWebModelOperation.cs" />
     <Compile Include="Model\VirtoCommerceOrderModuleWebModelPaymentIn.cs" />
+    <Compile Include="Model\VirtoCommerceOrderModuleWebModelProcessPaymentResult.cs" />
     <Compile Include="Model\VirtoCommerceOrderModuleWebModelQuarterPeriodMoney.cs" />
     <Compile Include="Model\VirtoCommerceOrderModuleWebModelSearchResult.cs" />
     <Compile Include="Model\VirtoCommerceOrderModuleWebModelShipment.cs" />
@@ -240,6 +245,7 @@
     <Compile Include="Model\VirtoCommercePlatformWebModelAssetBlobInfo.cs" />
     <Compile Include="Model\VirtoCommercePlatformWebModelJobsJob.cs" />
     <Compile Include="Model\VirtoCommercePlatformWebModelNotificationsNotification.cs" />
+    <Compile Include="Model\VirtoCommercePlatformWebModelNotificationsNotificationParameter.cs" />
     <Compile Include="Model\VirtoCommercePlatformWebModelNotificationsNotificationTemplate.cs" />
     <Compile Include="Model\VirtoCommercePlatformWebModelNotificationsRenderNotificationContentResult.cs" />
     <Compile Include="Model\VirtoCommercePlatformWebModelNotificationsSearchNotificationsResult.cs" />
@@ -282,7 +288,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>nuget pack "$(MSBuildProjectFullPath)" -Symbols -Properties Configuration=Release</PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == Release nuget pack "$(MSBuildProjectFullPath)" -Symbols -Properties Configuration=Release</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

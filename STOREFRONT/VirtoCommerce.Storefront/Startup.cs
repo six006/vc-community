@@ -8,20 +8,27 @@ using System.Web.Compilation;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Extensions;
+using Microsoft.Owin.Security;
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Mvc;
 using Owin;
 using VirtoCommerce.Client;
 using VirtoCommerce.Client.Api;
 using VirtoCommerce.Client.Client;
 using VirtoCommerce.LiquidThemeEngine;
+using VirtoCommerce.LiquidThemeEngine.Binders;
+using VirtoCommerce.LiquidThemeEngine.Objects;
 using VirtoCommerce.Storefront;
 using VirtoCommerce.Storefront.App_Start;
+using VirtoCommerce.Storefront.Builders;
 using VirtoCommerce.Storefront.Model;
 using VirtoCommerce.Storefront.Model.Common;
 using VirtoCommerce.Storefront.Owin;
+using VirtoCommerce.Storefront.Model.Services;
+using VirtoCommerce.Storefront.Services;
+using VirtoCommerce.Storefront.Common;
 
 [assembly: OwinStartup(typeof(Startup))]
 [assembly: PreApplicationStartMethod(typeof(Startup), "PreApplicationStart")]
@@ -35,6 +42,9 @@ namespace VirtoCommerce.Storefront
 
         public static void PreApplicationStart()
         {
+            // TODO: Uncomment if you want to use PerRequestLifetimeManager
+            Microsoft.Web.Infrastructure.DynamicModuleHelper.DynamicModuleUtility.RegisterModule(typeof(UnityPerRequestHttpModule));
+
             AppDomain.CurrentDomain.AssemblyResolve += Resolve;
 
             var managerAssemblyPath = HostingEnvironment.MapPath("~/Areas/Admin/bin/VirtoCommerce.Platform.Web.dll");
@@ -59,6 +69,17 @@ namespace VirtoCommerce.Storefront
             container.RegisterType<IVirtoCommercePlatformApi, VirtoCommercePlatformApi>();
             container.RegisterType<ICustomerManagementModuleApi, CustomerManagementModuleApi>();
             container.RegisterType<ICommerceCoreModuleApi, CommerceCoreModuleApi>();
+            container.RegisterType<ICustomerManagementModuleApi, CustomerManagementModuleApi>();
+            container.RegisterType<ICatalogModuleApi, CatalogModuleApi>();
+            container.RegisterType<IPricingModuleApi, PricingModuleApi>();
+            container.RegisterType<IInventoryModuleApi, InventoryModuleApi>();
+            container.RegisterType<IShoppingCartModuleApi, ShoppingCartModuleApi>();
+            container.RegisterType<IOrderModuleApi, OrderModuleApi>();
+            container.RegisterType<IMarketingModuleApi, MarketingModuleApi>();
+
+            container.RegisterType<ICartBuilder, CartBuilder>();
+            container.RegisterType<ICatalogSearchService, CatalogSearchServiceImpl>();
+            container.RegisterType<IAuthenticationManager>(new InjectionFactory((context) => HttpContext.Current.GetOwinContext().Authentication));
 
             container.RegisterType<IStorefrontUrlBuilder, StorefrontUrlBuilder>();
             if (_managerAssembly != null)
@@ -67,19 +88,21 @@ namespace VirtoCommerce.Storefront
                 CallChildConfigure(app, _managerAssembly, "VirtoCommerce.Platform.Web.Startup", "Configuration", "~/areas/admin", "admin/");
             }
 
-            container.RegisterInstance<ShopifyLiquidThemeStructure>(new ShopifyLiquidThemeStructure(() => { return container.Resolve<WorkContext>(); }, container.Resolve<IStorefrontUrlBuilder>(), "~/App_data/themes", "~/themes/assets"));
+            // Create new work context for each request
+            container.RegisterType<WorkContext, WorkContext>(new PerRequestLifetimeManager());
+
+            container.RegisterInstance(new ShopifyLiquidThemeEngine(() => container.Resolve<WorkContext>(), () => container.Resolve<IStorefrontUrlBuilder>(), "~/App_data/themes", "~/themes/assets"));
             //Register liquid engine
-            ViewEngines.Engines.Add(new DotLiquidThemedViewEngine(container.Resolve<ShopifyLiquidThemeStructure>()));
-            //FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes, container.Resolve<ICommerceCoreModuleApi>());
+            ViewEngines.Engines.Add(new DotLiquidThemedViewEngine(container.Resolve<ShopifyLiquidThemeEngine>()));
+
+            // Shopify model binders convert Shopify form fields with bad names to VirtoCommerce model properties.
+            container.RegisterType<IModelBinderProvider, ShopifyModelBinderProvider>("shopify");
+
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes, () => container.Resolve<WorkContext>(), container.Resolve<ICommerceCoreModuleApi>());
             AuthConfig.ConfigureAuth(app);
 
-            // Create new work context for each request
-            // TODO: Add caching
-            app.CreatePerOwinContext(() => new WorkContext());
-            container.RegisterType<WorkContext>(new InjectionFactory(c => HttpContext.Current.GetOwinContext().Get<WorkContext>()));
-
-            app.Use<WorkContextOwinMiddleware>(container.Resolve<IStoreModuleApi>(), container.Resolve<IVirtoCommercePlatformApi>(), container.Resolve<ICustomerManagementModuleApi>());
+            app.Use<WorkContextOwinMiddleware>(container);
             app.UseStageMarker(PipelineStage.ResolveCache);
         }
 
